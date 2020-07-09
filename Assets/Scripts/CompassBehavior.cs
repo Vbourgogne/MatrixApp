@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CompassBehavior : MonoBehaviour
 {
@@ -17,16 +18,28 @@ public class CompassBehavior : MonoBehaviour
     public float inputFieldX;
     public float inputFieldY;
 
+
+    public Button btn_ActionsPositives;
+    public Button btn_ActionsFuite;
+    public Button btn_ValeursImportantes;
+    public Button btn_PenseesNegatives;
+
+    public GameObject inputWord;
+
     // Start is called before the first frame update
     void Start()
     {
         cam1 = Camera.main;
+       // btn_ActionsPositives.onClick.AddListener(delegate)
     }
 
     // Update is called once per frame
     void Update()
     {
 
+
+
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             instanceMark = Instantiate(compassMark, cam1.ScreenToWorldPoint(new Vector3 (Input.mousePosition.x, Input.mousePosition.y, cam1.nearClipPlane)), Quaternion.identity);
@@ -52,12 +65,20 @@ public class CompassBehavior : MonoBehaviour
             }
             InstantiateInputField(inputFieldX, inputFieldY, 0);
         }
+        */
     }
-
+    /*
     public void InstantiateInputField(float x, float y, float z)
     {
         instanceInputField = Instantiate(inputField, new Vector3(x, y, z), Quaternion.identity);
         instanceInputField.transform.SetParent(canvas.transform);
         instanceInputField.GetComponent<TMP_InputField>().ActivateInputField();
+    }
+    */
+
+    void InputFieldSpawn(int cadran)
+    {
+        inputWord.SetActive(true);
+        //inputWord.GetComponent<CompassInputBehavior>();
     }
 }
