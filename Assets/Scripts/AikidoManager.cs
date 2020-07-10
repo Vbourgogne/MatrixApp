@@ -12,6 +12,9 @@ public class AikidoManager : MonoBehaviour
     public int indexScreens = 0;
     public UIManager UIScript;
     public SpriteRenderer AikidoFond;
+    public Image[] screenCounters;
+    public int screenCounterTransparencyLow;
+    public int screenCounterTransparencyHigh;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +22,9 @@ public class AikidoManager : MonoBehaviour
         AikidoFond = GetComponent<SpriteRenderer>();
         AikidoTMP.text = AikidoTexts[indexScreens];
         AikidoFond.color = AikidoColors[indexScreens];
+        foreach (Image screenCounter in screenCounters)
+        { screenCounter.color = new Color(255,255,255, screenCounterTransparencyLow); }
+        screenCounters[indexScreens].color = new Color(255, 255, 255, screenCounterTransparencyLow);
     }
     private void OnMouseDown()
     {
@@ -32,12 +38,14 @@ public class AikidoManager : MonoBehaviour
             indexScreens++;
             AikidoTMP.text = AikidoTexts[indexScreens];
             AikidoFond.color = AikidoColors[indexScreens];
+            screenCounters[indexScreens].color = new Color(255, 255, 255, screenCounterTransparencyLow);
         }
         else
         {
             indexScreens = 0;
             AikidoTMP.text = AikidoTexts[indexScreens];
             AikidoFond.color = AikidoColors[indexScreens];
+            screenCounters[indexScreens].color = new Color(255, 255, 255, screenCounterTransparencyLow);
             UIScript.ActivateUI(true, false, false, false, false, false);
         }
     }
