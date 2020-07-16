@@ -13,8 +13,11 @@ public class AikidoManager : MonoBehaviour
     public UIManager UIScript;
     public SpriteRenderer AikidoFond;
     public Image[] screenCounters;
-    public int screenCounterTransparencyLow;
-    public int screenCounterTransparencyHigh;
+    public Color screenCounterTransparencyLow;
+    public Color screenCounterTransparencyHigh;
+    public float lerpValue;
+    public float lerpTime;
+    public bool isFading;
 
     // Start is called before the first frame update
     void Start()
@@ -23,30 +26,53 @@ public class AikidoManager : MonoBehaviour
         AikidoTMP.text = AikidoTexts[indexScreens];
         AikidoFond.color = AikidoColors[indexScreens];
         foreach (Image screenCounter in screenCounters)
-        { screenCounter.color = new Color(255,255,255, screenCounterTransparencyLow); }
-        screenCounters[indexScreens].color = new Color(255, 255, 255, screenCounterTransparencyLow);
+        { screenCounter.color = screenCounterTransparencyLow; }
+        screenCounters[indexScreens].color = screenCounterTransparencyHigh;
     }
     private void OnMouseDown()
     {
-        ScreenChange();
+        if (!isFading)
+        {
+            lerpValue = 0;
+            ScreenChange();
+        }
     }
     // Update is called once per frame
     void ScreenChange()
     {
         if (indexScreens < AikidoTexts.Length - 1)
         {
+            isFading = true;
+            screenCounters[indexScreens].color = screenCounterTransparencyLow;
+            StartCoroutine(FadeColor(AikidoColors[indexScreens], AikidoColors[indexScreens + 1], lerpTime));
             indexScreens++;
             AikidoTMP.text = AikidoTexts[indexScreens];
             AikidoFond.color = AikidoColors[indexScreens];
-            screenCounters[indexScreens].color = new Color(255, 255, 255, screenCounterTransparencyLow);
+            screenCounters[indexScreens].color = screenCounterTransparencyHigh;
         }
         else
         {
+            screenCounters[indexScreens].color = screenCounterTransparencyLow;
             indexScreens = 0;
             AikidoTMP.text = AikidoTexts[indexScreens];
             AikidoFond.color = AikidoColors[indexScreens];
-            screenCounters[indexScreens].color = new Color(255, 255, 255, screenCounterTransparencyLow);
+            screenCounters[0].color = screenCounterTransparencyHigh;
             UIScript.ActivateUI(true, false, false, false, false, false);
+        }
+    }
+
+    public IEnumerator FadeColor(Color from,Color to, float lerpTimeCoroutine)
+    {
+        if(lerpValue < 1)
+        {
+            lerpValue += Time.deltaTime / lerpTimeCoroutine;
+            AikidoFond.color = Color.Lerp(from, to, lerpValue);
+            yield return new WaitForSeconds(0.001f);
+            StartCoroutine(FadeColor(from, to, lerpTimeCoroutine));
+        }
+        else
+        {
+            isFading = false;
         }
     }
 }
