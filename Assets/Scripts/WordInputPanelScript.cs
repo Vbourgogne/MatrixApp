@@ -30,6 +30,8 @@ public class WordInputPanelScript : MonoBehaviour
 
     public Canvas canvas;
     public GameObject[] marksParents;
+
+    public TempRefScript temp;
         
     private void Start()
     {
@@ -97,8 +99,9 @@ public class WordInputPanelScript : MonoBehaviour
         instanceMark.transform.SetParent(canvas.transform, false);
         instanceMark.GetComponentInChildren<TextMeshProUGUI>().text = if_name.text;
         instanceMark.transform.SetParent(marksParents[nbCadran].transform, true);
-        instanceMark.GetComponent<MarkBehaviour>().markName = txt_name.text;
-        instanceMark.GetComponent<MarkBehaviour>().markDescription = txt_description.text;
+        //instanceMark.GetComponentInChildren<MarkBehaviour>().OnStart();
+        temp.tempName = if_name.text;
+        temp.tempDescription = if_description.text;
         gameObject.SetActive(false);
     }
 }

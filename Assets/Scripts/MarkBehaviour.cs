@@ -13,12 +13,16 @@ public class MarkBehaviour : MonoBehaviour
 
     public TextMeshProUGUI txt_name;
     public TextMeshProUGUI txt_description;
+    public TempRefScript temp;
 
     // Start is called before the first frame update
-    void Start()
+    public void OnStart()
     {
+        temp = GameObject.FindGameObjectWithTag("DescriptionBoussole").GetComponent<TempRefScript>();
         GetComponent<Button>().onClick.AddListener(DisplayDescription);
-
+        obj_description = temp.descriptionPanel;
+        markName = temp.tempName;
+        markDescription = temp.tempDescription;
     }
 
     // Update is called once per frame
