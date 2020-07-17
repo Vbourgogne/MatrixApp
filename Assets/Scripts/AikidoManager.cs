@@ -33,7 +33,6 @@ public class AikidoManager : MonoBehaviour
     {
         if (!isFading)
         {
-            lerpValue = 0;
             ScreenChange();
         }
     }
@@ -73,6 +72,7 @@ public class AikidoManager : MonoBehaviour
         else
         {
             isFading = false;
+            lerpValue = 0;
         }
     }
 }

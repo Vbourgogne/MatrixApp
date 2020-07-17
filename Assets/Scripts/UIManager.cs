@@ -13,18 +13,18 @@ public class UIManager : MonoBehaviour
     public GameObject ReglagesUI;
     public GameObject BackHome;
 
-    public Button Boussole_btn;
-    public Button Aikido_btn;
-    public Button BackHome_btn;
+    public Button btn_Boussole;
+    public Button btn_Aikido;
+    public Button btn_BackHome;
 
 
     // Start is called before the first frame update
     void Start()
     {
         ActivateUI(true, false, false, false, false, false);
-        Boussole_btn.onClick.AddListener(delegate { ActivateUI(false, true, false, false, false, true); });
-        Aikido_btn.onClick.AddListener(delegate { ActivateUI(false, false, true, false, false, true); });
-        BackHome_btn.onClick.AddListener(delegate { ActivateUI(true, false, false, false, false, false); });
+        btn_Boussole.onClick.AddListener(delegate { ActivateUI(false, true, false, false, false, true); });
+        btn_Aikido.onClick.AddListener(delegate { ActivateUI(false, false, true, false, false, true); });
+        btn_BackHome.onClick.AddListener(delegate { ActivateUI(true, false, false, false, false, false); });
 
     }
 

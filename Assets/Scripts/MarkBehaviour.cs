@@ -11,18 +11,13 @@ public class MarkBehaviour : MonoBehaviour
 
     public GameObject obj_description;
 
-    public TextMeshProUGUI txt_name;
-    public TextMeshProUGUI txt_description;
-    public TempRefScript temp;
+    public TextMeshProUGUI txt_MarkName;
+    public TextMeshProUGUI txt_MarkDescription;
 
     // Start is called before the first frame update
-    public void OnStart()
+    public void Start()
     {
-        temp = GameObject.FindGameObjectWithTag("DescriptionBoussole").GetComponent<TempRefScript>();
         GetComponent<Button>().onClick.AddListener(DisplayDescription);
-        obj_description = temp.descriptionPanel;
-        markName = temp.tempName;
-        markDescription = temp.tempDescription;
     }
 
     // Update is called once per frame
@@ -33,7 +28,7 @@ public class MarkBehaviour : MonoBehaviour
     public void DisplayDescription()
     {
         obj_description.SetActive(true);
-        txt_name.text = markName;
-        txt_description.text = markDescription;
+        txt_MarkName.text = markName;
+        txt_MarkDescription.text = markDescription;
     }
 }

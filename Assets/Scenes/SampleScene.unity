@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 88214220}
   - component: {fileID: 88214219}
   m_Layer: 5
-  m_Name: Button
+  m_Name: NameDescRetour_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -726,7 +726,7 @@ GameObject:
   - component: {fileID: 192812273}
   - component: {fileID: 192812272}
   m_Layer: 5
-  m_Name: Texte_Aikido
+  m_Name: AikidoInstructions_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 219796076}
   - component: {fileID: 219796075}
   m_Layer: 5
-  m_Name: AxisX
+  m_Name: AxisX_IMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1178,7 +1178,7 @@ GameObject:
   - component: {fileID: 251140391}
   - component: {fileID: 251140390}
   m_Layer: 5
-  m_Name: "Succ\xE8s"
+  m_Name: "Succ\xE8s_BTN"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1461,13 +1461,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328503146}
+  - component: {fileID: 328503147}
   m_Layer: 5
   m_Name: Home_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &328503146
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1491,6 +1492,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &328503147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328503145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d70d28b75b9ac44a8c1f5435b1673c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HomeUI: {fileID: 328503145}
+  BoussoleUI: {fileID: 1624018830}
+  AikidoUI: {fileID: 480046714}
+  SuccesUI: {fileID: 1136912938}
+  ReglagesUI: {fileID: 199914668}
+  BackHome: {fileID: 2009007235}
+  btn_Boussole: {fileID: 688948277}
+  btn_Aikido: {fileID: 1997517999}
+  btn_BackHome: {fileID: 2009007237}
 --- !u!1 &331874847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,7 +1682,7 @@ GameObject:
   - component: {fileID: 344884485}
   - component: {fileID: 344884484}
   m_Layer: 5
-  m_Name: Btn_ActionsApprocher
+  m_Name: CadranActionsApprocher_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1824,12 +1846,12 @@ GameObject:
   - component: {fileID: 423407122}
   - component: {fileID: 423407121}
   m_Layer: 5
-  m_Name: Texte_Indication
+  m_Name: Indication_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &423407120
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1846,7 +1868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -800}
+  m_AnchoredPosition: {x: 0, y: -1026}
   m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423407121
@@ -2304,7 +2326,7 @@ Transform:
   m_LocalScale: {x: 6, y: 1.5, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492731720
 GameObject:
@@ -2411,7 +2433,7 @@ GameObject:
   - component: {fileID: 540682157}
   - component: {fileID: 540682156}
   m_Layer: 5
-  m_Name: "Ext\xE9rieur"
+  m_Name: "Ext\xE9rieur_TXT"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2879,7 +2901,7 @@ GameObject:
   - component: {fileID: 574824290}
   - component: {fileID: 574824289}
   m_Layer: 5
-  m_Name: Fond_Boussole
+  m_Name: Boussole_Fond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3238,7 +3260,7 @@ GameObject:
   - component: {fileID: 688948278}
   - component: {fileID: 688948277}
   m_Layer: 5
-  m_Name: Boussole
+  m_Name: Boussole_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3307,7 +3329,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1608353097}
+      - m_Target: {fileID: 0}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -3538,54 +3560,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &789480503
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 789480505}
-  - component: {fileID: 789480504}
-  m_Layer: 0
-  m_Name: TempRef
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &789480504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789480503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63ea5bfaf90c1ea4f942ea2f26f752e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  descriptionPanel: {fileID: 1095043513}
-  tempName: 
-  tempDescription: 
---- !u!4 &789480505
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789480503}
-  m_LocalRotation: {x: 0.13052616, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 1.527, z: -4.66}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &815553560
 GameObject:
   m_ObjectHideFlags: 0
@@ -3839,7 +3815,7 @@ RectTransform:
   - {fileID: 199914669}
   - {fileID: 2009007236}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3951,7 +3927,7 @@ GameObject:
   - component: {fileID: 840220013}
   - component: {fileID: 840220012}
   m_Layer: 5
-  m_Name: Valeurs Importantes
+  m_Name: Valeurs et personnes_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3973,8 +3949,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: -783}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 351, y: -803}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &840220012
 MonoBehaviour:
@@ -4107,7 +4083,7 @@ GameObject:
   - component: {fileID: 860499018}
   - component: {fileID: 860499017}
   m_Layer: 5
-  m_Name: "S'\xE9loigner"
+  m_Name: "S'\xE9loigner_TXT"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4442,7 +4418,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -4458,18 +4434,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   compassMark: {fileID: 2225076739236282246, guid: ab0572843de29f54c80bdf30a15d67d3,
     type: 3}
-  inputField: {fileID: 9108341899845555546, guid: 4eef246ebd4ea04478bb870eb68ece74,
-    type: 3}
-  instanceMark: {fileID: 0}
-  instanceInputField: {fileID: 0}
-  canvas: {fileID: 825193508}
-  inputFieldX: 0
-  inputFieldY: 0
-  btn_ActionsPositives: {fileID: 0}
-  btn_ActionsFuite: {fileID: 0}
-  btn_ValeursImportantes: {fileID: 0}
-  btn_PenseesNegatives: {fileID: 0}
-  inputWord_obj: {fileID: 0}
+  btn_HautGaucheCadran: {fileID: 0}
+  btn_HautDroiteCadran: {fileID: 0}
+  btn_BasDroiteCadran: {fileID: 0}
+  btn_BasGaucheCadran: {fileID: 0}
+  obj_inputWord: {fileID: 0}
 --- !u!1 &997080727
 GameObject:
   m_ObjectHideFlags: 0
@@ -4482,7 +4451,7 @@ GameObject:
   - component: {fileID: 997080730}
   - component: {fileID: 997080729}
   m_Layer: 5
-  m_Name: Indications Aikido
+  m_Name: AikidoIndications_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4950,7 +4919,7 @@ GameObject:
   - component: {fileID: 1035428808}
   - component: {fileID: 1035428807}
   m_Layer: 5
-  m_Name: "Int\xE9rieur"
+  m_Name: "Int\xE9rieur_TXT"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5199,7 +5168,7 @@ GameObject:
   - component: {fileID: 1041819996}
   - component: {fileID: 1041819995}
   m_Layer: 5
-  m_Name: txt_description
+  m_Name: Description_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5355,7 +5324,7 @@ GameObject:
   - component: {fileID: 1046340674}
   - component: {fileID: 1046340673}
   m_Layer: 5
-  m_Name: AxisY
+  m_Name: AxisY_IMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5430,7 +5399,7 @@ GameObject:
   - component: {fileID: 1071284213}
   - component: {fileID: 1071284212}
   m_Layer: 5
-  m_Name: Btn_ValeursPersonnes
+  m_Name: CadranValeursPersonnes_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5548,7 +5517,7 @@ GameObject:
   - component: {fileID: 1082985386}
   - component: {fileID: 1082985385}
   m_Layer: 5
-  m_Name: Title TXT
+  m_Name: Title_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5704,7 +5673,7 @@ GameObject:
   - component: {fileID: 1086118924}
   - component: {fileID: 1086118923}
   m_Layer: 5
-  m_Name: "Pens\xE9es n\xE9gatives"
+  m_Name: "Obstacles int\xE9rieurs_TXT"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5748,7 +5717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pens\xE9es neutralisantes"
+  m_text: "Obstacles int\xE9rieurs"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5793,7 +5762,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 8
+  m_firstOverflowCharacterIndex: 10
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -5817,7 +5786,7 @@ MonoBehaviour:
   m_margin: {x: -47.3562, y: 0, z: -71.63208, w: -55.81665}
   m_textInfo:
     textComponent: {fileID: 1086118923}
-    characterCount: 22
+    characterCount: 20
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -6030,7 +5999,7 @@ GameObject:
   - component: {fileID: 1139729746}
   - component: {fileID: 1139729745}
   m_Layer: 5
-  m_Name: DescriptionIF
+  m_Name: Description_IF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6201,7 +6170,7 @@ GameObject:
   - component: {fileID: 1206910710}
   - component: {fileID: 1206910709}
   m_Layer: 5
-  m_Name: Fond_Description
+  m_Name: NameDesc_Fond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6275,7 +6244,7 @@ GameObject:
   - component: {fileID: 1227897394}
   - component: {fileID: 1227897393}
   m_Layer: 5
-  m_Name: DescriptionTXT
+  m_Name: Description_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6431,7 +6400,7 @@ GameObject:
   - component: {fileID: 1252396672}
   - component: {fileID: 1252396671}
   m_Layer: 5
-  m_Name: S'approcher
+  m_Name: S'approcher_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6588,7 +6557,7 @@ GameObject:
   - component: {fileID: 1252954903}
   - component: {fileID: 1252954902}
   m_Layer: 5
-  m_Name: Btn_ActionsFuite
+  m_Name: CadranActionsLutte_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6706,7 +6675,7 @@ GameObject:
   - component: {fileID: 1255221095}
   - component: {fileID: 1255221094}
   m_Layer: 5
-  m_Name: NomTXT
+  m_Name: Nom_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6862,7 +6831,7 @@ GameObject:
   - component: {fileID: 1298418318}
   - component: {fileID: 1298418317}
   m_Layer: 5
-  m_Name: title_name
+  m_Name: NameTitle_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7298,7 +7267,7 @@ GameObject:
   - component: {fileID: 1336751447}
   - component: {fileID: 1336751446}
   m_Layer: 5
-  m_Name: Actions de fuite
+  m_Name: Actions de lutte_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7342,7 +7311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Actions de fuite
+  m_text: Actions de lutte
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7610,7 +7579,7 @@ GameObject:
   - component: {fileID: 1379077816}
   - component: {fileID: 1379077815}
   m_Layer: 5
-  m_Name: txt_name
+  m_Name: Name_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7767,7 +7736,7 @@ GameObject:
   - component: {fileID: 1415558345}
   - component: {fileID: 1415558344}
   m_Layer: 5
-  m_Name: AjouterMotBTN
+  m_Name: AjouterMot_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7930,17 +7899,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbCadran: 0
   WordInput_btn: {fileID: 1415558344}
-  txt_title: {fileID: 1082985385}
-  txt_name: {fileID: 1255221094}
-  if_name: {fileID: 1681868341}
+  txt_InputPanelTitle: {fileID: 1082985385}
+  if_InputPanelName: {fileID: 1681868341}
   txt_PlaceholderName: {fileID: 1570480611}
-  txt_description: {fileID: 1227897393}
-  if_description: {fileID: 1139729745}
+  if_InputPanelDescription: {fileID: 1139729745}
   txt_PlaceholderDescription: {fileID: 1319229755}
   compassMarkPrefab: {fileID: 6187236113885856174, guid: ab0572843de29f54c80bdf30a15d67d3,
     type: 3}
-  instanceMark: {fileID: 0}
-  boussoleUI: {fileID: 1624018831}
   compassMarkPos: {x: 0, y: 0, z: 0}
   markMaxReach: 400
   markMinDistanceFrom0: 75
@@ -7950,7 +7915,9 @@ MonoBehaviour:
   - {fileID: 43574541}
   - {fileID: 597724990}
   - {fileID: 1640237581}
-  temp: {fileID: 789480504}
+  obj_DescriptionPanel: {fileID: 1095043513}
+  txt_MarkNameLink: {fileID: 1379077815}
+  txt_MarkDescriptionLink: {fileID: 1041819995}
 --- !u!1 &1459813304
 GameObject:
   m_ObjectHideFlags: 0
@@ -7963,7 +7930,7 @@ GameObject:
   - component: {fileID: 1459813307}
   - component: {fileID: 1459813306}
   m_Layer: 5
-  m_Name: Actions Positives
+  m_Name: Actions Positives_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8338,7 +8305,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1552863927
 GameObject:
@@ -8672,7 +8639,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1608353096}
-  - component: {fileID: 1608353097}
   m_Layer: 0
   m_Name: Arbre
   m_TagString: Untagged
@@ -8707,29 +8673,8 @@ Transform:
   - {fileID: 1970883522}
   - {fileID: 1913876535}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1608353097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608353095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20d70d28b75b9ac44a8c1f5435b1673c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HomeUI: {fileID: 328503145}
-  BoussoleUI: {fileID: 1624018830}
-  AikidoUI: {fileID: 480046714}
-  SuccesUI: {fileID: 1136912938}
-  ReglagesUI: {fileID: 199914668}
-  BackHome: {fileID: 2009007235}
-  Boussole_btn: {fileID: 688948277}
-  Aikido_btn: {fileID: 1997517999}
-  BackHome_btn: {fileID: 2009007237}
 --- !u!1 &1609384267
 GameObject:
   m_ObjectHideFlags: 0
@@ -8743,7 +8688,7 @@ GameObject:
   - component: {fileID: 1609384270}
   - component: {fileID: 1609384269}
   m_Layer: 5
-  m_Name: "Btn_Pens\xE9esNeg"
+  m_Name: "CadranObstaclesInt\xE9rieurs_BTN"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8909,18 +8854,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44ef3f727c05fd44ba991a1f0d2bb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compassMark: {fileID: 0}
-  inputField: {fileID: 0}
-  instanceMark: {fileID: 0}
-  instanceInputField: {fileID: 0}
-  canvas: {fileID: 0}
-  inputFieldX: 0
-  inputFieldY: 0
-  btn_ActionsPositives: {fileID: 344884484}
-  btn_ActionsFuite: {fileID: 1252954902}
-  btn_ValeursImportantes: {fileID: 1071284212}
-  btn_PenseesNegatives: {fileID: 1609384269}
-  inputWord_obj: {fileID: 1440319889}
+  compassMark: {fileID: 6187236113885856174, guid: ab0572843de29f54c80bdf30a15d67d3,
+    type: 3}
+  btn_HautGaucheCadran: {fileID: 1252954902}
+  btn_HautDroiteCadran: {fileID: 344884484}
+  btn_BasDroiteCadran: {fileID: 1071284212}
+  btn_BasGaucheCadran: {fileID: 1609384269}
+  obj_inputWord: {fileID: 1440319889}
 --- !u!1 &1640237581
 GameObject:
   m_ObjectHideFlags: 0
@@ -9218,7 +9158,7 @@ GameObject:
   - component: {fileID: 1681868342}
   - component: {fileID: 1681868341}
   m_Layer: 5
-  m_Name: NomIF
+  m_Name: Nom_IF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9389,7 +9329,7 @@ GameObject:
   - component: {fileID: 1746104324}
   - component: {fileID: 1746104323}
   m_Layer: 5
-  m_Name: title_description
+  m_Name: DescriptionTitle_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9731,7 +9671,7 @@ GameObject:
   - component: {fileID: 1952599411}
   - component: {fileID: 1952599410}
   m_Layer: 5
-  m_Name: Fond_Saisie
+  m_Name: Saisie_Fond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9899,7 +9839,7 @@ GameObject:
   - component: {fileID: 1997518000}
   - component: {fileID: 1997517999}
   m_Layer: 5
-  m_Name: "A\xEFkido"
+  m_Name: "A\xEFkido_BTN"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10092,7 +10032,7 @@ GameObject:
   - component: {fileID: 2009007238}
   - component: {fileID: 2009007237}
   m_Layer: 5
-  m_Name: BackHome
+  m_Name: BackHome_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10211,7 +10151,7 @@ GameObject:
   - component: {fileID: 2074372988}
   - component: {fileID: 2074372987}
   m_Layer: 5
-  m_Name: "R\xE9glages"
+  m_Name: "R\xE9glages_BTN"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10330,7 +10270,7 @@ GameObject:
   - component: {fileID: 2116020320}
   - component: {fileID: 2116020321}
   m_Layer: 0
-  m_Name: Fond-Aikido
+  m_Name: Aikido_Fond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10431,7 +10371,7 @@ MonoBehaviour:
     ou de qui cela vous rapproche ?"
   - "Qu'est-ce que vous ressentez apr\xE8s cet exercice l\xE0 dans votre corps ?"
   indexScreens: 0
-  UIScript: {fileID: 1608353097}
+  UIScript: {fileID: 328503147}
   AikidoFond: {fileID: 0}
   screenCounters:
   - {fileID: 913595434}
@@ -10444,7 +10384,7 @@ MonoBehaviour:
   screenCounterTransparencyLow: {r: 1, g: 1, b: 1, a: 0.29411766}
   screenCounterTransparencyHigh: {r: 1, g: 1, b: 1, a: 1}
   lerpValue: 0
-  lerpTime: 0.5
+  lerpTime: 0.75
   isFading: 0
 --- !u!61 &2116020321
 BoxCollider2D:

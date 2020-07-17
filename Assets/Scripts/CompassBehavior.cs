@@ -7,33 +7,21 @@ using UnityEngine.UI;
 public class CompassBehavior : MonoBehaviour
 {
     public GameObject compassMark;
-    public GameObject inputField;
 
-    public GameObject instanceMark;
-    public GameObject instanceInputField;
+    public Button btn_HautGaucheCadran;
+    public Button btn_HautDroiteCadran;
+    public Button btn_BasDroiteCadran;
+    public Button btn_BasGaucheCadran;
 
-    private Camera cam1;
-    public Canvas canvas;
-
-    public float inputFieldX;
-    public float inputFieldY;
-
-
-    public Button btn_ActionsPositives;
-    public Button btn_ActionsFuite;
-    public Button btn_ValeursImportantes;
-    public Button btn_PenseesNegatives;
-
-    public GameObject inputWord_obj;
+    public GameObject obj_inputWord;
 
     // Start is called before the first frame update
     void Start()
     {
-        cam1 = Camera.main;
-        btn_ActionsFuite.onClick.AddListener(delegate { InputFieldSpawn(0); });
-        btn_ActionsPositives.onClick.AddListener(delegate { InputFieldSpawn(1); });
-        btn_ValeursImportantes.onClick.AddListener(delegate { InputFieldSpawn(2); });
-        btn_PenseesNegatives.onClick.AddListener(delegate { InputFieldSpawn(3); });
+        btn_HautGaucheCadran.onClick.AddListener(delegate { InputFieldSpawn(0); });
+        btn_HautDroiteCadran.onClick.AddListener(delegate { InputFieldSpawn(1); });
+        btn_BasDroiteCadran.onClick.AddListener(delegate { InputFieldSpawn(2); });
+        btn_BasGaucheCadran.onClick.AddListener(delegate { InputFieldSpawn(3); });
     }
 
     // Update is called once per frame
@@ -44,9 +32,8 @@ public class CompassBehavior : MonoBehaviour
 
     void InputFieldSpawn(int cadran)
     {
-        inputWord_obj.SetActive(true);
-        inputWord_obj.GetComponent<WordInputPanelScript>().nbCadran = cadran;
-        inputWord_obj.GetComponent<WordInputPanelScript>().SetText();
-        //inputWord.GetComponent<CompassInputBehavior>();
+        obj_inputWord.SetActive(true);
+        obj_inputWord.GetComponent<WordInputPanelScript>().nbCadran = cadran;
+        obj_inputWord.GetComponent<WordInputPanelScript>().SetText();
     }
 }
