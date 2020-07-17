@@ -12,20 +12,27 @@ public class UIManager : MonoBehaviour
     public GameObject SuccesUI;
     public GameObject ReglagesUI;
     public GameObject BackHome;
+    public GameObject obj_ArrosezMessage;
 
     public Button btn_Boussole;
     public Button btn_Aikido;
     public Button btn_BackHome;
 
+    public ScoreManager scoreScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreScript = Camera.main.GetComponent<ScoreManager>();
         ActivateUI(true, false, false, false, false, false);
         btn_Boussole.onClick.AddListener(delegate { ActivateUI(false, true, false, false, false, true); });
         btn_Aikido.onClick.AddListener(delegate { ActivateUI(false, false, true, false, false, true); });
         btn_BackHome.onClick.AddListener(delegate { ActivateUI(true, false, false, false, false, false); });
 
+        if (scoreScript.arrosoirScore > 0)
+        {
+            obj_ArrosezMessage.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -42,5 +49,9 @@ public class UIManager : MonoBehaviour
         SuccesUI.SetActive(Succes);
         ReglagesUI.SetActive(Reglages);
         BackHome.SetActive(HomeButton);
+        if (Home == true && scoreScript.arrosoirScore > 0)
+        {
+            obj_ArrosezMessage.SetActive(true);
+        }
     }
 }
