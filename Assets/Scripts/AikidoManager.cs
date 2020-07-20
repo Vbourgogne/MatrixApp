@@ -19,6 +19,9 @@ public class AikidoManager : MonoBehaviour
     public float lerpTime;
     public bool isFading;
 
+    public ScoreManager scoreScript;
+    public int scoreFinirAikido;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +54,7 @@ public class AikidoManager : MonoBehaviour
         }
         else
         {
+            scoreScript.ArrosoirScoreUpdate(scoreFinirAikido);
             screenCounters[indexScreens].color = screenCounterTransparencyLow;
             indexScreens = 0;
             AikidoTMP.text = AikidoTexts[indexScreens];

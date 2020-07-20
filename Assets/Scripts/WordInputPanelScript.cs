@@ -29,6 +29,12 @@ public class WordInputPanelScript : MonoBehaviour
     public TextMeshProUGUI txt_MarkDescriptionLink;
 
     private MarkBehaviour instanceMarkBehaviour;
+
+    public ScoreManager scoreScript;
+    public int scoreAjouterMotCadranHautGauche;
+    public int scoreAjouterMotCadranHautDroite;
+    public int scoreAjouterMotCadranBasDroite;
+    public int scoreAjouterMotCadranBasGauche;
     //public TempRefScript temp;
 
     private void Start()
@@ -79,15 +85,19 @@ public class WordInputPanelScript : MonoBehaviour
         {
             case 0:
                 compassMarkPos = new Vector3(-1*(Random.value*markMaxReach+markMinDistanceFrom0), Random.value * markMaxReach + markMinDistanceFrom0, 0);
+                scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautGauche);
                 break;
             case 1:
                 compassMarkPos = new Vector3(Random.value * markMaxReach + markMinDistanceFrom0, Random.value * markMaxReach + markMinDistanceFrom0, 0);
+                scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautDroite);
                 break;
             case 2:
                 compassMarkPos = new Vector3(Random.value * markMaxReach + markMinDistanceFrom0, -1*(Random.value * markMaxReach + markMinDistanceFrom0), 0);
+                scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranBasDroite);
                 break;
             case 3:
                 compassMarkPos = new Vector3(-1*(Random.value * markMaxReach + markMinDistanceFrom0), -1*(Random.value * markMaxReach + markMinDistanceFrom0), 0);
+                scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranBasGauche);
                 break;
             default:
                 txt_InputPanelTitle.text = "ERROR";

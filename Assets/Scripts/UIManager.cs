@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public Button btn_Boussole;
     public Button btn_Aikido;
     public Button btn_BackHome;
+    public Button btn_Succes;
 
     public ScoreManager scoreScript;
 
@@ -27,6 +28,8 @@ public class UIManager : MonoBehaviour
         ActivateUI(true, false, false, false, false, false);
         btn_Boussole.onClick.AddListener(delegate { ActivateUI(false, true, false, false, false, true); });
         btn_Aikido.onClick.AddListener(delegate { ActivateUI(false, false, true, false, false, true); });
+        btn_Succes.onClick.AddListener(delegate { ActivateUI(false, false, false, true, false, true); });
+
         btn_BackHome.onClick.AddListener(delegate { ActivateUI(true, false, false, false, false, false); });
 
         if (scoreScript.arrosoirScore > 0)
