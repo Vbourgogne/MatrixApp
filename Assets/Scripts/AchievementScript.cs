@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class AchievementScript : MonoBehaviour
 {
-    public int nbNotificationsAujourdhui;
-    public int nbMotsCadranHautGauche;
-    public int nbMotsCadranHautDroite;
-    public int nbMotsCadranBasDroite;
-    public int nbMotsCadranBasGauche;
-    public int nbMotsBoussole;
-    public int nbAikidoEntier;
+    public GameObject[] achievements;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +13,19 @@ public class AchievementScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
-        
+        AchievementCheck();
+    }
+
+    public void AchievementCheck()
+    {
+        foreach(GameObject succes in achievements)
+        {
+            if (succes.GetComponent<AchievementObjectBehavior>().isAchieved)
+            {
+                succes.GetComponent<AchievementObjectBehavior>().AchievementActivation();
+            }
+        }
     }
 }
