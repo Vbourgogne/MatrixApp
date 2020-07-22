@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\AchievementObjectBehavior.cs" />
     <Compile Include="Assets\Scripts\AchievementScript.cs" />
     <Compile Include="Assets\Scripts\AikidoManager.cs" />
+    <Compile Include="Assets\Scripts\ArrosoirButtonScript.cs" />
     <Compile Include="Assets\Scripts\CompassBehavior.cs" />
     <Compile Include="Assets\Scripts\MarkBehaviour.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />

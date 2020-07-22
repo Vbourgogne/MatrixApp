@@ -12,37 +12,32 @@ public class ScoreManager : MonoBehaviour
     public int totemScore;
     public TextMeshPro txt_TotemScore;
 
-    public Button btn_Arrosage;
-
-    public float compteurTemps;
+    //public float compteurTemps;
     public float timeBetweenIncrease;
     public int increases;
+    public int incrementationStep;
+    public bool arrosageLoop;
 
-    private void Update()
+    public IEnumerator Arrosage()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (arrosageLoop)
         {
-            ArrosoirScoreUpdate(5);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            compteurTemps += Time.deltaTime;
-            if (compteurTemps >= timeBetweenIncrease && arrosoirScore > 0)
+            yield return new WaitForSecondsRealtime(timeBetweenIncrease);
+            //compteurTemps += Time.deltaTime;
+            if (arrosoirScore > 0)
             {
                 ArrosoirScoreUpdate(-1);
                 TotemScoreUpdate(+1);
                 increases++;
-                compteurTemps = 0;
-                if (increases >= 10)
+                //compteurTemps = 0;
+                if (increases >= incrementationStep)
                 {
                     timeBetweenIncrease = timeBetweenIncrease / 2;
                     increases = 0;
+                    incrementationStep *= 2;
                 }
+                StartCoroutine(Arrosage());
             }
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            compteurTemps = 0;
         }
     }
 
