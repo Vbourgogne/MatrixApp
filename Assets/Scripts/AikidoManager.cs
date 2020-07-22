@@ -39,6 +39,17 @@ public class AikidoManager : MonoBehaviour
             ScreenChange();
         }
     }
+
+    private void OnDisable()
+    {
+        screenCounters[indexScreens].color = screenCounterTransparencyLow;
+        indexScreens = 0;
+        AikidoTMP.text = AikidoTexts[indexScreens];
+        AikidoFond.color = AikidoColors[indexScreens];
+        screenCounters[0].color = screenCounterTransparencyHigh;
+        lerpValue = 0;
+        isFading = false;
+    }
     // Update is called once per frame
     void ScreenChange()
     {
