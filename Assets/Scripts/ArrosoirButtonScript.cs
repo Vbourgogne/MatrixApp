@@ -10,14 +10,18 @@ public class ArrosoirButtonScript : MonoBehaviour
     {
         scoreScript = Camera.main.GetComponent<ScoreManager>();
     }
-    void OnMouseEnter()
+    void OnMouseDown()
     {
         scoreScript.arrosageLoop = true;
         StartCoroutine(scoreScript.Arrosage());
     }
 
-    private void OnMouseExit()
+    private void OnMouseUp()
     {
         scoreScript.arrosageLoop = false ;
+    }
+    private void OnMouseExit()
+    {
+        scoreScript.arrosageLoop = false;
     }
 }

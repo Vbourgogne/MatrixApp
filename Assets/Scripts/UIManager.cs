@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public Button btn_Succes;
 
     public ScoreManager scoreScript;
+    public BoxCollider arrosoireCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,11 @@ public class UIManager : MonoBehaviour
         if (Home == true && scoreScript.arrosoirScore > 0)
         {
             obj_ArrosezMessage.SetActive(true);
+            arrosoireCollider.enabled = true;
+        }
+        if (Home != true)
+        {
+            arrosoireCollider.enabled = false;
         }
     }
 }
