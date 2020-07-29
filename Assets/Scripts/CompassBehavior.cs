@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -15,6 +16,8 @@ public class CompassBehavior : MonoBehaviour
 
     public GameObject obj_inputWord;
 
+    public event EventHandler OnDoubleTap;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +25,6 @@ public class CompassBehavior : MonoBehaviour
         btn_HautDroiteCadran.onClick.AddListener(delegate { InputFieldSpawn(1); });
         btn_BasDroiteCadran.onClick.AddListener(delegate { InputFieldSpawn(2); });
         btn_BasGaucheCadran.onClick.AddListener(delegate { InputFieldSpawn(3); });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void InputFieldSpawn(int cadran)

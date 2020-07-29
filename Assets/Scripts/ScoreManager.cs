@@ -23,10 +23,17 @@ public class ScoreManager : MonoBehaviour
     public Renderer[] renderer_ArrosoireArray;
     public GameObject obj_ArrosezTexte;
 
+    private float timeBetweenIncreaseStart;
+    private int increaseNbStart;
+    private int incrementationStepStart;
+
     public float totemScale;
 
     private void Start()
     {
+        timeBetweenIncreaseStart = timeBetweenIncrease;
+        increaseNbStart = increases;
+        incrementationStepStart = incrementationStep;
     }
 
     public IEnumerator Arrosage()
@@ -67,5 +74,12 @@ public class ScoreManager : MonoBehaviour
         totemScale = 0.35f + totemScore * (1.35f / 500);
         txt_TotemScore.fontSize = 90 + totemScore * (210 / 500);
         obj_arbre.transform.localScale = new Vector3 (totemScale, totemScale, totemScale);
+    }
+
+    public void ArrosageReset()
+    {
+        timeBetweenIncrease = timeBetweenIncreaseStart;
+        increases = increaseNbStart;
+        incrementationStepStart = incrementationStep;
     }
 }

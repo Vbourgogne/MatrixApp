@@ -19,9 +19,11 @@ public class ArrosoirButtonScript : MonoBehaviour
     private void OnMouseUp()
     {
         scoreScript.arrosageLoop = false ;
+        scoreScript.ArrosageReset();
     }
     private void OnMouseExit()
     {
         scoreScript.arrosageLoop = false;
+        scoreScript.ArrosageReset();
     }
 }
