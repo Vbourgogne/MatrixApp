@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI txt_ArrosoirScore;
 
     public int totemScore;
-    public TextMeshPro txt_TotemScore;
+    public TextMeshProUGUI txt_TotemScore;
 
     //public float compteurTemps;
     public float timeBetweenIncrease;
@@ -65,6 +65,7 @@ public class ScoreManager : MonoBehaviour
         totemScore += scoreToAddTotem;
         txt_TotemScore.text = totemScore.ToString();
         totemScale = 0.35f + totemScore * (1.35f / 500);
+        txt_TotemScore.fontSize = 90 + totemScore * (210 / 500);
         obj_arbre.transform.localScale = new Vector3 (totemScale, totemScale, totemScale);
     }
 }

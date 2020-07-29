@@ -81,40 +81,55 @@ public class WordInputPanelScript : MonoBehaviour
 
     public void InputWord()
     {
-        switch (nbCadran)
+        if (if_InputPanelName.text != "")
         {
-            case 0:
-                compassMarkPos = new Vector3(-1*(Random.value*markMaxReach+markMinDistanceFrom0), Random.value * markMaxReach + markMinDistanceFrom0, 0);
-                scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautGauche);
-                break;
-            case 1:
-                compassMarkPos = new Vector3(Random.value * markMaxReach + markMinDistanceFrom0, Random.value * markMaxReach + markMinDistanceFrom0, 0);
-                scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautDroite);
-                break;
-            case 2:
-                compassMarkPos = new Vector3(Random.value * markMaxReach + markMinDistanceFrom0, -1*(Random.value * markMaxReach + markMinDistanceFrom0), 0);
-                scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranBasDroite);
-                break;
-            case 3:
-                compassMarkPos = new Vector3(-1*(Random.value * markMaxReach + markMinDistanceFrom0), -1*(Random.value * markMaxReach + markMinDistanceFrom0), 0);
-                scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranBasGauche);
-                break;
-            default:
-                txt_InputPanelTitle.text = "ERROR";
-                break;
+            switch (nbCadran)
+            {
+                case 0:
+                    compassMarkPos = new Vector3(-1 * (Random.value * markMaxReach + markMinDistanceFrom0), Random.value * markMaxReach + markMinDistanceFrom0, 0);
+                    if (if_InputPanelDescription.text != "")
+                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautGauche); }
+                    else
+                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautGauche/2); }
+                    break;
+                case 1:
+                    compassMarkPos = new Vector3(Random.value * markMaxReach + markMinDistanceFrom0, Random.value * markMaxReach + markMinDistanceFrom0, 0);
+                    if (if_InputPanelDescription.text != "")
+                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautDroite); }
+                    else
+                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautDroite / 2); }
+                    break;
+                case 2:
+                    compassMarkPos = new Vector3(Random.value * markMaxReach + markMinDistanceFrom0, -1 * (Random.value * markMaxReach + markMinDistanceFrom0), 0);
+                    if (if_InputPanelDescription.text != "")
+                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranBasDroite); }
+                    else
+                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranBasDroite / 2); }
+                    break;
+                case 3:
+                    compassMarkPos = new Vector3(-1 * (Random.value * markMaxReach + markMinDistanceFrom0), -1 * (Random.value * markMaxReach + markMinDistanceFrom0), 0);
+                    if (if_InputPanelDescription.text != "")
+                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranBasGauche); }
+                    else
+                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranBasGauche / 2); }
+                    break;
+                default:
+                    txt_InputPanelTitle.text = "ERROR";
+                    break;
+            }
+            instanceMark = Instantiate(compassMarkPrefab, compassMarkPos, Quaternion.identity);
+            instanceMark.transform.SetParent(canvas.transform, false);
+            instanceMark.transform.SetParent(marksParents[nbCadran].transform, true);
+            instanceMarkBehaviour = instanceMark.GetComponentInChildren<MarkBehaviour>();
+            instanceMark.GetComponentInChildren<TextMeshProUGUI>().text = if_InputPanelName.text;
+            instanceMarkBehaviour.obj_description = obj_DescriptionPanel;
+            instanceMarkBehaviour.txt_MarkName = txt_MarkNameLink;
+            instanceMarkBehaviour.txt_MarkDescription = txt_MarkDescriptionLink;
+            instanceMarkBehaviour.markName = if_InputPanelName.text;
+            instanceMarkBehaviour.markDescription = if_InputPanelDescription.text;
+            if_InputPanelName.text = null;
+            if_InputPanelDescription.text = null;
+            gameObject.SetActive(false);
         }
-        instanceMark = Instantiate(compassMarkPrefab, compassMarkPos, Quaternion.identity);
-        instanceMark.transform.SetParent(canvas.transform, false);
-        instanceMark.transform.SetParent(marksParents[nbCadran].transform, true);
-        instanceMarkBehaviour = instanceMark.GetComponentInChildren<MarkBehaviour>();
-        instanceMark.GetComponentInChildren<TextMeshProUGUI>().text = if_InputPanelName.text;
-        instanceMarkBehaviour.obj_description = obj_DescriptionPanel;
-        instanceMarkBehaviour.txt_MarkName = txt_MarkNameLink;
-        instanceMarkBehaviour.txt_MarkDescription = txt_MarkDescriptionLink;
-        instanceMarkBehaviour.markName = if_InputPanelName.text;
-        instanceMarkBehaviour.markDescription = if_InputPanelDescription.text;
-        if_InputPanelName.text = null;
-        if_InputPanelDescription.text = null;
-        gameObject.SetActive(false);
     }
 }
