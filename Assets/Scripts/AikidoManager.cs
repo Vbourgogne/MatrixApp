@@ -11,7 +11,7 @@ public class AikidoManager : MonoBehaviour
     public string[] AikidoTexts;
     public int indexScreens = 0;
     public UIManager UIScript;
-    public SpriteRenderer AikidoFond;
+    public Image AikidoFond;
     public Image[] screenCounters;
     public Color screenCounterTransparencyLow;
     public Color screenCounterTransparencyHigh;
@@ -24,7 +24,7 @@ public class AikidoManager : MonoBehaviour
     
     void Start()
     {
-        AikidoFond = GetComponent<SpriteRenderer>();
+        AikidoFond = GetComponent<Image>();
         AikidoTMP.text = AikidoTexts[indexScreens];
         AikidoFond.color = AikidoColors[indexScreens];
         foreach (Image screenCounter in screenCounters)
@@ -64,7 +64,7 @@ public class AikidoManager : MonoBehaviour
         }
         else // si l'aikido est fini, désactiver l'objet
         {
-            UIScript.ActivateUI(true, false, false, false, false, false);
+            UIScript.ActivateUI(UIScript.uIObjects[0],88);
         }
     }
 

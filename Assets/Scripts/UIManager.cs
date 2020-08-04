@@ -6,6 +6,10 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public GameObject[] uIObjects;
+    public Button[] homeUIButtons;
+
+
     public GameObject HomeUI;
     public GameObject BoussoleUI;
     public GameObject AikidoUI;
@@ -20,18 +24,23 @@ public class UIManager : MonoBehaviour
     public Button btn_Succes;
 
     public ScoreManager scoreScript;
-    public BoxCollider arrosoireCollider;
-
-    // Start is called before the first frame update
+    public ArrosoirButtonScript arrosageScript;
+    
     void Start()
     {
         scoreScript = Camera.main.GetComponent<ScoreManager>();
-        ActivateUI(true, false, false, false, false, false);
-        btn_Boussole.onClick.AddListener(delegate { ActivateUI(false, true, false, false, false, true); });
-        btn_Aikido.onClick.AddListener(delegate { ActivateUI(false, false, true, false, false, true); });
-        btn_Succes.onClick.AddListener(delegate { ActivateUI(false, false, false, true, false, true); });
+        uIObjects[0].SetActive(true);
+        //ActivateUI(true, false, false, false, false, false);
+        for (int i = 0; i < homeUIButtons.Length-1; i++)
+        {
+            homeUIButtons[i].onClick.AddListener(delegate { ActivateUI(uIObjects[i], i); });
+            Debug.Log(homeUIButtons[i] + " " + uIObjects[i]);
+        }
 
-        btn_BackHome.onClick.AddListener(delegate { ActivateUI(true, false, false, false, false, false); });
+        //btn_Boussole.onClick.AddListener(delegate { ActivateUI(false, true, false, false, false, true); });
+        //btn_Aikido.onClick.AddListener(delegate { ActivateUI(false, false, true, false, false, true); });
+        //btn_Succes.onClick.AddListener(delegate { ActivateUI(false, false, false, true, false, true); });
+        //btn_BackHome.onClick.AddListener(delegate { ActivateUI(true, false, false, false, false, false); });
 
         if (scoreScript.arrosoirScore > 0) // si le score de l'arrosoir est supérieur à 0, montrer le message d'arrosage
         {
@@ -39,22 +48,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ActivateUI(bool Home, bool Boussole, bool Aikido, bool Succes, bool Reglages, bool HomeButton)
+    public void ActivateUI(GameObject objectToActivate, int test)
     {
-        HomeUI.SetActive(Home);
-        BoussoleUI.SetActive(Boussole);
-        AikidoUI.SetActive(Aikido);
-        SuccesUI.SetActive(Succes);
-        ReglagesUI.SetActive(Reglages);
-        BackHome.SetActive(HomeButton);
-        if (Home == true && scoreScript.arrosoirScore > 0) // si le changement se fait vers le menu principal, activer le collider de l'arrosoir
+        foreach(GameObject UIObject in uIObjects)
+        {
+            if (UIObject.activeInHierarchy)
+            { UIObject.SetActive(false); }
+        }
+        objectToActivate.SetActive(true);
+        if (objectToActivate == uIObjects[0] && scoreScript.arrosoirScore > 0) // si le changement se fait vers le menu principal, activer le collider de l'arrosoir
         {                                                   // activer le message d'arrosage
             obj_ArrosezMessage.SetActive(true);
-            arrosoireCollider.enabled = true;
+            arrosageScript.enabled = true;
         }
-        if (Home != true) // si ce n'est pas le menu principal, désactiver le collider de l'arrosoir
+        if (objectToActivate != uIObjects[0]) // si ce n'est pas le menu principal, désactiver le collider de l'arrosoir
         {
-            arrosoireCollider.enabled = false;
+            arrosageScript.enabled = false;
         }
+        Debug.Log("Index appuyé : " + test);
     }
 }
