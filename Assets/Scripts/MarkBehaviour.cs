@@ -20,12 +20,7 @@ public class MarkBehaviour : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(DisplayDescription);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    public void DisplayDescription()
+    public void DisplayDescription() // active l'objet pour montrer le nom et la description de la valeur, change le texte pour correspondre
     {
         obj_description.SetActive(true);
         txt_MarkName.text = markName;

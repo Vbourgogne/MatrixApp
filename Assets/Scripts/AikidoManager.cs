@@ -21,8 +21,7 @@ public class AikidoManager : MonoBehaviour
 
     public ScoreManager scoreScript;
     public int scoreFinirAikido;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         AikidoFond = GetComponent<SpriteRenderer>();
@@ -34,13 +33,13 @@ public class AikidoManager : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (!isFading)
+        if (!isFading) //lorsque l'user clique sur le fond, si l'écran n'est pas déjà en train de changer, il change
         {
             ScreenChange();
         }
     }
 
-    private void OnDisable()
+    private void OnDisable() // quand l'user quitte l'Aikido, les marqueurs, le texte, la couleur, la lerpValue et l'index se reset
     {
         screenCounters[indexScreens].color = screenCounterTransparencyLow;
         indexScreens = 0;
@@ -53,7 +52,7 @@ public class AikidoManager : MonoBehaviour
     // Update is called once per frame
     void ScreenChange()
     {
-        if (indexScreens < AikidoTexts.Length - 1)
+        if (indexScreens < AikidoTexts.Length - 1) // si l'aikido n'est pas fini, update les marqueurs/index/texte, fade de la couleur
         {
             isFading = true;
             screenCounters[indexScreens].color = screenCounterTransparencyLow;
@@ -63,21 +62,15 @@ public class AikidoManager : MonoBehaviour
             AikidoFond.color = AikidoColors[indexScreens];
             screenCounters[indexScreens].color = screenCounterTransparencyHigh;
         }
-        else
+        else // si l'aikido est fini, désactiver l'objet
         {
-            scoreScript.ArrosoirScoreUpdate(scoreFinirAikido);
-            screenCounters[indexScreens].color = screenCounterTransparencyLow;
-            indexScreens = 0;
-            AikidoTMP.text = AikidoTexts[indexScreens];
-            AikidoFond.color = AikidoColors[indexScreens];
-            screenCounters[0].color = screenCounterTransparencyHigh;
             UIScript.ActivateUI(true, false, false, false, false, false);
         }
     }
 
     public IEnumerator FadeColor(Color from,Color to, float lerpTimeCoroutine)
     {
-        if(lerpValue < 1)
+        if(lerpValue < 1) // si le lerp n'est pas encore fini, augmenter lerpValue et changer la couleur
         {
             lerpValue += Time.deltaTime / lerpTimeCoroutine;
             AikidoFond.color = Color.Lerp(from, to, lerpValue);

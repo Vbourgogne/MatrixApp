@@ -19,7 +19,7 @@ public class CompassBehavior : MonoBehaviour
     public event EventHandler OnDoubleTap;
 
     // Start is called before the first frame update
-    void Start()
+    void Start() // pour chaque cadran, affecte la fonction avec le paramètre correspondant
     {
         btn_HautGaucheCadran.onClick.AddListener(delegate { InputFieldSpawn(0); });
         btn_HautDroiteCadran.onClick.AddListener(delegate { InputFieldSpawn(1); });
@@ -27,7 +27,7 @@ public class CompassBehavior : MonoBehaviour
         btn_BasGaucheCadran.onClick.AddListener(delegate { InputFieldSpawn(3); });
     }
 
-    void InputFieldSpawn(int cadran)
+    void InputFieldSpawn(int cadran) // active l'objet d'input de valeur, transmet le paramètre du cadran et fais changer le texte
     {
         obj_inputWord.SetActive(true);
         obj_inputWord.GetComponent<WordInputPanelScript>().nbCadran = cadran;

@@ -45,7 +45,7 @@ public class WordInputPanelScript : MonoBehaviour
     // Start is called before the first frame update
     public void SetText()
     {
-        switch (nbCadran)
+        switch (nbCadran) // en fonction de NBcadran, changer les textes et les placeholders
         {
             case 0:
                 txt_InputPanelTitle.text = "Ajouter une action de fuite";
@@ -73,12 +73,6 @@ public class WordInputPanelScript : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void InputWord()
     {
         if (if_InputPanelName.text != "")
@@ -86,11 +80,11 @@ public class WordInputPanelScript : MonoBehaviour
             switch (nbCadran)
             {
                 case 0:
-                    compassMarkPos = new Vector3(-1 * (Random.value * markMaxReach + markMinDistanceFrom0), Random.value * markMaxReach + markMinDistanceFrom0, 0);
+                    compassMarkPos = new Vector3(-1 * (Random.value * markMaxReach + markMinDistanceFrom0), Random.value * markMaxReach + markMinDistanceFrom0, 0); // fais apparaître un marqueur à une position aléatoire
                     if (if_InputPanelDescription.text != "")
-                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautGauche); }
+                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautGauche); } //ajouter le score si la description est remplie
                     else
-                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautGauche/2); }
+                    { scoreScript.ArrosoirScoreUpdate(scoreAjouterMotCadranHautGauche/2); } // ajoute la moitié du score si la description n'est pas remplie
                     break;
                 case 1:
                     compassMarkPos = new Vector3(Random.value * markMaxReach + markMinDistanceFrom0, Random.value * markMaxReach + markMinDistanceFrom0, 0);
@@ -130,6 +124,6 @@ public class WordInputPanelScript : MonoBehaviour
             if_InputPanelName.text = null;
             if_InputPanelDescription.text = null;
             gameObject.SetActive(false);
-        }
-    }
-}
+        } // instancie le marqueur, le met dans le bon "dossier", get son script, met les informations de l'inputpanel dans ce script
+    }   // reset le texte des inputFields et désactive le gameobject
+}       //

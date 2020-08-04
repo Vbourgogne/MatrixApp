@@ -33,16 +33,10 @@ public class UIManager : MonoBehaviour
 
         btn_BackHome.onClick.AddListener(delegate { ActivateUI(true, false, false, false, false, false); });
 
-        if (scoreScript.arrosoirScore > 0)
+        if (scoreScript.arrosoirScore > 0) // si le score de l'arrosoir est supérieur à 0, montrer le message d'arrosage
         {
             obj_ArrosezMessage.SetActive(true);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void ActivateUI(bool Home, bool Boussole, bool Aikido, bool Succes, bool Reglages, bool HomeButton)
@@ -53,12 +47,12 @@ public class UIManager : MonoBehaviour
         SuccesUI.SetActive(Succes);
         ReglagesUI.SetActive(Reglages);
         BackHome.SetActive(HomeButton);
-        if (Home == true && scoreScript.arrosoirScore > 0)
-        {
+        if (Home == true && scoreScript.arrosoirScore > 0) // si le changement se fait vers le menu principal, activer le collider de l'arrosoir
+        {                                                   // activer le message d'arrosage
             obj_ArrosezMessage.SetActive(true);
             arrosoireCollider.enabled = true;
         }
-        if (Home != true)
+        if (Home != true) // si ce n'est pas le menu principal, désactiver le collider de l'arrosoir
         {
             arrosoireCollider.enabled = false;
         }
