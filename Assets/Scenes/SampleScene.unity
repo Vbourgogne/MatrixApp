@@ -4104,6 +4104,7 @@ GameObject:
   - component: {fileID: 574824290}
   - component: {fileID: 574824289}
   - component: {fileID: 574824291}
+  - component: {fileID: 574824292}
   m_Layer: 5
   m_Name: Boussole_Fond
   m_TagString: Untagged
@@ -4186,6 +4187,32 @@ MonoBehaviour:
   btn_BasDroiteCadran: {fileID: 1071284212}
   btn_BasGaucheCadran: {fileID: 1609384269}
   obj_inputWord: {fileID: 1440319889}
+--- !u!61 &574824292
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574824287}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 98, y: 98}
+  m_EdgeRadius: 0
 --- !u!1 &590249300
 GameObject:
   m_ObjectHideFlags: 0
@@ -10907,8 +10934,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1624018831}
-  - component: {fileID: 1624018832}
-  - component: {fileID: 1624018833}
   m_Layer: 5
   m_Name: Matrice_UI
   m_TagString: Untagged
@@ -10948,51 +10973,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1624018832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624018830}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c44ef3f727c05fd44ba991a1f0d2bb01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  compassMark: {fileID: 6187236113885856174, guid: ab0572843de29f54c80bdf30a15d67d3,
-    type: 3}
-  btn_HautGaucheCadran: {fileID: 1252954902}
-  btn_HautDroiteCadran: {fileID: 344884484}
-  btn_BasDroiteCadran: {fileID: 1071284212}
-  btn_BasGaucheCadran: {fileID: 1609384269}
-  obj_inputWord: {fileID: 1440319889}
---- !u!61 &1624018833
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624018830}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.35906982, y: -0.114746094}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1080.0372, y: 2339.2188}
-  m_EdgeRadius: 0
 --- !u!1 &1640237581
 GameObject:
   m_ObjectHideFlags: 0
