@@ -1930,7 +1930,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 251140391}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 963194231}
+        m_MethodName: ActivateUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1136912938}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &251140391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4833,17 +4844,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: set_enabled
-        m_Mode: 6
+      - m_Target: {fileID: 963194231}
+        m_MethodName: ActivateUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1624018830}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &688948278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6171,11 +6182,13 @@ MonoBehaviour:
   - {fileID: 480046714}
   - {fileID: 1624018830}
   - {fileID: 199914668}
+  - {fileID: 1136912938}
   homeUIButtons:
   - {fileID: 2009007237}
   - {fileID: 1997517999}
   - {fileID: 688948277}
   - {fileID: 2074372987}
+  - {fileID: 251140390}
   HomeUI: {fileID: 328503145}
   BoussoleUI: {fileID: 1624018830}
   AikidoUI: {fileID: 480046714}
@@ -12118,7 +12131,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1997518000}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 963194231}
+        m_MethodName: ActivateUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 480046714}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1997518000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12404,7 +12428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2009007236
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12467,7 +12491,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2009007238}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 963194231}
+        m_MethodName: ActivateUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 328503145}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &2009007238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12586,7 +12621,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2074372988}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 963194231}
+        m_MethodName: ActivateUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 199914668}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &2074372988
 MonoBehaviour:
   m_ObjectHideFlags: 0

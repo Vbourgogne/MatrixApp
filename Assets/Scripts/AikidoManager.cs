@@ -24,6 +24,7 @@ public class AikidoManager : MonoBehaviour
     
     void Start()
     {
+        UIScript = Camera.main.GetComponent<UIManager>();
         AikidoFond = GetComponent<Image>();
         AikidoTMP.text = AikidoTexts[indexScreens];
         AikidoFond.color = AikidoColors[indexScreens];
@@ -64,7 +65,7 @@ public class AikidoManager : MonoBehaviour
         }
         else // si l'aikido est fini, désactiver l'objet
         {
-            UIScript.ActivateUI(UIScript.uIObjects[0],88);
+            UIScript.ActivateUI(UIScript.uIObjects[0]);
         }
     }
 
