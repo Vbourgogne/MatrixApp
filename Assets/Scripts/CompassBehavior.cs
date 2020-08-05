@@ -18,6 +18,18 @@ public class CompassBehavior : MonoBehaviour
 
     public event EventHandler OnDoubleTap;
 
+    private void OnMouseDown()
+    {
+        if (Input.mousePosition.y >= 0 && Input.mousePosition.x < 0)
+        { Debug.Log("Haut-gauche"); }
+        else if (Input.mousePosition.y >= 0 && Input.mousePosition.y >= 0)
+        { Debug.Log("Haut-droite"); }
+        else if (Input.mousePosition.y >= 0 && Input.mousePosition.y < 0)
+        { Debug.Log("Bas-droite"); }
+        else if (Input.mousePosition.y < 0 && Input.mousePosition.y < 0)
+        { Debug.Log("Bas-gauche"); }
+    }
+
     // Start is called before the first frame update
     void Start() // pour chaque cadran, affecte la fonction avec le paramètre correspondant
     {
