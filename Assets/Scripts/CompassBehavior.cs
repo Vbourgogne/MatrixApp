@@ -20,7 +20,7 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
     public GameObject obj_BDInputWord;
     public GameObject obj_BGInputWord;
 
-    public event EventHandler OnDoubleTap;
+    //public event EventHandler OnDoubleTap;
 
     private int screenWidthMid;
     private int screenHeightMid;
@@ -40,13 +40,21 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
         if (!isInputPanelActive)
         {
             if (Input.mousePosition.y >= screenHeightMid && Input.mousePosition.x < screenWidthMid)
-            { obj_HGInputWord.SetActive(true); }
+            {
+                obj_HGInputWord.SetActive(true);
+            }
             else if (Input.mousePosition.y >= screenHeightMid && Input.mousePosition.x >= screenWidthMid)
-            { obj_HDInputWord.SetActive(true); }
+            {
+                obj_HDInputWord.SetActive(true);
+            }
             else if (Input.mousePosition.y < screenHeightMid && Input.mousePosition.x >= screenWidthMid)
-            { obj_BDInputWord.SetActive(true); }
+            {
+                obj_BDInputWord.SetActive(true);
+            }
             else if (Input.mousePosition.y < screenHeightMid && Input.mousePosition.x < screenWidthMid)
-            { obj_BGInputWord.SetActive(true); }
+            {
+                obj_BGInputWord.SetActive(true);
+            }
             mousePosMarker = new Vector3(Input.mousePosition.x - screenWidthMid, Input.mousePosition.y - screenHeightMid, 0);
             isInputPanelActive = true;
         }

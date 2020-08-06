@@ -2477,7 +2477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9cef039fdc36f4397897384566c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbCadran: 0
+  nbCadran: 2
   WordInput_btn: {fileID: 152848974}
   txt_InputPanelTitle: {fileID: 801313200}
   if_InputPanelName: {fileID: 1752955244}
@@ -2500,10 +2500,7 @@ MonoBehaviour:
   txt_MarkDescriptionLink: {fileID: 1041819995}
   compassScript: {fileID: 574824291}
   scoreScript: {fileID: 963194229}
-  scoreAjouterMotCadranHautGauche: 4
-  scoreAjouterMotCadranHautDroite: 8
-  scoreAjouterMotCadranBasDroite: 10
-  scoreAjouterMotCadranBasGauche: 6
+  scoreToAdd: 10
 --- !u!1 &251140388
 GameObject:
   m_ObjectHideFlags: 0
@@ -5919,6 +5916,7 @@ MonoBehaviour:
   obj_BDInputWord: {fileID: 240454283}
   obj_BGInputWord: {fileID: 1814114939}
   mousePosMarker: {x: 0, y: 0, z: 0}
+  isInputPanelActive: 0
 --- !u!61 &574824292
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13564,10 +13562,7 @@ MonoBehaviour:
   txt_MarkDescriptionLink: {fileID: 1041819995}
   compassScript: {fileID: 574824291}
   scoreScript: {fileID: 963194229}
-  scoreAjouterMotCadranHautGauche: 4
-  scoreAjouterMotCadranHautDroite: 8
-  scoreAjouterMotCadranBasDroite: 10
-  scoreAjouterMotCadranBasGauche: 6
+  scoreToAdd: 4
 --- !u!1 &1452441793
 GameObject:
   m_ObjectHideFlags: 0
@@ -15487,7 +15482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9cef039fdc36f4397897384566c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbCadran: 0
+  nbCadran: 1
   WordInput_btn: {fileID: 874276792}
   txt_InputPanelTitle: {fileID: 259332791}
   if_InputPanelName: {fileID: 71484521}
@@ -15510,10 +15505,7 @@ MonoBehaviour:
   txt_MarkDescriptionLink: {fileID: 1041819995}
   compassScript: {fileID: 574824291}
   scoreScript: {fileID: 963194229}
-  scoreAjouterMotCadranHautGauche: 4
-  scoreAjouterMotCadranHautDroite: 8
-  scoreAjouterMotCadranBasDroite: 10
-  scoreAjouterMotCadranBasGauche: 6
+  scoreToAdd: 8
 --- !u!1 &1681868339
 GameObject:
   m_ObjectHideFlags: 0
@@ -16772,7 +16764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9cef039fdc36f4397897384566c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbCadran: 0
+  nbCadran: 3
   WordInput_btn: {fileID: 1184610554}
   txt_InputPanelTitle: {fileID: 1652143514}
   if_InputPanelName: {fileID: 1452441795}
@@ -16795,10 +16787,7 @@ MonoBehaviour:
   txt_MarkDescriptionLink: {fileID: 1041819995}
   compassScript: {fileID: 574824291}
   scoreScript: {fileID: 963194229}
-  scoreAjouterMotCadranHautGauche: 4
-  scoreAjouterMotCadranHautDroite: 8
-  scoreAjouterMotCadranBasDroite: 10
-  scoreAjouterMotCadranBasGauche: 6
+  scoreToAdd: 6
 --- !u!1 &1816231768
 GameObject:
   m_ObjectHideFlags: 0
