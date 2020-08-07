@@ -20,6 +20,17 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public float timePointerHeldDownforLongTouch;
     public bool longHold;
 
+    public Vector2 poubelleUpRight;
+    public Vector2 poubelleLowLeft;
+
+    private void Update()
+    {
+        if (longHold)
+        {
+            transform.parent.GetComponent<RectTransform>().position = Input.mousePosition;
+        }
+    }
+
     public void DisplayDescription() // active l'objet pour montrer le nom et la description de la valeur, change le texte pour correspondre
     {
         obj_description.SetActive(true);
@@ -37,13 +48,22 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         if (!longHold)
         { DisplayDescription(); }
+        else
+        {
+            if (transform.parent.GetComponent<RectTransform>().position.x < poubelleUpRight.x && transform.parent.GetComponent<RectTransform>().position.x > poubelleLowLeft.x && transform.parent.GetComponent<RectTransform>().position.y > poubelleLowLeft.y && transform.parent.GetComponent<RectTransform>().position.y < poubelleUpRight.y)
+            { Destroy(transform.parent); }
+                longHold = false; 
+        }
         isPointerDown = false;
+        timePointerHeldDown = 0;
     }
 
     public IEnumerator timePointerDown()
     {
         yield return new WaitForSeconds(Time.deltaTime);
         timePointerHeldDown += Time.deltaTime;
+        if(timePointerHeldDown >= timePointerHeldDownforLongTouch)
+        { longHold = true; }
         if(isPointerDown)
         { StartCoroutine(timePointerDown()); }
     }
