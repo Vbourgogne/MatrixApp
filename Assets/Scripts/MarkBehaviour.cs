@@ -68,9 +68,6 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
                     }
                 }
             }
-            Debug.Log("markPosition : " + transform.parent.GetComponent<RectTransform>().position);
-            Debug.Log("PoubelleBasGauche : " + poubelleLowLeft);
-            Debug.Log("PoubelleHautDroite : " + poubelleUpRight);
             longHold = false; 
         }
         isPointerDown = false;

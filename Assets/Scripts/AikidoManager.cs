@@ -36,7 +36,10 @@ public class AikidoManager : MonoBehaviour
     {
         if (!isFading) //lorsque l'user clique sur le fond, si l'écran n'est pas déjà en train de changer, il change
         {
-            ScreenChange();
+            if (Input.mousePosition.x < Screen.width/2)
+            {ScreenChange(false);}
+            else
+            { ScreenChange(true); }
         }
     }
 
@@ -51,21 +54,40 @@ public class AikidoManager : MonoBehaviour
         isFading = false;
     }
     // Update is called once per frame
-    void ScreenChange()
+    void ScreenChange(bool forward)
     {
-        if (indexScreens < AikidoTexts.Length - 1) // si l'aikido n'est pas fini, update les marqueurs/index/texte, fade de la couleur
+        if (forward)
         {
-            isFading = true;
-            screenCounters[indexScreens].color = screenCounterTransparencyLow;
-            StartCoroutine(FadeColor(AikidoColors[indexScreens], AikidoColors[indexScreens + 1], lerpTime));
-            indexScreens++;
-            AikidoTMP.text = AikidoTexts[indexScreens];
-            AikidoFond.color = AikidoColors[indexScreens];
-            screenCounters[indexScreens].color = screenCounterTransparencyHigh;
+            if (indexScreens < AikidoTexts.Length - 1) // si l'aikido n'est pas fini, update les marqueurs/index/texte, fade de la couleur
+            {
+                isFading = true;
+                screenCounters[indexScreens].color = screenCounterTransparencyLow;
+                StartCoroutine(FadeColor(AikidoColors[indexScreens], AikidoColors[indexScreens + 1], lerpTime));
+                indexScreens++;
+                AikidoTMP.text = AikidoTexts[indexScreens];
+                AikidoFond.color = AikidoColors[indexScreens];
+                screenCounters[indexScreens].color = screenCounterTransparencyHigh;
+            }
+            else // si l'aikido est fini, désactiver l'objet
+            {
+                UIScript.ActivateUI(UIScript.uIObjects[0]);
+            }
         }
-        else // si l'aikido est fini, désactiver l'objet
+        else
         {
-            UIScript.ActivateUI(UIScript.uIObjects[0]);
+            if (indexScreens > 0) // si l'aikido n'est pas fini, update les marqueurs/index/texte, fade de la couleur
+            {
+                isFading = true;
+                screenCounters[indexScreens].color = screenCounterTransparencyLow;
+                StartCoroutine(FadeColor(AikidoColors[indexScreens], AikidoColors[indexScreens - 1], lerpTime));
+                indexScreens--;
+                AikidoTMP.text = AikidoTexts[indexScreens];
+                AikidoFond.color = AikidoColors[indexScreens];
+                screenCounters[indexScreens].color = screenCounterTransparencyHigh;
+            }
+            else 
+            {
+            }
         }
     }
 
