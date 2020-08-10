@@ -23,6 +23,11 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public Vector2 poubelleUpRight;
     public Vector2 poubelleLowLeft;
 
+    private void OnEnable()
+    {
+        poubelleUpRight = ScreenToUI(poubelleUpRight);
+        poubelleLowLeft = ScreenToUI(poubelleLowLeft);
+    }
     private void Update()
     {
         if (longHold)
@@ -52,21 +57,20 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             if (transform.parent.GetComponent<RectTransform>().position.x < poubelleUpRight.x)
             {
-                Debug.Log("plus à gauche que poubelleupright");
                 if (transform.parent.GetComponent<RectTransform>().position.x > poubelleLowLeft.x)
                 {
-                    Debug.Log("plus à droite que poubellelowleft");
                     if (transform.parent.GetComponent<RectTransform>().position.y > poubelleLowLeft.y)
                     {
-                        Debug.Log("plus haut que poubellelowleft");
                         if (transform.parent.GetComponent<RectTransform>().position.y < poubelleUpRight.y)
                         {
-                            Debug.Log("plus bas que poubelleupright");
+                            Destroy(transform.parent.gameObject);
                         }
                     }
                 }
             }
-            //{ Destroy(transform.parent); }
+            Debug.Log("markPosition : " + transform.parent.GetComponent<RectTransform>().position);
+            Debug.Log("PoubelleBasGauche : " + poubelleLowLeft);
+            Debug.Log("PoubelleHautDroite : " + poubelleUpRight);
             longHold = false; 
         }
         isPointerDown = false;
@@ -81,5 +85,11 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         { longHold = true; }
         if(isPointerDown)
         { StartCoroutine(timePointerDown()); }
+    }
+
+    public Vector2 ScreenToUI(Vector2 vectorToConvert)
+    {
+        vectorToConvert += new Vector2 (Screen.width / 2, Screen.height / 2);
+        return vectorToConvert;
     }
 }
