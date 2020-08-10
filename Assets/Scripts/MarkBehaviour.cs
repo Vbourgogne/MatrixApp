@@ -46,13 +46,28 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (!longHold)
+            if (!longHold)
         { DisplayDescription(); }
         else
         {
-            if (transform.parent.GetComponent<RectTransform>().position.x < poubelleUpRight.x && transform.parent.GetComponent<RectTransform>().position.x > poubelleLowLeft.x && transform.parent.GetComponent<RectTransform>().position.y > poubelleLowLeft.y && transform.parent.GetComponent<RectTransform>().position.y < poubelleUpRight.y)
-            { Destroy(transform.parent); }
-                longHold = false; 
+            if (transform.parent.GetComponent<RectTransform>().position.x < poubelleUpRight.x)
+            {
+                Debug.Log("plus à gauche que poubelleupright");
+                if (transform.parent.GetComponent<RectTransform>().position.x > poubelleLowLeft.x)
+                {
+                    Debug.Log("plus à droite que poubellelowleft");
+                    if (transform.parent.GetComponent<RectTransform>().position.y > poubelleLowLeft.y)
+                    {
+                        Debug.Log("plus haut que poubellelowleft");
+                        if (transform.parent.GetComponent<RectTransform>().position.y < poubelleUpRight.y)
+                        {
+                            Debug.Log("plus bas que poubelleupright");
+                        }
+                    }
+                }
+            }
+            //{ Destroy(transform.parent); }
+            longHold = false; 
         }
         isPointerDown = false;
         timePointerHeldDown = 0;
