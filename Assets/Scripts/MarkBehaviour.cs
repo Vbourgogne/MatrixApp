@@ -7,13 +7,14 @@ using UnityEngine.EventSystems;
 
 public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public string markName;
-    public string markDescription;
+    //public string markName;
+    //public string markDescription;
 
-    public GameObject obj_description;
+    public GameObject[] obj_WordInputPanels;
+    public int index;
 
-    public TextMeshProUGUI txt_MarkName;
-    public TextMeshProUGUI txt_MarkDescription;
+    //public TextMeshProUGUI txt_MarkName;
+    //public TextMeshProUGUI txt_MarkDescription;
 
     public bool isPointerDown;
     public float timePointerHeldDown;
@@ -22,6 +23,8 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public Vector2 poubelleUpRight;
     public Vector2 poubelleLowLeft;
+
+    public CompassBehavior compassScript;
 
     private void OnEnable()
     {
@@ -38,9 +41,11 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void DisplayDescription() // active l'objet pour montrer le nom et la description de la valeur, change le texte pour correspondre
     {
-        obj_description.SetActive(true);
-        txt_MarkName.text = markName;
-        txt_MarkDescription.text = markDescription;
+        compassScript.inputPanels[index].SetActive(true);
+        compassScript.inputPanels[index].GetComponent<WordInputPanelScript>().currentMark = transform.parent.gameObject;
+        //obj_description.SetActive(true);
+        //txt_MarkName.text = markName;
+        //txt_MarkDescription.text = markDescription;
     }
 
     public void OnPointerDown(PointerEventData eventData)
