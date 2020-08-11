@@ -1,39 +1,63 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class CompassBehavior : MonoBehaviour
+public class CompassBehavior : MonoBehaviour, IPointerDownHandler
 {
     public GameObject compassMark;
 
-    public Button btn_HautGaucheCadran;
-    public Button btn_HautDroiteCadran;
-    public Button btn_BasDroiteCadran;
-    public Button btn_BasGaucheCadran;
+    //public Button btn_HautGaucheCadran;
+    //public Button btn_HautDroiteCadran;
+    //public Button btn_BasDroiteCadran;
+    //public Button btn_BasGaucheCadran;
 
-    public GameObject obj_inputWord;
+    public GameObject obj_HGInputWord;
+    public GameObject obj_HDInputWord;
+    public GameObject obj_BDInputWord;
+    public GameObject obj_BGInputWord;
 
-    // Start is called before the first frame update
+    //public event EventHandler OnDoubleTap;
+
+    private int screenWidthMid;
+    private int screenHeightMid;
+
+    public Vector3 mousePosMarker;
+
+    public bool isInputPanelActive;
+
     void Start()
     {
-        btn_HautGaucheCadran.onClick.AddListener(delegate { InputFieldSpawn(0); });
-        btn_HautDroiteCadran.onClick.AddListener(delegate { InputFieldSpawn(1); });
-        btn_BasDroiteCadran.onClick.AddListener(delegate { InputFieldSpawn(2); });
-        btn_BasGaucheCadran.onClick.AddListener(delegate { InputFieldSpawn(3); });
+        screenWidthMid = Screen.width / 2;
+        screenHeightMid = Screen.height / 2;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerDown(PointerEventData eventData)
     {
-
+        if (!isInputPanelActive)
+        {
+            if (Input.mousePosition.y >= screenHeightMid && Input.mousePosition.x < screenWidthMid)
+            {
+                obj_HGInputWord.SetActive(true);
+            }
+            else if (Input.mousePosition.y >= screenHeightMid && Input.mousePosition.x >= screenWidthMid)
+            {
+                obj_HDInputWord.SetActive(true);
+            }
+            else if (Input.mousePosition.y < screenHeightMid && Input.mousePosition.x >= screenWidthMid)
+            {
+                obj_BDInputWord.SetActive(true);
+            }
+            else if (Input.mousePosition.y < screenHeightMid && Input.mousePosition.x < screenWidthMid)
+            {
+                obj_BGInputWord.SetActive(true);
+            }
+            mousePosMarker = new Vector3(Input.mousePosition.x - screenWidthMid, Input.mousePosition.y - screenHeightMid, 0);
+            isInputPanelActive = true;
+        }
     }
-
-    void InputFieldSpawn(int cadran)
-    {
-        obj_inputWord.SetActive(true);
-        obj_inputWord.GetComponent<WordInputPanelScript>().nbCadran = cadran;
-        obj_inputWord.GetComponent<WordInputPanelScript>().SetText();
-    }
+    
 }

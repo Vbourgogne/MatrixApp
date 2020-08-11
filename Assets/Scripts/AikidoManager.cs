@@ -11,7 +11,7 @@ public class AikidoManager : MonoBehaviour
     public string[] AikidoTexts;
     public int indexScreens = 0;
     public UIManager UIScript;
-    public SpriteRenderer AikidoFond;
+    public Image AikidoFond;
     public Image[] screenCounters;
     public Color screenCounterTransparencyLow;
     public Color screenCounterTransparencyHigh;
@@ -19,10 +19,18 @@ public class AikidoManager : MonoBehaviour
     public float lerpTime;
     public bool isFading;
 
-    // Start is called before the first frame update
+    public ScoreManager scoreScript;
+    public int scoreFinirAikido;
+
+    public Vector2 mousePosBeginSwipe;
+    public Vector2 mousePosEndSwipe;
+    public int swipeXThreshold;
+    public bool swipe;
+    
     void Start()
     {
-        AikidoFond = GetComponent<SpriteRenderer>();
+        UIScript = Camera.main.GetComponent<UIManager>();
+        AikidoFond = GetComponent<Image>();
         AikidoTMP.text = AikidoTexts[indexScreens];
         AikidoFond.color = AikidoColors[indexScreens];
         foreach (Image screenCounter in screenCounters)
@@ -31,38 +39,85 @@ public class AikidoManager : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (!isFading)
+        mousePosBeginSwipe = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+    }
+    private void OnMouseUp()
+    {
+        mousePosEndSwipe = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        if (Vector2.Distance(mousePosBeginSwipe, mousePosEndSwipe) > swipeXThreshold)
+        { swipe = true; }
+        
+        if (!isFading) //lorsque l'user clique sur le fond, si l'écran n'est pas déjà en train de changer, il change
         {
-            ScreenChange();
+            if (!swipe)
+            {
+                if (Input.mousePosition.x < Screen.width / 2)
+                { ScreenChange(false); }
+                else
+                { ScreenChange(true); }
+            }
+            else
+            {
+                if (mousePosEndSwipe.x > mousePosBeginSwipe.x + swipeXThreshold)
+                { ScreenChange(true); }
+                else if (mousePosEndSwipe.x < mousePosBeginSwipe.x - swipeXThreshold)
+                { ScreenChange(false); }
+            }
         }
+        swipe = false;
+    }
+
+    private void OnDisable() // quand l'user quitte l'Aikido, les marqueurs, le texte, la couleur, la lerpValue et l'index se reset
+    {
+        screenCounters[indexScreens].color = screenCounterTransparencyLow;
+        indexScreens = 0;
+        AikidoTMP.text = AikidoTexts[indexScreens];
+        AikidoFond.color = AikidoColors[indexScreens];
+        screenCounters[0].color = screenCounterTransparencyHigh;
+        lerpValue = 0;
+        isFading = false;
     }
     // Update is called once per frame
-    void ScreenChange()
+    void ScreenChange(bool forward)
     {
-        if (indexScreens < AikidoTexts.Length - 1)
+        if (forward)
         {
-            isFading = true;
-            screenCounters[indexScreens].color = screenCounterTransparencyLow;
-            StartCoroutine(FadeColor(AikidoColors[indexScreens], AikidoColors[indexScreens + 1], lerpTime));
-            indexScreens++;
-            AikidoTMP.text = AikidoTexts[indexScreens];
-            AikidoFond.color = AikidoColors[indexScreens];
-            screenCounters[indexScreens].color = screenCounterTransparencyHigh;
+            if (indexScreens < AikidoTexts.Length - 1) // si l'aikido n'est pas fini, update les marqueurs/index/texte, fade de la couleur
+            {
+                isFading = true;
+                screenCounters[indexScreens].color = screenCounterTransparencyLow;
+                StartCoroutine(FadeColor(AikidoColors[indexScreens], AikidoColors[indexScreens + 1], lerpTime));
+                indexScreens++;
+                AikidoTMP.text = AikidoTexts[indexScreens];
+                AikidoFond.color = AikidoColors[indexScreens];
+                screenCounters[indexScreens].color = screenCounterTransparencyHigh;
+            }
+            else // si l'aikido est fini, désactiver l'objet
+            {
+                UIScript.ActivateUI(UIScript.uIObjects[0]);
+            }
         }
         else
         {
-            screenCounters[indexScreens].color = screenCounterTransparencyLow;
-            indexScreens = 0;
-            AikidoTMP.text = AikidoTexts[indexScreens];
-            AikidoFond.color = AikidoColors[indexScreens];
-            screenCounters[0].color = screenCounterTransparencyHigh;
-            UIScript.ActivateUI(true, false, false, false, false, false);
+            if (indexScreens > 0) // si l'aikido n'est pas fini, update les marqueurs/index/texte, fade de la couleur
+            {
+                isFading = true;
+                screenCounters[indexScreens].color = screenCounterTransparencyLow;
+                StartCoroutine(FadeColor(AikidoColors[indexScreens], AikidoColors[indexScreens - 1], lerpTime));
+                indexScreens--;
+                AikidoTMP.text = AikidoTexts[indexScreens];
+                AikidoFond.color = AikidoColors[indexScreens];
+                screenCounters[indexScreens].color = screenCounterTransparencyHigh;
+            }
+            else 
+            {
+            }
         }
     }
 
     public IEnumerator FadeColor(Color from,Color to, float lerpTimeCoroutine)
     {
-        if(lerpValue < 1)
+        if(lerpValue < 1) // si le lerp n'est pas encore fini, augmenter lerpValue et changer la couleur
         {
             lerpValue += Time.deltaTime / lerpTimeCoroutine;
             AikidoFond.color = Color.Lerp(from, to, lerpValue);

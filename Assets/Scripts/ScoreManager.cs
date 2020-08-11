@@ -10,51 +10,61 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI txt_ArrosoirScore;
 
     public int totemScore;
-    public TextMeshPro txt_TotemScore;
+    public TextMeshProUGUI txt_TotemScore;
 
-    public Button btn_Arrosage;
-
-    public float compteurTemps;
-    public float timeBetweenIncrease;
+    //public float compteurTemps;
+    public float timeBetweenIncreases;
     public int increases;
+    public bool arrosageLoop;
 
-    private void Update()
+    public GameObject obj_arbre;
+    public GameObject obj_Arrosoire;
+    public Renderer[] renderer_ArrosoireArray;
+    public GameObject obj_ArrosezTexte;
+
+    public float totemScale;
+
+    public AnimationCurve arrosageIncreaseCurve;
+
+    public IEnumerator Arrosage()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (arrosageLoop) //augmente le score du totem en baissant celui de l'arrosage. Le temps entre chaque augmentation dépend de la curve
         {
-            ArrosoirScoreUpdate(5);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            compteurTemps += Time.deltaTime;
-            if (compteurTemps >= timeBetweenIncrease && arrosoirScore > 0)
+            timeBetweenIncreases = 1/(arrosageIncreaseCurve.Evaluate(increases));
+            if (arrosoirScore > 0)
             {
                 ArrosoirScoreUpdate(-1);
                 TotemScoreUpdate(+1);
                 increases++;
-                compteurTemps = 0;
-                if (increases >= 10)
-                {
-                    timeBetweenIncrease = timeBetweenIncrease / 2;
-                    increases = 0;
-                }
+                yield return new WaitForSecondsRealtime(timeBetweenIncreases);
+                StartCoroutine(Arrosage());
             }
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            compteurTemps = 0;
         }
     }
 
-    public void ArrosoirScoreUpdate (int scoreToAddArrosoir)
+    public void ArrosoirScoreUpdate (int scoreToAddArrosoir) //augmente le score de l'arrosoir
     {
         arrosoirScore += scoreToAddArrosoir;
         txt_ArrosoirScore.text = "Arrosoir : " + arrosoirScore.ToString();
+        //foreach (Renderer arrosoirePartRenderer in renderer_ArrosoireArray)
+        //{ arrosoirePartRenderer.material.color = new Color(0, 0, arrosoirScore * 1.5f); }
+        if (arrosoirScore == 0) // désactive le texte disant d'arroser si le score arrosoir passe à 0
+        {
+            obj_ArrosezTexte.SetActive(false);
+        }
     }
 
-    public void TotemScoreUpdate (int scoreToAddTotem)
+    public void TotemScoreUpdate (int scoreToAddTotem) // augmente le score du totem, agrandit le totem et la taille du score
     {
         totemScore += scoreToAddTotem;
         txt_TotemScore.text = totemScore.ToString();
+        txt_TotemScore.fontSize = 90 + totemScore * (210 / 500);
+        totemScale = 0.35f + totemScore * (1.35f / 500);
+        obj_arbre.transform.localScale = new Vector3 (totemScale, totemScale, totemScale);
+    }
+
+    public void ArrosageReset()
+    {
+        increases = 0;
     }
 }
