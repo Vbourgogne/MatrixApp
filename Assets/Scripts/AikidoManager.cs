@@ -21,6 +21,11 @@ public class AikidoManager : MonoBehaviour
 
     public ScoreManager scoreScript;
     public int scoreFinirAikido;
+
+    public Vector2 mousePosBeginSwipe;
+    public Vector2 mousePosEndSwipe;
+    public int swipeXThreshold;
+    public bool swipe;
     
     void Start()
     {
@@ -34,13 +39,32 @@ public class AikidoManager : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        mousePosBeginSwipe = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+    }
+    private void OnMouseUp()
+    {
+        mousePosEndSwipe = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        if (Vector2.Distance(mousePosBeginSwipe, mousePosEndSwipe) > swipeXThreshold)
+        { swipe = true; }
+        
         if (!isFading) //lorsque l'user clique sur le fond, si l'écran n'est pas déjà en train de changer, il change
         {
-            if (Input.mousePosition.x < Screen.width/2)
-            {ScreenChange(false);}
+            if (!swipe)
+            {
+                if (Input.mousePosition.x < Screen.width / 2)
+                { ScreenChange(false); }
+                else
+                { ScreenChange(true); }
+            }
             else
-            { ScreenChange(true); }
+            {
+                if (mousePosEndSwipe.x > mousePosBeginSwipe.x + swipeXThreshold)
+                { ScreenChange(true); }
+                else if (mousePosEndSwipe.x < mousePosBeginSwipe.x - swipeXThreshold)
+                { ScreenChange(false); }
+            }
         }
+        swipe = false;
     }
 
     private void OnDisable() // quand l'user quitte l'Aikido, les marqueurs, le texte, la couleur, la lerpValue et l'index se reset

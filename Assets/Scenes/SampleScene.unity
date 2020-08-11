@@ -527,6 +527,10 @@ MonoBehaviour:
   isFading: 0
   scoreScript: {fileID: 963194229}
   scoreFinirAikido: 15
+  mousePosBeginSwipe: {x: 0, y: 0}
+  mousePosEndSwipe: {x: 0, y: 0}
+  swipeXThreshold: 50
+  swipe: 0
 --- !u!61 &68087042
 BoxCollider2D:
   m_ObjectHideFlags: 0

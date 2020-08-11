@@ -51,7 +51,7 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
-            if (!longHold)
+            if (!longHold) // quand la souris est relâchée, affiche les données du marqueur si l'user ne reste pas longtemps
         { DisplayDescription(); }
         else
         {
@@ -64,7 +64,7 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
                         if (transform.parent.GetComponent<RectTransform>().position.y < poubelleUpRight.y)
                         {
                             Destroy(transform.parent.gameObject);
-                        }
+                        } //si l'user déplace le marqueur dans la poubelle, supprime le marqueur
                     }
                 }
             }
