@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public GameObject[] obj_WordInputPanels;
+    public GameObject obj_palette;
     public int index;
 
     public bool isPointerDown;
@@ -33,9 +33,10 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         }
     }
 
-    public void DisplayDescription() // active l'objet pour montrer le nom et la description de la valeur, change le texte pour correspondre
+    public void DisplayDescription() // Rouvre l'inputPanel et la Palette
     {
         compassScript.inputPanels[index].SetActive(true);
+        obj_palette.SetActive(true);
         compassScript.inputPanels[index].GetComponent<WordInputPanelScript>().currentMark = transform.parent.gameObject;
         compassScript.isInputPanelActive = true;
     }

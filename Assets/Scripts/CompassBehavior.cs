@@ -11,6 +11,7 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
     public GameObject compassMark;
 
     public GameObject[] obj_NewInputWord;
+    public GameObject obj_palette;
 
     private int screenWidthMid;
     private int screenHeightMid;
@@ -47,6 +48,7 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
             {
                 obj_NewInputWord[3].SetActive(true);
             }
+            obj_palette.SetActive(true);
             mousePosMarker = new Vector3(Input.mousePosition.x - screenWidthMid, Input.mousePosition.y - screenHeightMid, 0);
             isInputPanelActive = true;
         }

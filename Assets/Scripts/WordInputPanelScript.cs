@@ -37,6 +37,8 @@ public class WordInputPanelScript : MonoBehaviour
     public bool modify;
     public GameObject currentMark;
 
+    public PaletteBehavior paletteScript;
+
     private void Start()
     {
         WordInput_btn.onClick.AddListener(InputWord);
@@ -44,44 +46,48 @@ public class WordInputPanelScript : MonoBehaviour
 
     public void InputWord()
     {
-        if (!modify)
+        if (if_InputPanelName.text != "")
         {
-            compassMarkPos = compassScript.mousePosMarker;
-            if (if_InputPanelName.text != "")
+            if (!modify)
             {
+                compassMarkPos = compassScript.mousePosMarker;
                 if (if_InputPanelDescription.text != "")
                 { scoreScript.ArrosoirScoreUpdate(scoreToAdd); } //ajouter le score si la description est remplie
                 else
                 { scoreScript.ArrosoirScoreUpdate(scoreToAdd / 2); } // ajoute la moitié du score si la description n'est pas remplie
 
-            }
-            instanceMark = Instantiate(compassMarkPrefab, compassMarkPos, Quaternion.identity); // On crée le marqueur à l'endroit où l'user a cliqué
-            instanceMark.transform.SetParent(canvas.transform, false);                          //Il est affecté au bon parent
-            instanceMark.transform.SetParent(marksParents[nbCadran].transform, true);
-            instanceMarkBehaviour = instanceMark.GetComponentInChildren<MarkBehaviour>();
-            WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Modifier";
+                instanceMark = Instantiate(compassMarkPrefab, compassMarkPos, Quaternion.identity); // On crée le marqueur à l'endroit où l'user a cliqué
+                instanceMark.transform.SetParent(canvas.transform, false);                          //Il est affecté au bon parent
+                instanceMark.transform.SetParent(marksParents[nbCadran].transform, true);
+                instanceMarkBehaviour = instanceMark.GetComponentInChildren<MarkBehaviour>();
+                WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Modifier";
 
-            cloneInputPanel = Instantiate(gameObject);                                          // L'inputPanel avec toutes ses informations est cloné et affecté au bon parent
-            cloneInputPanel.transform.SetParent(canvas.transform, false);
-            cloneInputPanel.transform.SetParent(inputPanelsParent);
-            cloneInputPanel.GetComponent<WordInputPanelScript>().modify = true;
-            compassScript.inputPanels.Add(cloneInputPanel);                                     //L'inputPanel cloné est mis dans la liste d'inputPanels avant d'être désactivé
-            cloneInputPanel.SetActive(false);
-            instanceMarkBehaviour.index = compassScript.inputPanels.Count - 1;                  //l'index de l'inputPanel est donné au marqueur correspondant
-            instanceMarkBehaviour.compassScript = compassScript;
-            instanceMark.GetComponentInChildren<TextMeshProUGUI>().text = inputFields[0].text; // Le nom entré apparaît sur le marqueur
-            ResetInputFields();
-            WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Ajouter";
+                cloneInputPanel = Instantiate(gameObject);                                          // L'inputPanel avec toutes ses informations est cloné et affecté au bon parent
+                cloneInputPanel.transform.SetParent(canvas.transform, false);
+                cloneInputPanel.transform.SetParent(inputPanelsParent);
+                cloneInputPanel.GetComponent<WordInputPanelScript>().modify = true;
+                compassScript.inputPanels.Add(cloneInputPanel);                                     //L'inputPanel cloné est mis dans la liste d'inputPanels avant d'être désactivé
+                cloneInputPanel.SetActive(false);
+                instanceMarkBehaviour.index = compassScript.inputPanels.Count - 1;                  //l'index de l'inputPanel est donné au marqueur correspondant
+                instanceMarkBehaviour.compassScript = compassScript;
+                instanceMarkBehaviour.obj_palette = paletteScript.gameObject;
+                instanceMark.GetComponentInChildren<TextMeshProUGUI>().text = inputFields[0].text; // Le nom entré apparaît sur le marqueur
+                ResetInputFields(); //vide les inputfields du wordinputpanel originel
+                WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Ajouter";
+                paletteScript.currentMark = instanceMark.GetComponentInChildren<Image>();
+            }
+            else
+            {
+                currentMark.GetComponentInChildren<TextMeshProUGUI>().text = inputFields[0].text; // Le nom entré apparaît sur le marqueur
+                paletteScript.currentMark = currentMark.GetComponentInChildren<Image>();
+            }
+            paletteScript.ColorEntry();
+            compassScript.isInputPanelActive = false;
+            gameObject.SetActive(false);
         }
-        else
-        {
-            currentMark.GetComponentInChildren<TextMeshProUGUI>().text = inputFields[0].text; // Le nom entré apparaît sur le marqueur
-        }
-        compassScript.isInputPanelActive = false;
-        gameObject.SetActive(false);
     }
 
-    private void ResetInputFields()
+    private void ResetInputFields() //fonction qui reset les inputfields
     {
         foreach (TMP_InputField anInputField in inputFields)
         {
