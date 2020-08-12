@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class AchievementObjectBehavior : MonoBehaviour
+public class AchievementScreenBehaviour : MonoBehaviour
 {
     public bool isAchieved;
     public float condition;
