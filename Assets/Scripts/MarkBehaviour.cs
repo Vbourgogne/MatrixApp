@@ -7,14 +7,8 @@ using UnityEngine.EventSystems;
 
 public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    //public string markName;
-    //public string markDescription;
-
     public GameObject[] obj_WordInputPanels;
     public int index;
-
-    //public TextMeshProUGUI txt_MarkName;
-    //public TextMeshProUGUI txt_MarkDescription;
 
     public bool isPointerDown;
     public float timePointerHeldDown;
@@ -43,9 +37,7 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         compassScript.inputPanels[index].SetActive(true);
         compassScript.inputPanels[index].GetComponent<WordInputPanelScript>().currentMark = transform.parent.gameObject;
-        //obj_description.SetActive(true);
-        //txt_MarkName.text = markName;
-        //txt_MarkDescription.text = markDescription;
+        compassScript.isInputPanelActive = true;
     }
 
     public void OnPointerDown(PointerEventData eventData)

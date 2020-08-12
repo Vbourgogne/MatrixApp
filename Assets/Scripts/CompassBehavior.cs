@@ -10,14 +10,7 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
 {
     public GameObject compassMark;
 
-    //public Button btn_HautGaucheCadran;
-    //public Button btn_HautDroiteCadran;
-    //public Button btn_BasDroiteCadran;
-    //public Button btn_BasGaucheCadran;
-
     public GameObject[] obj_NewInputWord;
-
-    //public event EventHandler OnDoubleTap;
 
     private int screenWidthMid;
     private int screenHeightMid;

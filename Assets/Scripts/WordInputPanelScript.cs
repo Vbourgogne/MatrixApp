@@ -10,11 +10,8 @@ public class WordInputPanelScript : MonoBehaviour
     public Button WordInput_btn;
 
     public TMP_InputField[] inputFields;
-    //public TextMeshProUGUI txt_InputPanelTitle;
     public TMP_InputField if_InputPanelName;
-    //public TextMeshProUGUI txt_PlaceholderName;
     public TMP_InputField if_InputPanelDescription;
-    //public TextMeshProUGUI txt_PlaceholderDescription;
 
     public GameObject compassMarkPrefab;
     private GameObject instanceMark;
@@ -72,25 +69,17 @@ public class WordInputPanelScript : MonoBehaviour
             cloneInputPanel.SetActive(false);
             instanceMarkBehaviour.index = compassScript.inputPanels.Count - 1;                  //l'index de l'inputPanel est donné au marqueur correspondant
             instanceMarkBehaviour.compassScript = compassScript;
-            ResetInputFields();
-            compassScript.isInputPanelActive = false;
-            WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Ajouter";
             instanceMark.GetComponentInChildren<TextMeshProUGUI>().text = inputFields[0].text; // Le nom entré apparaît sur le marqueur
+            ResetInputFields();
+            WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Ajouter";
         }
         else
         {
-            currentMark.GetComponentInChildren<TextMeshProUGUI>().text = inputFields[0].text;
+            currentMark.GetComponentInChildren<TextMeshProUGUI>().text = inputFields[0].text; // Le nom entré apparaît sur le marqueur
         }
-        // Le nom entré apparaît sur le marqueur
-        //instanceMarkBehaviour.obj_description = obj_DescriptionPanel;
-        //instanceMarkBehaviour.txt_MarkName = txt_MarkNameLink;
-        //instanceMarkBehaviour.txt_MarkDescription = txt_MarkDescriptionLink;
-        //instanceMarkBehaviour.markName = if_InputPanelName.text;
-        //instanceMarkBehaviour.markDescription = if_InputPanelDescription.text;
-
+        compassScript.isInputPanelActive = false;
         gameObject.SetActive(false);
-        // instancie le marqueur, le met dans le bon "dossier", get son script, met les informations de l'inputpanel dans ce script
-    }   // reset le texte des inputFields et désactive le gameobject
+    }
 
     private void ResetInputFields()
     {
