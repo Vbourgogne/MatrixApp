@@ -22,10 +22,16 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
 
     public List <GameObject> inputPanels;
 
+    public AchievementBehaviour achievementScript;
+    public int nbMarker;
+    public int condition1;
+    public int condition2;
+
     void Start()
     {
         screenWidthMid = Screen.width / 2;
         screenHeightMid = Screen.height / 2;
+        achievementScript = Camera.main.GetComponent<AchievementBehaviour>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -52,6 +58,13 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
             mousePosMarker = new Vector3(Input.mousePosition.x - screenWidthMid, Input.mousePosition.y - screenHeightMid, 0);
             isInputPanelActive = true;
         }
+    }
+
+    public void AddMarkerAchievement()
+    {
+        nbMarker++;
+        achievementScript.AchievementCheck(nbMarker, condition1, 0);
+        achievementScript.AchievementCheck(nbMarker, condition2, 1);
     }
     
 }
