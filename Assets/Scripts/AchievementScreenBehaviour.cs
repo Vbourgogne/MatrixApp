@@ -6,36 +6,56 @@ using TMPro;
 
 public class AchievementScreenBehaviour : MonoBehaviour
 {
-    public bool isAchieved;
-    public float condition;
+    public AchievementBehaviour achievementScript;
 
-    public string titre;
-    public string description;
+    public GameObject[] obj_Achievements;
+
+    public TextMeshProUGUI[] tmp_Titres;
+    public string lockedSuccessTitle;
+    public Color clr_FondSuccedActive;
     public Color clr_FondSuccesDesactive;
+    public Image[] img_achievements;
+    public Color clr_ImageSuccesActive;
     public Color clr_ImageSuccesDesactive;
 
-
-    public TextMeshProUGUI txt_AchievementTitle;
-    public TextMeshProUGUI txt_AchievementDescription;
-    public Image img_imageAchievement;
+    private int index;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        txt_AchievementTitle.text = titre;
-        txt_AchievementDescription.text = description;
+        achievementScript = Camera.main.GetComponent<AchievementBehaviour>();
+        AchievementsToNone();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        //AchievementDisplayCheck();
     }
 
-    public void AchievementActivation()
+    public void AchievementsToNone ()
     {
-        gameObject.GetComponent<Image>().color = clr_FondSuccesDesactive;
-        transform.GetChild(2).GetComponent<Image>().color = clr_ImageSuccesDesactive;
+        foreach(GameObject anAchievement in obj_Achievements)
+        {
+            img_achievements[index] = obj_Achievements[index].transform.GetChild(2).GetComponent<Image>();
+            tmp_Titres[index] = obj_Achievements[index].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            img_achievements[index].color = clr_ImageSuccesDesactive;
+            tmp_Titres[index].text = achievementScript.achievementTitles[index];
+            tmp_Titres[index].text = lockedSuccessTitle;
+            obj_Achievements[index].GetComponent<Image>().color = clr_FondSuccesDesactive;
+            index++;
+        }
+    }
+    public void AchievementDisplayCheck()
+    {
+        if (achievementScript.achievementsUnlocked != null)
+        {
+            foreach (int achievementUnlockedIndex in achievementScript.achievementsUnlocked)
+            {
+                img_achievements[achievementUnlockedIndex].sprite = achievementScript.achievementImages[achievementUnlockedIndex];
+                img_achievements[achievementUnlockedIndex].color = clr_ImageSuccesActive;
+                obj_Achievements[achievementUnlockedIndex].GetComponent<Image>().color = clr_FondSuccedActive;
+            }
+        }
     }
 }
