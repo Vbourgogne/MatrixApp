@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class AikidoManager : MonoBehaviour
+public class AikidoManager : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
 {
     public TextMeshProUGUI AikidoTMP;
     public Color[] AikidoColors;
@@ -39,11 +40,11 @@ public class AikidoManager : MonoBehaviour
         { screenCounter.color = screenCounterTransparencyLow; }
         screenCounters[indexScreens].color = screenCounterTransparencyHigh;
     }
-    private void OnMouseDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
         mousePosBeginSwipe = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
     }
-    private void OnMouseUp()
+    public void OnPointerUp(PointerEventData eventData)
     {
         mousePosEndSwipe = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         if (Vector2.Distance(mousePosBeginSwipe, mousePosEndSwipe) > swipeXThreshold)
@@ -80,7 +81,7 @@ public class AikidoManager : MonoBehaviour
         isFading = false;
     }
     // Update is called once per frame
-    void ScreenChange(bool forward)
+    public void ScreenChange(bool forward)
     {
         if (forward)
         {
