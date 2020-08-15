@@ -17,6 +17,7 @@ public class AchievementScreenBehaviour : MonoBehaviour
     public Image[] img_achievements;
     public Color clr_ImageSuccesActive;
     public Color clr_ImageSuccesDesactive;
+    public TextMeshProUGUI[] tmp_Texts;
 
     private int index;
 
@@ -24,13 +25,13 @@ public class AchievementScreenBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        achievementScript = Camera.main.GetComponent<AchievementBehaviour>();
+        //achievementScript = Camera.main.GetComponent<AchievementBehaviour>();
         AchievementsToNone();
     }
 
     private void OnEnable()
     {
-        //AchievementDisplayCheck();
+        AchievementDisplayCheck();
     }
 
     public void AchievementsToNone ()
@@ -55,6 +56,7 @@ public class AchievementScreenBehaviour : MonoBehaviour
                 img_achievements[achievementUnlockedIndex].sprite = achievementScript.achievementImages[achievementUnlockedIndex];
                 img_achievements[achievementUnlockedIndex].color = clr_ImageSuccesActive;
                 obj_Achievements[achievementUnlockedIndex].GetComponent<Image>().color = clr_FondSuccedActive;
+                tmp_Titres[achievementUnlockedIndex].text = achievementScript.achievementTitles[achievementUnlockedIndex];
             }
         }
     }
