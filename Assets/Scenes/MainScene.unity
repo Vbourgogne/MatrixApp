@@ -15562,7 +15562,7 @@ MonoBehaviour:
   - {fileID: 251140390}
   obj_ArrosezMessage: {fileID: 519937394}
   scoreScript: {fileID: 0}
-  arrosageScript: {fileID: 649365117}
+  col_arrosage: {fileID: 649365115}
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
