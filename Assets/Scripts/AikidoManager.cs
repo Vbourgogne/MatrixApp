@@ -100,6 +100,7 @@ public class AikidoManager : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
             else // si l'aikido est fini, désactiver l'objet
             {
                 UIScript.ActivateUI(UIScript.uIObjects[0]);
+                scoreScript.ArrosoirScoreUpdate(scoreFinirAikido);
                 //reset les InputFields
             }
         }

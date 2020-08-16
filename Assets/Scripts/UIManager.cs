@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject obj_ArrosezMessage;
 
     public ScoreManager scoreScript;
-    public ArrosoirButtonScript arrosageScript;
+    public MeshCollider col_arrosage;
     
     void Start()
     {
@@ -36,11 +36,11 @@ public class UIManager : MonoBehaviour
         if (objectToActivate == uIObjects[0] && scoreScript.arrosoirScore > 0) // si le changement se fait vers le menu principal, activer le collider de l'arrosoir
         {                                                   // activer le message d'arrosage
             obj_ArrosezMessage.SetActive(true);
-            arrosageScript.enabled = true;
+            col_arrosage.enabled = true;
         }
         if (objectToActivate != uIObjects[0]) // si ce n'est pas le menu principal, désactiver le collider de l'arrosoir
         {
-            arrosageScript.enabled = false;
+            col_arrosage.enabled = false;
         }
     }
 }
