@@ -23,6 +23,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject obj_ArrosezTexte;
 
     public float totemScale;
+    public float totemScaleBegin;
 
     public AnimationCurve arrosageIncreaseCurve;
 
@@ -59,7 +60,7 @@ public class ScoreManager : MonoBehaviour
         totemScore += scoreToAddTotem;
         txt_TotemScore.text = totemScore.ToString();
         txt_TotemScore.fontSize = 90 + totemScore * (210 / 500);
-        totemScale = 0.35f + totemScore * (1.35f / 500);
+        totemScale = totemScaleBegin + totemScore * (1.35f / 500);
         obj_arbre.transform.localScale = new Vector3 (totemScale, totemScale, totemScale);
     }
 

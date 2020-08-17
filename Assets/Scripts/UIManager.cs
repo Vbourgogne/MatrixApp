@@ -17,7 +17,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         scoreScript = Camera.main.GetComponent<ScoreManager>();
-        uIObjects[0].SetActive(true);
+        if (GetComponent<TutorialBehaviour>().tutoStep != 0)
+        { uIObjects[0].SetActive(true); }
 
         if (scoreScript.arrosoirScore > 0) // si le score de l'arrosoir est supérieur à 0, montrer le message d'arrosage
         {
