@@ -16255,7 +16255,7 @@ GameObject:
   - component: {fileID: 963194231}
   - component: {fileID: 963194233}
   - component: {fileID: 963194232}
-  - component: {fileID: 963194236}
+  - component: {fileID: 963194234}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16327,7 +16327,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 35.56, y: 4.49, z: 0.261}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16593,7 +16593,7 @@ MonoBehaviour:
   achievementTitles:
   - Adepte de la Matrice
   - Apprenti de la Matrice
---- !u!111 &963194236
+--- !u!111 &963194234
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16602,9 +16602,9 @@ Animation:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: a5496e21d19a13f499364db2631c2e34, type: 2}
+  m_Animation: {fileID: 7400000, guid: 74ae44621e41e904f87cbda9faf2e957, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: a5496e21d19a13f499364db2631c2e34, type: 2}
+  - {fileID: 7400000, guid: 74ae44621e41e904f87cbda9faf2e957, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0

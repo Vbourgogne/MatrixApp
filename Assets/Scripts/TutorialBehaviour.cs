@@ -49,7 +49,8 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
         tutoTexts[10] = tutoTextsStep10;
 
         fondTexteTrans = transform.GetChild(0).GetComponent<RectTransform>();
-        camPosTutoEnd = new Vector3(0, 1.527f, -4.66f);
+        camPosTutoEnd = new Vector3(0, 1.527f, -4.66f); //15 0 0
+        camPosTutoBegin = new Vector3(-0.13f, 1.22f, -1.58f); //35.56 4.49 0.261
         if (tutoStep == 0 )
         {
             fadingImage.GetComponent<Animation>().Play();
