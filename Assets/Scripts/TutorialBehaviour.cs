@@ -11,6 +11,9 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     public Vector3 camPosTutoEnd;
     public GameObject fadingImage;
     public GameObject graine;
+    public GameObject particles;
+    public GameObject sakuraTree;
+    public GameObject flowers;
     public float timeBeforeFirstMessage;
     public GameObject[][] tutoTexts;
     public GameObject[] tutoTextsIntro;
@@ -70,18 +73,16 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
         if(canTextAdvance)
         {
             tutoTexts[indexArray][indexTextInArray].SetActive(false);
-            if (indexTextInArray < tutoTexts[indexArray].Length)
+            if (indexTextInArray < tutoTexts[indexArray].Length-1)
             {
                 indexTextInArray++;
-            }
-            else
-            {
-                indexArray++;
-                indexTextInArray = 0;
             }
             tutoTexts[indexArray][indexTextInArray].SetActive(true);
             fondTexteTrans.sizeDelta = new Vector2(tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().sizeDelta.x + textFondMargin, tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().sizeDelta.y + textFondMargin);
         }
+        if(indexArray == 0 && indexTextInArray == 3)
+        { graine.GetComponent<TutoGraineBehaviour>().canBeNudged = true; }
+
     }
 
 }

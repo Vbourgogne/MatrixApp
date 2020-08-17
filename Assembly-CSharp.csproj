@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\MarkBehaviour.cs" />
     <Compile Include="Assets\Scripts\PaletteBehavior.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
+    <Compile Include="Assets\Scripts\TutoGraineBehaviour.cs" />
     <Compile Include="Assets\Scripts\TutorialBehaviour.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\WordInputPanelScript.cs" />
