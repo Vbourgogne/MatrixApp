@@ -73,17 +73,30 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     {
         if(canTextAdvance)
         {
-            tutoTexts[indexArray][indexTextInArray].SetActive(false);
-            if (indexTextInArray < tutoTexts[indexArray].Length-1)
-            {
-                indexTextInArray++;
-            }
-            tutoTexts[indexArray][indexTextInArray].SetActive(true);
-            fondTexteTrans.sizeDelta = new Vector2(tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().sizeDelta.x + textFondMargin, tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().sizeDelta.y + textFondMargin);
+            TutorialNextStep();
         }
         if(indexArray == 0 && indexTextInArray == 3)
         { graine.GetComponent<TutoGraineBehaviour>().canBeNudged = true; }
+        else if (indexArray == 1 && indexTextInArray == 13)
+        { Camera.main.GetComponent<UIManager>().ActivateUI(Camera.main.GetComponent<UIManager>().uIObjects[2]); }
 
+    }
+
+    public void TutorialNextStep()
+    {
+        tutoTexts[indexArray][indexTextInArray].SetActive(false);
+        if (indexTextInArray < tutoTexts[indexArray].Length - 1)
+        {
+            indexTextInArray++;
+        }
+        else
+        {
+            indexArray++;
+            indexTextInArray = 0;
+        }
+        tutoTexts[indexArray][indexTextInArray].SetActive(true);
+        fondTexteTrans.position = new Vector3(tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().position.x, tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().position.y);
+        fondTexteTrans.sizeDelta = new Vector2(tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().sizeDelta.x + textFondMargin, tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().sizeDelta.y + textFondMargin);
     }
 
 }

@@ -72,8 +72,9 @@
     <Compile Include="Assets\Scripts\MarkBehaviour.cs" />
     <Compile Include="Assets\Scripts\PaletteBehavior.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
-    <Compile Include="Assets\Scripts\TutoGraineBehaviour.cs" />
-    <Compile Include="Assets\Scripts\TutorialBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Tutoriel\TutoGraineBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Tutoriel\TutoMatrice.cs" />
+    <Compile Include="Assets\Scripts\Tutoriel\TutorialBehaviour.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\WordInputPanelScript.cs" />
     <None Include="Assets\GA\Materials\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Transparent Diffuse Bump.shader" />
