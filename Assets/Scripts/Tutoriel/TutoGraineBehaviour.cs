@@ -30,6 +30,7 @@ public class TutoGraineBehaviour : MonoBehaviour
         Camera.main.GetComponent<Animation>().Play();
         yield return new WaitForSeconds(Camera.main.GetComponent<Animation>().clip.length);
         tutoScript.sakuraTree.SetActive(true);
+        tutoScript.canTextAdvance = true;
         tutoScript.TutorialNextStep();
     }
 }

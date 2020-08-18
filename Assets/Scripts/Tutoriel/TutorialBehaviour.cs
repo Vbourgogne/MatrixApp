@@ -35,6 +35,15 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
 
     private void Start()
     {
+        fadingImage.GetComponent<Animation>().Play();
+        /*if(tutoStep == 0)
+        {
+            Camera.main.GetComponent<Transform>().position = new Vector3(camPosTutoBegin.x,camPosTutoBegin.y, camPosTutoBegin.z);
+        }
+        else
+        {
+            Camera.main.GetComponent<Transform>().position = new Vector3(camPosTutoEnd.x, camPosTutoEnd.y, camPosTutoEnd.z);
+        }*/
         tutoTexts = new GameObject[12][];
         tutoTexts[0] = tutoTextsIntro;
         tutoTexts[1] = tutoTextsStep1;
@@ -53,7 +62,6 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
         camPosTutoBegin = new Vector3(-0.13f, 1.22f, -1.58f); //35.56 4.49 0.261
         if (tutoStep == 0 )
         {
-            fadingImage.GetComponent<Animation>().Play();
             StartCoroutine(GraineDrop());
         }
     }
@@ -76,9 +84,17 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
             TutorialNextStep();
         }
         if(indexArray == 0 && indexTextInArray == 3)
-        { graine.GetComponent<TutoGraineBehaviour>().canBeNudged = true; }
+        { 
+            graine.GetComponent<TutoGraineBehaviour>().canBeNudged = true;
+            canTextAdvance = false;
+        }
         else if (indexArray == 1 && indexTextInArray == 13)
-        { Camera.main.GetComponent<UIManager>().ActivateUI(Camera.main.GetComponent<UIManager>().uIObjects[2]); }
+        { 
+            Camera.main.GetComponent<UIManager>().ActivateUI(Camera.main.GetComponent<UIManager>().uIObjects[2]);
+            fondTexteTrans.gameObject.SetActive(false);
+            tutoTexts[indexArray][indexTextInArray].SetActive(false);
+            canTextAdvance = false;
+        }
 
     }
 

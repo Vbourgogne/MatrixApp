@@ -23,18 +23,29 @@ public class AikidoManager : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
 
     public ScoreManager scoreScript;
     public int scoreFinirAikido;
+    public int nbAikidoDone;
+    private AchievementBehaviour achievementScript;
 
     public Vector2 mousePosBeginSwipe;
     public Vector2 mousePosEndSwipe;
     public int swipeXThreshold;
     public bool swipe;
-    
+
+    public void OnEnable()
+    {
+        AikidoScreens[indexScreens].SetActive(true);
+        AikidoFond.color = AikidoColors[indexScreens];
+        foreach (Image screenCounter in screenCounters)
+        { screenCounter.color = screenCounterTransparencyLow; }
+        screenCounters[indexScreens].color = screenCounterTransparencyHigh;
+    }
+
     void Start()
     {
         UIScript = Camera.main.GetComponent<UIManager>();
+        achievementScript = Camera.main.GetComponent<AchievementBehaviour>();
         AikidoFond = GetComponent<Image>();
         AikidoScreens[indexScreens].SetActive(true);
-        //AikidoTMP.text = AikidoTexts[indexScreens];
         AikidoFond.color = AikidoColors[indexScreens];
         foreach (Image screenCounter in screenCounters)
         { screenCounter.color = screenCounterTransparencyLow; }
@@ -72,9 +83,9 @@ public class AikidoManager : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
 
     private void OnDisable() // quand l'user quitte l'Aikido, les marqueurs, le texte, la couleur, la lerpValue et l'index se reset
     {
+        AikidoScreens[indexScreens].SetActive(false);
         screenCounters[indexScreens].color = screenCounterTransparencyLow;
         indexScreens = 0;
-        //AikidoTMP.text = AikidoTexts[indexScreens];
         AikidoFond.color = AikidoColors[indexScreens];
         screenCounters[0].color = screenCounterTransparencyHigh;
         lerpValue = 0;
@@ -101,6 +112,9 @@ public class AikidoManager : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
             {
                 UIScript.ActivateUI(UIScript.uIObjects[0]);
                 scoreScript.ArrosoirScoreUpdate(scoreFinirAikido);
+                nbAikidoDone++;
+                achievementScript.AchievementCheck(nbAikidoDone, 2, 2);
+                achievementScript.AchievementCheck(nbAikidoDone, 5, 2);
                 //reset les InputFields
             }
         }

@@ -16,17 +16,25 @@ public class ScoreManager : MonoBehaviour
     public float timeBetweenIncreases;
     public int increases;
     public bool arrosageLoop;
+    private AchievementBehaviour achievementScript;
 
     public GameObject obj_arbre;
     public GameObject obj_Arrosoire;
     public Renderer[] renderer_ArrosoireArray;
     public GameObject obj_ArrosezTexte;
 
+    public int scoreAdded;
+
     public float totemScale;
     public float totemScaleBegin;
 
     public AnimationCurve arrosageIncreaseCurve;
 
+
+    private void Start()
+    {
+        achievementScript = Camera.main.GetComponent<AchievementBehaviour>();
+    }
     public IEnumerator Arrosage()
     {
         if (arrosageLoop) //augmente le score du totem en baissant celui de l'arrosage. Le temps entre chaque augmentation dépend de la curve
@@ -36,6 +44,9 @@ public class ScoreManager : MonoBehaviour
             {
                 ArrosoirScoreUpdate(-1);
                 TotemScoreUpdate(+1);
+                scoreAdded++;
+                achievementScript.AchievementCheck(scoreAdded, 20, 4);
+                achievementScript.AchievementCheck(scoreAdded, 50, 5);
                 increases++;
                 yield return new WaitForSecondsRealtime(timeBetweenIncreases);
                 StartCoroutine(Arrosage());

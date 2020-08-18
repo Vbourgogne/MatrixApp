@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class WordInputPanelScript : MonoBehaviour
+public class TutoWordInput : MonoBehaviour
 {
     public int nbCadran;
     public Button WordInput_btn;
 
     public TMP_InputField[] inputFields;
     public TMP_InputField if_InputPanelName;
-    public TMP_InputField if_InputPanelDescription;
 
     public GameObject compassMarkPrefab;
     private GameObject instanceMark;
@@ -20,18 +19,13 @@ public class WordInputPanelScript : MonoBehaviour
     public Canvas canvas;
     public GameObject[] marksParents;
 
-    private MarkBehaviour instanceMarkBehaviour;
-    public CompassBehavior compassScript;
-
-    public ScoreManager scoreScript;
-    public int scoreToAdd;
+    private TutoMarqueur instanceMarkBehaviour;
+    public TutoMatrice compassScript;
 
     public Transform inputPanelsParent;
     private GameObject cloneInputPanel;
     public bool modify;
     public GameObject currentMark;
-
-    public PaletteBehavior paletteScript;
 
     private void Start()
     {
@@ -45,15 +39,11 @@ public class WordInputPanelScript : MonoBehaviour
             if (!modify)
             {
                 compassMarkPos = compassScript.mousePosMarker;
-                if (if_InputPanelDescription.text != "")
-                { scoreScript.ArrosoirScoreUpdate(scoreToAdd); } //ajouter le score si la description est remplie
-                else
-                { scoreScript.ArrosoirScoreUpdate(scoreToAdd / 2); } // ajoute la moitié du score si la description n'est pas remplie
 
                 instanceMark = Instantiate(compassMarkPrefab, compassMarkPos, Quaternion.identity); // On crée le marqueur à l'endroit où l'user a cliqué
                 instanceMark.transform.SetParent(canvas.transform, false);                          //Il est affecté au bon parent
                 instanceMark.transform.SetParent(marksParents[nbCadran].transform, true);
-                instanceMarkBehaviour = instanceMark.GetComponentInChildren<MarkBehaviour>();
+                instanceMarkBehaviour = instanceMark.GetComponentInChildren<TutoMarqueur>();
                 WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Modifier";
 
                 cloneInputPanel = Instantiate(gameObject);                                          // L'inputPanel avec toutes ses informations est cloné et affecté au bon parent
@@ -64,19 +54,14 @@ public class WordInputPanelScript : MonoBehaviour
                 cloneInputPanel.SetActive(false);
                 instanceMarkBehaviour.index = compassScript.inputPanels.Count - 1;                  //l'index de l'inputPanel est donné au marqueur correspondant
                 instanceMarkBehaviour.compassScript = compassScript;
-                instanceMarkBehaviour.obj_palette = paletteScript.gameObject;
                 instanceMark.GetComponentInChildren<TextMeshProUGUI>().text = inputFields[0].text; // Le nom entré apparaît sur le marqueur
                 ResetInputFields(); //vide les inputfields du wordinputpanel originel
                 WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Ajouter";
-                paletteScript.currentMark = instanceMark.GetComponentInChildren<Image>();
-                compassScript.AddMarkerAchievement();
             }
             else
             {
                 currentMark.GetComponentInChildren<TextMeshProUGUI>().text = inputFields[0].text; // Le nom entré apparaît sur le marqueur
-                paletteScript.currentMark = currentMark.GetComponentInChildren<Image>();
             }
-            paletteScript.ColorEntry();
             compassScript.isInputPanelActive = false;
             gameObject.SetActive(false);
         }

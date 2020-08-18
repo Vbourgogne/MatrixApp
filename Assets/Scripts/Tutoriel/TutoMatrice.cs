@@ -11,7 +11,7 @@ public class TutoMatrice : MonoBehaviour, IPointerDownHandler
     public GameObject compassMark;
 
     public GameObject[] obj_NewInputWord;
-    public GameObject obj_palette;
+    //public GameObject obj_palette;
 
     private int screenWidthMid;
     private int screenHeightMid;
@@ -21,6 +21,8 @@ public class TutoMatrice : MonoBehaviour, IPointerDownHandler
     public bool isInputPanelActive;
 
     public List<GameObject> inputPanels;
+    public int nbMarksLeft;
+    public int nbMarksRight;
 
     void Start()
     {
@@ -35,12 +37,13 @@ public class TutoMatrice : MonoBehaviour, IPointerDownHandler
             if (Input.mousePosition.x < screenWidthMid)
             {
                 obj_NewInputWord[0].SetActive(true);
+                nbMarksLeft++;
             }
             else if (Input.mousePosition.x >= screenWidthMid)
             {
                 obj_NewInputWord[1].SetActive(true);
+                nbMarksRight++;
             }
-            obj_palette.SetActive(true);
             mousePosMarker = new Vector3(Input.mousePosition.x - screenWidthMid, Input.mousePosition.y - screenHeightMid, 0);
             isInputPanelActive = true;
         }
