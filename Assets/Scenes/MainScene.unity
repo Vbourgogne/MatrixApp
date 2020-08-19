@@ -1545,6 +1545,8 @@ MonoBehaviour:
   scoreScript: {fileID: 963194229}
   scoreFinirAikido: 15
   nbAikidoDone: 0
+  conditionsAchievement: 02000000050000000f0000003200000064000000
+  indexConditions: 0
   mousePosBeginSwipe: {x: 0, y: 0}
   mousePosEndSwipe: {x: 0, y: 0}
   swipeXThreshold: 50
@@ -9277,7 +9279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &328503146
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16781,8 +16783,8 @@ MonoBehaviour:
   inputPanels: []
   achievementScript: {fileID: 0}
   nbMarker: 0
-  condition1: 5
-  condition2: 10
+  conditionsAchievement: 050000000a000000190000003200000064000000
+  indexConditions: 0
 --- !u!61 &574824292
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27502,6 +27504,8 @@ MonoBehaviour:
   - {fileID: 20263261}
   - {fileID: 1327320649}
   obj_ArrosezTexte: {fileID: 519937394}
+  conditionsAchievement: 64000000c8000000f4010000dc05000088130000
+  indexConditions: 0
   scoreAdded: 0
   totemScale: 0
   totemScaleBegin: 0.6
@@ -32827,7 +32831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1136912939
 RectTransform:
   m_ObjectHideFlags: 0

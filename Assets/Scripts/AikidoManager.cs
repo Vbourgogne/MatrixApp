@@ -24,6 +24,8 @@ public class AikidoManager : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
     public ScoreManager scoreScript;
     public int scoreFinirAikido;
     public int nbAikidoDone;
+    public int[] conditionsAchievement;
+    public int indexConditions;
     private AchievementBehaviour achievementScript;
 
     public Vector2 mousePosBeginSwipe;
@@ -113,8 +115,8 @@ public class AikidoManager : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
                 UIScript.ActivateUI(UIScript.uIObjects[0]);
                 scoreScript.ArrosoirScoreUpdate(scoreFinirAikido);
                 nbAikidoDone++;
-                achievementScript.AchievementCheck(nbAikidoDone, 2, 2);
-                achievementScript.AchievementCheck(nbAikidoDone, 5, 2);
+                if (indexConditions < conditionsAchievement.Length)
+                { achievementScript.AchievementCheck(nbAikidoDone, conditionsAchievement[indexConditions], 5 + indexConditions, indexConditions); }
                 //reset les InputFields
             }
         }

@@ -24,8 +24,8 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
 
     public AchievementBehaviour achievementScript;
     public int nbMarker;
-    public int condition1;
-    public int condition2;
+    public int[] conditionsAchievement;
+    public int indexConditions;
 
     void Start()
     {
@@ -63,8 +63,8 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
     public void AddMarkerAchievement()
     {
         nbMarker++;
-        achievementScript.AchievementCheck(nbMarker, condition1, 0);
-        achievementScript.AchievementCheck(nbMarker, condition2, 1);
+        if (indexConditions < conditionsAchievement.Length)
+        { achievementScript.AchievementCheck(nbMarker, conditionsAchievement[indexConditions], 0 + indexConditions, indexConditions); }
     }
     
 }

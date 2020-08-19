@@ -12,7 +12,6 @@ public class ScoreManager : MonoBehaviour
     public int totemScore;
     public TextMeshProUGUI txt_TotemScore;
 
-    //public float compteurTemps;
     public float timeBetweenIncreases;
     public int increases;
     public bool arrosageLoop;
@@ -23,6 +22,8 @@ public class ScoreManager : MonoBehaviour
     public Renderer[] renderer_ArrosoireArray;
     public GameObject obj_ArrosezTexte;
 
+    public int[] conditionsAchievement;
+    public int indexConditions;
     public int scoreAdded;
 
     public float totemScale;
@@ -34,6 +35,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         achievementScript = Camera.main.GetComponent<AchievementBehaviour>();
+        obj_arbre.transform.localScale = new Vector3(totemScaleBegin, totemScaleBegin, totemScaleBegin);
     }
     public IEnumerator Arrosage()
     {
@@ -45,8 +47,8 @@ public class ScoreManager : MonoBehaviour
                 ArrosoirScoreUpdate(-1);
                 TotemScoreUpdate(+1);
                 scoreAdded++;
-                achievementScript.AchievementCheck(scoreAdded, 20, 4);
-                achievementScript.AchievementCheck(scoreAdded, 50, 5);
+                if (indexConditions < conditionsAchievement.Length)
+                { achievementScript.AchievementCheck(scoreAdded, conditionsAchievement[indexConditions], 13 + indexConditions, indexConditions); }
                 increases++;
                 yield return new WaitForSecondsRealtime(timeBetweenIncreases);
                 StartCoroutine(Arrosage());
