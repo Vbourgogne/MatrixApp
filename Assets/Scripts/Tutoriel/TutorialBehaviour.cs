@@ -36,11 +36,12 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     private void Start()
     {
         fadingImage.GetComponent<Animation>().Play();
-        /*if(tutoStep == 0)
+        if(tutoStep == 0)
         {
-            Camera.main.GetComponent<Transform>().position = new Vector3(camPosTutoBegin.x,camPosTutoBegin.y, camPosTutoBegin.z);
+            Instantiate(graine, new Vector3(0, 1.5f, 0), Quaternion.identity);
+            //Camera.main.GetComponent<Transform>().position = new Vector3(camPosTutoBegin.x,camPosTutoBegin.y, camPosTutoBegin.z);
         }
-        else
+       /* else
         {
             Camera.main.GetComponent<Transform>().position = new Vector3(camPosTutoEnd.x, camPosTutoEnd.y, camPosTutoEnd.z);
         }*/

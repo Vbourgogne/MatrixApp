@@ -2553,7 +2553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &106597718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28012,11 +28012,11 @@ MonoBehaviour:
   achievementNotificationText: {fileID: 1664395872}
   achievementNotificationTitle: {fileID: 442354484}
   achievementImages:
-  - {fileID: 21300000, guid: f67d28c6b8bcf6f4496edc827850a3ef, type: 3}
-  - {fileID: 21300000, guid: f67d28c6b8bcf6f4496edc827850a3ef, type: 3}
-  - {fileID: 21300000, guid: f67d28c6b8bcf6f4496edc827850a3ef, type: 3}
-  - {fileID: 21300000, guid: f67d28c6b8bcf6f4496edc827850a3ef, type: 3}
-  - {fileID: 21300000, guid: f67d28c6b8bcf6f4496edc827850a3ef, type: 3}
+  - {fileID: 21300000, guid: d75d3d49bfeeb0a49a0140f721431fb2, type: 3}
+  - {fileID: 21300000, guid: e47a7a69edaa2e24ca2696ca2e29f0c3, type: 3}
+  - {fileID: 21300000, guid: 4143f96369af99e41b105cb02c185aea, type: 3}
+  - {fileID: 21300000, guid: ef21be5ff553599418ebcf385835ae29, type: 3}
+  - {fileID: 21300000, guid: db713c36b6388ba4a8121032ddc32219, type: 3}
   - {fileID: 21300000, guid: 6da56cd4ce4fe4549a7527b2425eba9c, type: 3}
   - {fileID: 21300000, guid: 6da56cd4ce4fe4549a7527b2425eba9c, type: 3}
   - {fileID: 21300000, guid: 6da56cd4ce4fe4549a7527b2425eba9c, type: 3}
@@ -28025,11 +28025,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: eb2509e6ce4ddef4ea3fa081dc82457c, type: 3}
   - {fileID: 21300000, guid: 38a4b3bfd07e0da4cab9b988d0571544, type: 3}
   - {fileID: 21300000, guid: a81450022df40f14a9a3df7fbcf4b5a7, type: 3}
-  - {fileID: 21300000, guid: d1127a6f37b5cb4469e6647f6e88a671, type: 3}
-  - {fileID: 21300000, guid: d1127a6f37b5cb4469e6647f6e88a671, type: 3}
-  - {fileID: 21300000, guid: d1127a6f37b5cb4469e6647f6e88a671, type: 3}
-  - {fileID: 21300000, guid: d1127a6f37b5cb4469e6647f6e88a671, type: 3}
-  - {fileID: 21300000, guid: d1127a6f37b5cb4469e6647f6e88a671, type: 3}
+  - {fileID: 21300000, guid: a712eee37e37b014184cd6ce91f6b524, type: 3}
+  - {fileID: 21300000, guid: 81466239948219740b43693d563d4f2a, type: 3}
+  - {fileID: 21300000, guid: a719ae2b2d9fc124bb658bc250bd5877, type: 3}
+  - {fileID: 21300000, guid: 04b06c7285a39bf489d0ca8a5878ff4c, type: 3}
+  - {fileID: 21300000, guid: 96b05f35045d5724bafbff49b1109c5d, type: 3}
   - {fileID: 21300000, guid: bcc36ef00f5b22c4a89fa2832dc28b62, type: 3}
   - {fileID: 21300000, guid: bcc36ef00f5b22c4a89fa2832dc28b62, type: 3}
   - {fileID: 21300000, guid: bcc36ef00f5b22c4a89fa2832dc28b62, type: 3}
@@ -30903,7 +30903,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -650}
-  m_SizeDelta: {x: 900, y: 300}
+  m_SizeDelta: {x: 850, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1061244845
 MonoBehaviour:
@@ -30918,13 +30918,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8a8fc2194d018a646a6903bab7a31e26, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -35918,13 +35918,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0, b: 0, a: 0.5019608}
+  m_Color: {r: 1, g: 0.36320752, b: 0.36320752, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 84b539310c9bb7344833f384a0e9b078, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -36885,7 +36885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1247947586
 RectTransform:
   m_ObjectHideFlags: 0
