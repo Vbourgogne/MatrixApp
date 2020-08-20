@@ -7,15 +7,22 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
 {
     public int tutoStep;
 
-    public Vector3 camPosTutoBegin;
-    public Vector3 camPosTutoEnd;
+    [Header("Vecteurs position et rotation Caméra")]
+    public Vector3 camPosTuto;
+    public Vector3 camRotTuto;
+    public Vector3 camPosMain;
+    public Vector3 camRotMain;
+
+    [Header("Liens à faire gameObjects")]
     public GameObject fadingImage;
     public GameObject graine;
     public GameObject particles;
     public GameObject sakuraTree;
     public GameObject flowers;
     public float timeBeforeFirstMessage;
-    public GameObject[][] tutoTexts;
+
+    private GameObject[][] tutoTexts;
+    [Header("Obj textes pour ce que dit le totem")]
     public GameObject[] tutoTextsIntro;
     public GameObject[] tutoTextsStep1;
     public GameObject[] tutoTextsStep2;
@@ -27,25 +34,39 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     public GameObject[] tutoTextsStep8;
     public GameObject[] tutoTextsStep9;
     public GameObject[] tutoTextsStep10;
-    public RectTransform fondTexteTrans;
-    public int indexArray;
+
+    private int[][] indexEtapes;
+    [Header("index Textes pour 0 : Mise à l'épreuve 1: Texte Choix choix puis message de l'arbre et 2 : joueur libéré ")]
+    public int[] indexEtapesStep1;
+    public int[] indexEtapesStep2;
+    public int[] indexEtapesStep3;
+    public int[] indexEtapesStep4;
+    public int[] indexEtapesStep5;
+    public int[] indexEtapesStep6;
+    public int[] indexEtapesStep7;
+    public int[] indexEtapesStep8;
+    public int[] indexEtapesStep9;
+    public int[] indexEtapesStep10;
+
+    [Header("Liste des gameObject parents avec les contenus pour la mise à l'épreuve à chaque étape")]
+    public GameObject[] gameObjectsTestTuto;
+
     public int indexTextInArray;
     public bool canTextAdvance;
     public int textFondMargin;
 
+    private RectTransform fondTexteTrans;
+    private Transform camTrans;
+    private UIManager uiScript;
+
     private void Start()
     {
+        camTrans = Camera.main.GetComponent<Transform>();
+        uiScript = Camera.main.GetComponent<UIManager>();
+        fondTexteTrans = transform.GetChild(0).GetComponent<RectTransform>();
         fadingImage.GetComponent<Animation>().Play();
-        if(tutoStep == 0)
-        {
-            Instantiate(graine, new Vector3(0, 1.5f, 0), Quaternion.identity);
-            //Camera.main.GetComponent<Transform>().position = new Vector3(camPosTutoBegin.x,camPosTutoBegin.y, camPosTutoBegin.z);
-        }
-       /* else
-        {
-            Camera.main.GetComponent<Transform>().position = new Vector3(camPosTutoEnd.x, camPosTutoEnd.y, camPosTutoEnd.z);
-        }*/
-        tutoTexts = new GameObject[12][];
+
+        tutoTexts = new GameObject[10][];
         tutoTexts[0] = tutoTextsIntro;
         tutoTexts[1] = tutoTextsStep1;
         tutoTexts[2] = tutoTextsStep2;
@@ -58,12 +79,66 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
         tutoTexts[9] = tutoTextsStep9;
         tutoTexts[10] = tutoTextsStep10;
 
-        fondTexteTrans = transform.GetChild(0).GetComponent<RectTransform>();
-        camPosTutoEnd = new Vector3(0, 1.527f, -4.66f); //15 0 0
-        camPosTutoBegin = new Vector3(-0.13f, 1.22f, -1.58f); //35.56 4.49 0.261
-        if (tutoStep == 0 )
+        indexEtapes = new int[10][];
+        indexEtapes[1] = indexEtapesStep1;
+        indexEtapes[2] = indexEtapesStep2;
+        indexEtapes[3] = indexEtapesStep3;
+        indexEtapes[4] = indexEtapesStep4;
+        indexEtapes[5] = indexEtapesStep5;
+        indexEtapes[6] = indexEtapesStep6;
+        indexEtapes[7] = indexEtapesStep7;
+        indexEtapes[8] = indexEtapesStep8;
+        indexEtapes[9] = indexEtapesStep9;
+
+        if (tutoStep == 0)
         {
+            Instantiate(graine, new Vector3(0, 1.5f, 0), Quaternion.identity);
+            camTrans.position = camPosTuto;
+            camTrans.rotation = Quaternion.Euler(camRotTuto);
             StartCoroutine(GraineDrop());
+        }
+        else
+        {
+            camTrans.position = camPosMain;
+            camTrans.rotation = Quaternion.Euler(camRotMain);
+        }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (canTextAdvance)
+        {
+            TutorialNextStepDisableMessage(true);
+        }
+
+        if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][0])
+        {
+            //disable text et afficher ce qu'il faut pour la mise à l'épreuve
+            TutorialNextStepDisableMessage(false);
+            gameObjectsTestTuto[tutoStep].SetActive(true);
+        }
+
+        if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][1])
+        {
+            //disable text et afficher le choix de quand seront les notifications
+            TutorialNextStepDisableMessage(false);
+        }
+
+        if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][2])
+        {
+            //disable text et laisser le joueur libre en lui donnant la nouvelle option qu'il vient d'acquérir
+            TutorialNextStepDisableMessage(false);
+        }
+
+        if(tutoStep == 0 && indexTextInArray == 3)
+        { 
+            graine.GetComponent<TutoGraineBehaviour>().canBeNudged = true;
+            canTextAdvance = false;
+        }
+        else if (tutoStep == 1 && indexTextInArray == 13)
+        { 
+            uiScript.ActivateUI(uiScript.uIObjects[2]);
+            TutorialNextStepDisableMessage(false);
         }
     }
 
@@ -72,48 +147,33 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
         yield return new WaitForSeconds(fadingImage.GetComponent<Animation>().clip.length);
         graine.GetComponent<Rigidbody>().isKinematic = false;
         yield return new WaitForSeconds(timeBeforeFirstMessage);
-        tutoTexts[indexArray][indexTextInArray].SetActive(true);
-        canTextAdvance = true;
-        fondTexteTrans.gameObject.SetActive(true);
-        fondTexteTrans.sizeDelta = new Vector2(tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().sizeDelta.x, tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().sizeDelta.y);
+        TutorialNextStepEnableMessage();
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void TutorialNextStepDisableMessage(bool enableNext)
     {
-        if(canTextAdvance)
-        {
-            TutorialNextStep();
-        }
-        if(indexArray == 0 && indexTextInArray == 3)
-        { 
-            graine.GetComponent<TutoGraineBehaviour>().canBeNudged = true;
-            canTextAdvance = false;
-        }
-        else if (indexArray == 1 && indexTextInArray == 13)
-        { 
-            Camera.main.GetComponent<UIManager>().ActivateUI(Camera.main.GetComponent<UIManager>().uIObjects[2]);
-            fondTexteTrans.gameObject.SetActive(false);
-            tutoTexts[indexArray][indexTextInArray].SetActive(false);
-            canTextAdvance = false;
-        }
-
-    }
-
-    public void TutorialNextStep()
-    {
-        tutoTexts[indexArray][indexTextInArray].SetActive(false);
-        if (indexTextInArray < tutoTexts[indexArray].Length - 1)
+        tutoTexts[tutoStep][indexTextInArray].SetActive(false);
+        if (indexTextInArray < tutoTexts[tutoStep].Length - 1)
         {
             indexTextInArray++;
         }
         else
         {
-            indexArray++;
+            tutoStep++;
             indexTextInArray = 0;
         }
-        tutoTexts[indexArray][indexTextInArray].SetActive(true);
-        fondTexteTrans.position = new Vector3(tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().position.x, tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().position.y);
-        fondTexteTrans.sizeDelta = new Vector2(tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().sizeDelta.x + textFondMargin, tutoTexts[indexArray][indexTextInArray].GetComponent<RectTransform>().sizeDelta.y + textFondMargin);
+        canTextAdvance = false;
+        if(enableNext)
+        {
+            TutorialNextStepEnableMessage();
+        }
     }
 
+    public void TutorialNextStepEnableMessage()
+    {
+        fondTexteTrans.position = new Vector3(tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().position.x, tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().position.y);
+        fondTexteTrans.sizeDelta = new Vector2(tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().sizeDelta.x + textFondMargin, tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().sizeDelta.y + textFondMargin);
+        tutoTexts[tutoStep][indexTextInArray].SetActive(true);
+        canTextAdvance = true;
+    }
 }

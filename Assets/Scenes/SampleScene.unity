@@ -498,17 +498,7 @@ MonoBehaviour:
   - {r: 0.37647063, g: 0.78823537, b: 0.454902, a: 0.6862745}
   - {r: 0.3019608, g: 0.8196079, b: 0.54509807, a: 0.6862745}
   - {r: 0.07058824, g: 0.9215687, b: 0.80392164, a: 0.6862745}
-  AikidoTexts:
-  - "Qu'est-ce que vous percevez l\xE0, maintenant ?"
-  - "Ce que vous percevez, est-ce un hame\xE7on pour vous ?"
-  - Que ressentez-vous autour de cela ?
-  - "Que faites-vous quand vous mordez \xE0 l'hame\xE7on ?  En quoi vous transformez-vous
-    ?"
-  - "Que ferait la personne que vous aimeriez \xEAtre dans cette situation ?"
-  - "Si vous agissez comme la personne que vous aimeriez \xEAtre, de quelles valeurs
-    ou de qui cela vous rapproche ?"
-  - "Penser \xE0 ces valeurs, \xE0 ces personnes, \xE0 cette figure \xE0 laquelle
-    vous aimeriez ressembler, qu'est-ce que \xE7a vous fait ressentir ?"
+  AikidoScreens: []
   indexScreens: 0
   UIScript: {fileID: 0}
   AikidoFond: {fileID: 68087043}
@@ -527,6 +517,9 @@ MonoBehaviour:
   isFading: 0
   scoreScript: {fileID: 963194229}
   scoreFinirAikido: 15
+  nbAikidoDone: 0
+  conditionsAchievement: 
+  indexConditions: 0
   mousePosBeginSwipe: {x: 0, y: 0}
   mousePosEndSwipe: {x: 0, y: 0}
   swipeXThreshold: 50
@@ -2525,28 +2518,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbCadran: 2
   WordInput_btn: {fileID: 152848974}
-  txt_InputPanelTitle: {fileID: 801313200}
+  inputFields: []
   if_InputPanelName: {fileID: 1752955244}
-  txt_PlaceholderName: {fileID: 1420883412}
   if_InputPanelDescription: {fileID: 1781593386}
-  txt_PlaceholderDescription: {fileID: 814474919}
   compassMarkPrefab: {fileID: 6187236113885856174, guid: ab0572843de29f54c80bdf30a15d67d3,
     type: 3}
   compassMarkPos: {x: 0, y: 0, z: 0}
-  markMaxReach: 400
-  markMinDistanceFrom0: 75
   canvas: {fileID: 825193508}
   marksParents:
   - {fileID: 880155692}
   - {fileID: 43574541}
   - {fileID: 597724990}
   - {fileID: 1640237581}
-  obj_DescriptionPanel: {fileID: 1095043513}
-  txt_MarkNameLink: {fileID: 1379077815}
-  txt_MarkDescriptionLink: {fileID: 1041819995}
   compassScript: {fileID: 574824291}
   scoreScript: {fileID: 963194229}
   scoreToAdd: 10
+  inputPanelsParent: {fileID: 0}
+  modify: 0
+  currentMark: {fileID: 0}
+  paletteScript: {fileID: 0}
+  cancelPanel_btn: {fileID: 0}
 --- !u!1 &251140388
 GameObject:
   m_ObjectHideFlags: 0
@@ -5715,12 +5706,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   compassMark: {fileID: 6187236113885856174, guid: ab0572843de29f54c80bdf30a15d67d3,
     type: 3}
-  obj_HGInputWord: {fileID: 1440319889}
-  obj_HDInputWord: {fileID: 1680064214}
-  obj_BDInputWord: {fileID: 240454283}
-  obj_BGInputWord: {fileID: 1814114939}
+  obj_NewInputWord: []
+  obj_palette: {fileID: 0}
   mousePosMarker: {x: 0, y: 0, z: 0}
   isInputPanelActive: 0
+  inputPanels: []
+  achievementScript: {fileID: 0}
+  nbMarker: 0
+  conditionsAchievement: 
+  indexConditions: 0
 --- !u!61 &574824292
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9288,7 +9282,11 @@ MonoBehaviour:
   - {fileID: 20263261}
   - {fileID: 1327320649}
   obj_ArrosezTexte: {fileID: 519937394}
+  conditionsAchievement: 
+  indexConditions: 0
+  scoreAdded: 0
   totemScale: 0
+  totemScaleBegin: 0
   arrosageIncreaseCurve:
     serializedVersion: 2
     m_Curve:
@@ -9434,7 +9432,8 @@ MonoBehaviour:
   - {fileID: 251140390}
   obj_ArrosezMessage: {fileID: 519937394}
   scoreScript: {fileID: 0}
-  arrosageScript: {fileID: 312096783}
+  col_arrosage: {fileID: 1617392067}
+  tutoScript: {fileID: 0}
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14802,28 +14801,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbCadran: 0
   WordInput_btn: {fileID: 1415558344}
-  txt_InputPanelTitle: {fileID: 1082985385}
+  inputFields: []
   if_InputPanelName: {fileID: 1681868341}
-  txt_PlaceholderName: {fileID: 1570480611}
   if_InputPanelDescription: {fileID: 1139729745}
-  txt_PlaceholderDescription: {fileID: 1319229755}
   compassMarkPrefab: {fileID: 6187236113885856174, guid: ab0572843de29f54c80bdf30a15d67d3,
     type: 3}
   compassMarkPos: {x: 0, y: 0, z: 0}
-  markMaxReach: 400
-  markMinDistanceFrom0: 75
   canvas: {fileID: 825193508}
   marksParents:
   - {fileID: 880155692}
   - {fileID: 43574541}
   - {fileID: 597724990}
   - {fileID: 1640237581}
-  obj_DescriptionPanel: {fileID: 1095043513}
-  txt_MarkNameLink: {fileID: 1379077815}
-  txt_MarkDescriptionLink: {fileID: 1041819995}
   compassScript: {fileID: 574824291}
   scoreScript: {fileID: 963194229}
   scoreToAdd: 4
+  inputPanelsParent: {fileID: 0}
+  modify: 0
+  currentMark: {fileID: 0}
+  paletteScript: {fileID: 0}
+  cancelPanel_btn: {fileID: 0}
 --- !u!1 &1452441793
 GameObject:
   m_ObjectHideFlags: 0
@@ -16282,6 +16279,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1617392065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1307414565847412143, guid: fb8c1304b3d4f4d46931272594229c0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1532963577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1617392066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617392065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ae5749016bfe048971c90e44eca747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreScript: {fileID: 0}
+--- !u!64 &1617392067
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617392065}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5016580990507694394, guid: 3655a31a4c4e88341a2cd577e7e6a992, type: 3}
 --- !u!1 &1624018830
 GameObject:
   m_ObjectHideFlags: 0
@@ -16864,28 +16894,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbCadran: 1
   WordInput_btn: {fileID: 874276792}
-  txt_InputPanelTitle: {fileID: 259332791}
+  inputFields: []
   if_InputPanelName: {fileID: 71484521}
-  txt_PlaceholderName: {fileID: 480932218}
   if_InputPanelDescription: {fileID: 456771718}
-  txt_PlaceholderDescription: {fileID: 1744609097}
   compassMarkPrefab: {fileID: 6187236113885856174, guid: ab0572843de29f54c80bdf30a15d67d3,
     type: 3}
   compassMarkPos: {x: 0, y: 0, z: 0}
-  markMaxReach: 400
-  markMinDistanceFrom0: 75
   canvas: {fileID: 825193508}
   marksParents:
   - {fileID: 880155692}
   - {fileID: 43574541}
   - {fileID: 597724990}
   - {fileID: 1640237581}
-  obj_DescriptionPanel: {fileID: 1095043513}
-  txt_MarkNameLink: {fileID: 1379077815}
-  txt_MarkDescriptionLink: {fileID: 1041819995}
   compassScript: {fileID: 574824291}
   scoreScript: {fileID: 963194229}
   scoreToAdd: 8
+  inputPanelsParent: {fileID: 0}
+  modify: 0
+  currentMark: {fileID: 0}
+  paletteScript: {fileID: 0}
+  cancelPanel_btn: {fileID: 0}
 --- !u!1 &1681868339
 GameObject:
   m_ObjectHideFlags: 0
@@ -18240,28 +18268,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbCadran: 3
   WordInput_btn: {fileID: 1184610554}
-  txt_InputPanelTitle: {fileID: 1652143514}
+  inputFields: []
   if_InputPanelName: {fileID: 1452441795}
-  txt_PlaceholderName: {fileID: 1734102912}
   if_InputPanelDescription: {fileID: 1183191377}
-  txt_PlaceholderDescription: {fileID: 84014307}
   compassMarkPrefab: {fileID: 6187236113885856174, guid: ab0572843de29f54c80bdf30a15d67d3,
     type: 3}
   compassMarkPos: {x: 0, y: 0, z: 0}
-  markMaxReach: 400
-  markMinDistanceFrom0: 75
   canvas: {fileID: 825193508}
   marksParents:
   - {fileID: 880155692}
   - {fileID: 43574541}
   - {fileID: 597724990}
   - {fileID: 1640237581}
-  obj_DescriptionPanel: {fileID: 1095043513}
-  txt_MarkNameLink: {fileID: 1379077815}
-  txt_MarkDescriptionLink: {fileID: 1041819995}
   compassScript: {fileID: 574824291}
   scoreScript: {fileID: 963194229}
   scoreToAdd: 6
+  inputPanelsParent: {fileID: 0}
+  modify: 0
+  currentMark: {fileID: 0}
+  paletteScript: {fileID: 0}
+  cancelPanel_btn: {fileID: 0}
 --- !u!1 &1816231768
 GameObject:
   m_ObjectHideFlags: 0

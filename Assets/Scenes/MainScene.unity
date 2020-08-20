@@ -12143,7 +12143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &424622077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12187,9 +12187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a65e62376f3494cb21ce0cba7b46e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutoStep: 10
-  camPosTutoBegin: {x: 0, y: 0, z: 0}
-  camPosTutoEnd: {x: 0, y: 0, z: 0}
+  tutoStep: 1
+  camPosTuto: {x: -0.13, y: 1.22, z: -1.58}
+  camRotTuto: {x: 35.56, y: 4.49, z: 0.261}
+  camPosMain: {x: 0, y: 1.527, z: -4.66}
+  camRotMain: {x: 15, y: 0, z: 0}
   fadingImage: {fileID: 1393752314}
   graine: {fileID: 1446815964}
   particles: {fileID: 2043607450}
