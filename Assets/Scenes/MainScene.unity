@@ -12227,8 +12227,17 @@ MonoBehaviour:
   tutoTextsStep8: []
   tutoTextsStep9: []
   tutoTextsStep10: []
-  fondTexteTrans: {fileID: 0}
-  indexArray: 0
+  indexEtapesStep1: 000000000000000000000000
+  indexEtapesStep2: 000000000000000000000000
+  indexEtapesStep3: 000000000000000000000000
+  indexEtapesStep4: 000000000000000000000000
+  indexEtapesStep5: 000000000000000000000000
+  indexEtapesStep6: 000000000000000000000000
+  indexEtapesStep7: 000000000000000000000000
+  indexEtapesStep8: 000000000000000000000000
+  indexEtapesStep9: 000000000000000000000000
+  indexEtapesStep10: 000000000000000000000000
+  gameObjectsTestTuto: []
   indexTextInArray: 0
   canTextAdvance: 0
   textFondMargin: 30
