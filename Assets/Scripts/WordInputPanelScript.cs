@@ -32,10 +32,20 @@ public class WordInputPanelScript : MonoBehaviour
     public GameObject currentMark;
 
     public PaletteBehavior paletteScript;
+    public Button cancelPanel_btn;
 
     private void Start()
     {
         WordInput_btn.onClick.AddListener(InputWord);
+        cancelPanel_btn.onClick.AddListener(CancelPanel);
+    }
+
+    public void CancelPanel()
+    {
+        ResetInputFields();
+        compassScript.isInputPanelActive = false;
+        paletteScript.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void InputWord()
