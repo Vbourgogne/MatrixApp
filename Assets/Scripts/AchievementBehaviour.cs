@@ -16,19 +16,17 @@ public class AchievementBehaviour : MonoBehaviour
     public string[] achievementTexts;
     public string[] achievementTitles;
 
-    public void AchievementCheck(float variable, float condition, int indexAchievement, int indexConditions)
+    public bool AchievementCheck(float variable, float condition, int indexAchievement)
     {
         if (variable >= condition)
         {
-            if (!achievementsUnlocked.Contains(indexAchievement))
-            {
                 achievementNotificationImage.sprite = achievementImages[indexAchievement];
                 achievementNotificationText.text = achievementTexts[indexAchievement];
                 achievementNotificationTitle.text = achievementTitles[indexAchievement];
                 achievementNotificationAnimator.SetTrigger("AchievementGet");
                 achievementsUnlocked.Add(indexAchievement);
-                indexConditions++;
-            }
+                return true;
         }
+        else { return false; }
     }
 }

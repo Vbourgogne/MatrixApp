@@ -58,11 +58,13 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     private RectTransform fondTexteTrans;
     private Transform camTrans;
     private UIManager uiScript;
+    private AchievementBehaviour achievementScript;
 
     private void Start()
     {
         camTrans = Camera.main.GetComponent<Transform>();
         uiScript = Camera.main.GetComponent<UIManager>();
+        achievementScript = Camera.main.GetComponent<AchievementBehaviour>();
         fondTexteTrans = transform.GetChild(0).GetComponent<RectTransform>();
         fadingImage.GetComponent<Animation>().Play();
 
@@ -111,23 +113,25 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
             TutorialNextStepDisableMessage(true);
         }
 
-        if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][0])
+        if (tutoStep != 0)
         {
-            //disable text et afficher ce qu'il faut pour la mise à l'épreuve
-            TutorialNextStepDisableMessage(false);
-            gameObjectsTestTuto[tutoStep].SetActive(true);
-        }
+            if(indexTextInArray == indexEtapes[tutoStep][0])
+            {
+                TutorialNextStepDisableMessage(false);
+                gameObjectsTestTuto[tutoStep].SetActive(true);
+            }
+            if(indexTextInArray == indexEtapes[tutoStep][1])
+            {
+                //disable text et afficher le choix de quand seront les notifications
+                TutorialNextStepDisableMessage(false);
 
-        if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][1])
-        {
-            //disable text et afficher le choix de quand seront les notifications
-            TutorialNextStepDisableMessage(false);
-        }
-
-        if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][2])
-        {
-            //disable text et laisser le joueur libre en lui donnant la nouvelle option qu'il vient d'acquérir
-            TutorialNextStepDisableMessage(false);
+            }
+            if(indexTextInArray == indexEtapes[tutoStep][2])
+            {
+                //disable text et laisser le joueur libre en lui donnant la nouvelle option qu'il vient d'acquérir
+                TutorialNextStepDisableMessage(false);
+                achievementScript.AchievementCheck(1, 0, 34 + tutoStep);
+            }
         }
 
         if(tutoStep == 0 && indexTextInArray == 3)
