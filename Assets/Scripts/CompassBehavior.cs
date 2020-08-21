@@ -23,9 +23,24 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
     public List <GameObject> inputPanels;
 
     public AchievementBehaviour achievementScript;
-    public int nbMarker;
-    public int[] conditionsAchievement;
-    public int indexConditions;
+    [Header("Nombre de marqueurs total et par cadran")]
+    public int nbMarkerGlobal;
+    public int nbMarkerHG;
+    public int nbMarkerHD;
+    public int nbMarkerBD;
+    public int nbMarkerBG;
+
+    [Header("Listes nb marqueurs requis pour achievement")]
+    public int[] conditionsAchievementGlobal;
+    public int[] conditionsAchievementCadran;
+
+
+    [Header("positions dans la liste des achievements")]
+    public int indexConditionsGlobal;
+    public int indexConditionsHG;
+    public int indexConditionsHD;
+    public int indexConditionsBD;
+    public int indexConditionsBG;
 
     void Start()
     {
@@ -60,14 +75,52 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    public void AddMarkerAchievement()
+    public void AddMarkerAchievement(int cadran)
     {
-        nbMarker++;
-        if (indexConditions < conditionsAchievement.Length && achievementScript.AchievementCheck(nbMarker, conditionsAchievement[indexConditions], 0 + indexConditions))
+        switch (cadran)
         {
-            achievementScript.AchievementCheck(nbMarker, conditionsAchievement[indexConditions], 0 + indexConditions);
-            indexConditions++;
+            case 0:
+                nbMarkerHG++;
+                if (indexConditionsHG < conditionsAchievementCadran.Length && achievementScript.AchievementCheck(nbMarkerHG, conditionsAchievementCadran[indexConditionsHG], 18 + indexConditionsHG))
+                {
+                    achievementScript.AchievementCheck(nbMarkerHG, conditionsAchievementCadran[indexConditionsHG], 18 + indexConditionsHG);
+                    indexConditionsHG++;
+                }
+                break;
+            case 1:
+                nbMarkerHD++;
+                if (indexConditionsHD < conditionsAchievementCadran.Length && achievementScript.AchievementCheck(nbMarkerHD, conditionsAchievementCadran[indexConditionsHD], 22 + indexConditionsHD))
+                {
+                    achievementScript.AchievementCheck(nbMarkerHD, conditionsAchievementCadran[indexConditionsHD], 22 + indexConditionsHD);
+                    indexConditionsHD++;
+                }
+                break;
+            case 2:
+                nbMarkerBD++;
+                if (indexConditionsBD < conditionsAchievementCadran.Length && achievementScript.AchievementCheck(nbMarkerBD, conditionsAchievementCadran[indexConditionsBD], 26 + indexConditionsBD))
+                {
+                    achievementScript.AchievementCheck(nbMarkerBD, conditionsAchievementCadran[indexConditionsBD], 26 + indexConditionsBD);
+                    indexConditionsBD++;
+                }
+                break;
+            case 3:
+                nbMarkerBG++;
+                if (indexConditionsBG < conditionsAchievementCadran.Length && achievementScript.AchievementCheck(nbMarkerBG, conditionsAchievementCadran[indexConditionsBG], 30 + indexConditionsBG))
+                {
+                    achievementScript.AchievementCheck(nbMarkerBG, conditionsAchievementCadran[indexConditionsBG], 30 + indexConditionsBG);
+                    indexConditionsBG++;
+                }
+                break;
+            case 4:
+                nbMarkerGlobal++;
+                if (indexConditionsGlobal < conditionsAchievementGlobal.Length && achievementScript.AchievementCheck(nbMarkerGlobal, conditionsAchievementGlobal[indexConditionsGlobal], 0 + indexConditionsGlobal))
+                {
+                    achievementScript.AchievementCheck(nbMarkerGlobal, conditionsAchievementGlobal[indexConditionsGlobal], 0 + indexConditionsGlobal);
+                    indexConditionsGlobal++;
+                }
+                break;
         }
+
     }
     
 }
