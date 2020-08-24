@@ -33,6 +33,7 @@ public class WordInputPanelScript : MonoBehaviour
 
     public PaletteBehavior paletteScript;
     public Button cancelPanel_btn;
+    public GameObject obj_poubelle;
 
     private void Start()
     {
@@ -75,6 +76,7 @@ public class WordInputPanelScript : MonoBehaviour
                 instanceMarkBehaviour.index = compassScript.inputPanels.Count - 1;                  //l'index de l'inputPanel est donné au marqueur correspondant
                 instanceMarkBehaviour.compassScript = compassScript;
                 instanceMarkBehaviour.obj_palette = paletteScript.gameObject;
+                instanceMarkBehaviour.obj_poubelle = obj_poubelle;
                 instanceMark.GetComponentInChildren<TextMeshProUGUI>().text = inputFields[0].text; // Le nom entré apparaît sur le marqueur
                 ResetInputFields(); //vide les inputfields du wordinputpanel originel
                 WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Ajouter";

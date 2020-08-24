@@ -34,7 +34,7 @@ public class AchievementScreenBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
-        AchievementDisplayCheck();
+        //AchievementDisplayCheck();
     }
 
     public void AchievementsToNone ()
@@ -52,17 +52,26 @@ public class AchievementScreenBehaviour : MonoBehaviour
             index++;
         }
     }
-    public void AchievementDisplayCheck()
+
+    public void AchievementDisplay(int achievementUnlockedIndex)
     {
-        if (achievementScript.achievementsUnlocked != null)
-        {
-            foreach (int achievementUnlockedIndex in achievementScript.achievementsUnlocked)
-            {
                 img_achievements[achievementUnlockedIndex].sprite = achievementScript.achievementImages[achievementUnlockedIndex];
                 img_achievements[achievementUnlockedIndex].color = clr_ImageSuccesActive;
                 obj_Achievements[achievementUnlockedIndex].GetComponent<Image>().color = clr_FondSuccedActive;
                 tmp_Titres[achievementUnlockedIndex].text = achievementScript.achievementTitles[achievementUnlockedIndex];
-            }
-        }
     }
-}
+
+        /*public void AchievementDisplayCheck()
+        {
+            if (achievementScript.achievementsUnlocked != null)
+            {
+                foreach (int achievementUnlockedIndex in achievementScript.achievementsUnlocked)
+                {
+                    img_achievements[achievementUnlockedIndex].sprite = achievementScript.achievementImages[achievementUnlockedIndex];
+                    img_achievements[achievementUnlockedIndex].color = clr_ImageSuccesActive;
+                    obj_Achievements[achievementUnlockedIndex].GetComponent<Image>().color = clr_FondSuccedActive;
+                    tmp_Titres[achievementUnlockedIndex].text = achievementScript.achievementTitles[achievementUnlockedIndex];
+                }
+            }
+        }*/
+    }

@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public GameObject obj_palette;
+    public GameObject obj_poubelle;
     public int index;
 
     public bool isPointerDown;
@@ -62,6 +63,7 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
                         if (transform.parent.GetComponent<RectTransform>().position.y < poubelleUpRight.y)
                         {
                             Destroy(transform.parent.gameObject);
+                            obj_poubelle.SetActive(false);
                         } //si l'user déplace le marqueur dans la poubelle, supprime le marqueur
                     }
                 }
@@ -77,8 +79,11 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         yield return new WaitForSeconds(Time.deltaTime);
         timePointerHeldDown += Time.deltaTime;
         if(timePointerHeldDown >= timePointerHeldDownforLongTouch)
-        { longHold = true; }
-        if(isPointerDown)
+        { 
+            longHold = true;
+            obj_poubelle.SetActive(true);
+        }
+        else if(isPointerDown)
         { StartCoroutine(timePointerDown()); }
     }
 
