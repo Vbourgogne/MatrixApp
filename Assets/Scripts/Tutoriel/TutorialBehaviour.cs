@@ -79,7 +79,6 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
         tutoTexts[7] = tutoTextsStep7;
         tutoTexts[8] = tutoTextsStep8;
         tutoTexts[9] = tutoTextsStep9;
-        tutoTexts[10] = tutoTextsStep10;
 
         indexEtapes = new int[10][];
         indexEtapes[1] = indexEtapesStep1;

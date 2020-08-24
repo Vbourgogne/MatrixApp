@@ -28,6 +28,7 @@ public class ScoreManager : MonoBehaviour
 
     public float totemScale;
     public float totemScaleBegin;
+    public float totemScaleMax;
 
     public AnimationCurve arrosageIncreaseCurve;
 
@@ -76,8 +77,11 @@ public class ScoreManager : MonoBehaviour
         totemScore += scoreToAddTotem;
         txt_TotemScore.text = totemScore.ToString();
         txt_TotemScore.fontSize = 90 + totemScore * (210 / 500);
-        totemScale = totemScaleBegin + totemScore * (1.35f / 500);
-        obj_arbre.transform.localScale = new Vector3 (totemScale, totemScale, totemScale);
+        if (totemScale < totemScaleMax)
+        {
+            totemScale = totemScaleBegin + totemScore * (1.35f / 500);
+            obj_arbre.transform.localScale = new Vector3(totemScale, totemScale, totemScale);
+        }
     }
 
     public void ArrosageReset()
