@@ -47,8 +47,11 @@ public class ScoreManager : MonoBehaviour
                 ArrosoirScoreUpdate(-1);
                 TotemScoreUpdate(+1);
                 scoreAdded++;
-                if (indexConditions < conditionsAchievement.Length)
-                { achievementScript.AchievementCheck(scoreAdded, conditionsAchievement[indexConditions], 13 + indexConditions, indexConditions); }
+                if (indexConditions < conditionsAchievement.Length && achievementScript.AchievementCheck(scoreAdded, conditionsAchievement[indexConditions], 13 + indexConditions))
+                {
+                    achievementScript.AchievementCheck(scoreAdded, conditionsAchievement[indexConditions], 13 + indexConditions);
+                    indexConditions++;
+                }
                 increases++;
                 yield return new WaitForSecondsRealtime(timeBetweenIncreases);
                 StartCoroutine(Arrosage());

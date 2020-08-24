@@ -106,7 +106,6 @@ public class AikidoManager : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
                 AikidoScreens[indexScreens].SetActive(false);
                 indexScreens++;
                 AikidoScreens[indexScreens].SetActive(true);
-                //AikidoTMP.text = AikidoTexts[indexScreens];
                 AikidoFond.color = AikidoColors[indexScreens];
                 screenCounters[indexScreens].color = screenCounterTransparencyHigh;
             }
@@ -115,8 +114,11 @@ public class AikidoManager : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
                 UIScript.ActivateUI(UIScript.uIObjects[0]);
                 scoreScript.ArrosoirScoreUpdate(scoreFinirAikido);
                 nbAikidoDone++;
-                if (indexConditions < conditionsAchievement.Length)
-                { achievementScript.AchievementCheck(nbAikidoDone, conditionsAchievement[indexConditions], 5 + indexConditions, indexConditions); }
+                if (indexConditions < conditionsAchievement.Length && achievementScript.AchievementCheck(nbAikidoDone, conditionsAchievement[indexConditions], 5 + indexConditions))
+                {
+                    achievementScript.AchievementCheck(nbAikidoDone, conditionsAchievement[indexConditions], 5 + indexConditions);
+                    indexConditions++;
+                }
                 //reset les InputFields
             }
         }

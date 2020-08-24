@@ -79,7 +79,8 @@ public class WordInputPanelScript : MonoBehaviour
                 ResetInputFields(); //vide les inputfields du wordinputpanel originel
                 WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Ajouter";
                 paletteScript.currentMark = instanceMark.GetComponentInChildren<Image>();
-                compassScript.AddMarkerAchievement();
+                compassScript.AddMarkerAchievement(nbCadran);
+                compassScript.AddMarkerAchievement(4);
             }
             else
             {

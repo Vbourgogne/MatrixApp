@@ -12187,7 +12187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a65e62376f3494cb21ce0cba7b46e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutoStep: 1
+  tutoStep: 10
   camPosTuto: {x: -0.13, y: 1.22, z: -1.58}
   camRotTuto: {x: 35.56, y: 4.49, z: 0.261}
   camPosMain: {x: 0, y: 1.527, z: -4.66}
@@ -12218,15 +12218,24 @@ MonoBehaviour:
   - {fileID: 203335745}
   - {fileID: 1487720920}
   - {fileID: 1533566021}
-  tutoTextsStep2: []
-  tutoTextsStep3: []
-  tutoTextsStep4: []
-  tutoTextsStep5: []
-  tutoTextsStep6: []
-  tutoTextsStep7: []
-  tutoTextsStep8: []
-  tutoTextsStep9: []
-  tutoTextsStep10: []
+  tutoTextsStep2:
+  - {fileID: 0}
+  tutoTextsStep3:
+  - {fileID: 0}
+  tutoTextsStep4:
+  - {fileID: 0}
+  tutoTextsStep5:
+  - {fileID: 0}
+  tutoTextsStep6:
+  - {fileID: 0}
+  tutoTextsStep7:
+  - {fileID: 0}
+  tutoTextsStep8:
+  - {fileID: 0}
+  tutoTextsStep9:
+  - {fileID: 0}
+  tutoTextsStep10:
+  - {fileID: 0}
   indexEtapesStep1: 000000000000000000000000
   indexEtapesStep2: 000000000000000000000000
   indexEtapesStep3: 000000000000000000000000
@@ -17071,9 +17080,18 @@ MonoBehaviour:
   isInputPanelActive: 0
   inputPanels: []
   achievementScript: {fileID: 0}
-  nbMarker: 0
-  conditionsAchievement: 050000000a000000190000003200000064000000
-  indexConditions: 0
+  nbMarkerGlobal: 0
+  nbMarkerHG: 0
+  nbMarkerHD: 0
+  nbMarkerBD: 0
+  nbMarkerBG: 0
+  conditionsAchievementGlobal: 050000000a000000190000003200000064000000
+  conditionsAchievementCadran: 03000000050000000a00000014000000
+  indexConditionsGlobal: 0
+  indexConditionsHG: 0
+  indexConditionsHD: 0
+  indexConditionsBD: 0
+  indexConditionsBG: 0
 --- !u!61 &574824292
 BoxCollider2D:
   m_ObjectHideFlags: 0
