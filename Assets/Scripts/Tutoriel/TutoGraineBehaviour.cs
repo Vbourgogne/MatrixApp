@@ -27,7 +27,7 @@ public class TutoGraineBehaviour : MonoBehaviour
 
     public IEnumerator GrainePop()
     {
-        tutoScript.TutorialNextStepDisableMessage(false);
+        tutoScript.TutorialNextStepDisableMessage(false, false);
         Camera.main.GetComponent<Animation>().Play();
         yield return new WaitForSeconds(Camera.main.GetComponent<Animation>().clip.length);
         tutoScript.sakuraTree.SetActive(true);

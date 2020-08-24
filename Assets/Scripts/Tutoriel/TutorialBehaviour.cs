@@ -93,7 +93,6 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
 
         if (tutoStep == 0)
         {
-            Instantiate(graine, new Vector3(0, 1.5f, 0), Quaternion.identity);
             camTrans.position = camPosTuto;
             camTrans.rotation = Quaternion.Euler(camRotTuto);
             StartCoroutine(GraineDrop());
@@ -109,28 +108,25 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     {
         if (canTextAdvance)
         {
-            TutorialNextStepDisableMessage(true);
-        }
+                if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][0])
+                {
+                    TutorialNextStepDisableMessage(false, false);
+                    gameObjectsTestTuto[tutoStep].SetActive(true);
+                }
+                else if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][1])
+                {
+                    //disable text et afficher le choix de quand seront les notifications
+                    TutorialNextStepDisableMessage(false, false);
 
-        if (tutoStep != 0)
-        {
-            if(indexTextInArray == indexEtapes[tutoStep][0])
-            {
-                TutorialNextStepDisableMessage(false);
-                gameObjectsTestTuto[tutoStep].SetActive(true);
-            }
-            if(indexTextInArray == indexEtapes[tutoStep][1])
-            {
-                //disable text et afficher le choix de quand seront les notifications
-                TutorialNextStepDisableMessage(false);
-
-            }
-            if(indexTextInArray == indexEtapes[tutoStep][2])
-            {
-                //disable text et laisser le joueur libre en lui donnant la nouvelle option qu'il vient d'acquérir
-                TutorialNextStepDisableMessage(false);
-                achievementScript.AchievementCheck(1, 0, 34 + tutoStep);
-            }
+                }
+                else if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][2])
+                {
+                    //disable text et laisser le joueur libre en lui donnant la nouvelle option qu'il vient d'acquérir
+                    TutorialNextStepDisableMessage(false, false);
+                    achievementScript.AchievementCheck(1, 0, 34 + tutoStep);
+                }
+                else
+                    TutorialNextStepDisableMessage(true, true);
         }
 
         if(tutoStep == 0 && indexTextInArray == 3)
@@ -138,22 +134,23 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
             graine.GetComponent<TutoGraineBehaviour>().canBeNudged = true;
             canTextAdvance = false;
         }
-        else if (tutoStep == 1 && indexTextInArray == 13)
+        else if (tutoStep == 1 && indexTextInArray == 13) // A SUPPRIMER
         { 
             uiScript.ActivateUI(uiScript.uIObjects[2]);
-            TutorialNextStepDisableMessage(false);
+            TutorialNextStepDisableMessage(false, false);
         }
     }
 
     public IEnumerator GraineDrop()
     {
         yield return new WaitForSeconds(fadingImage.GetComponent<Animation>().clip.length);
-        graine.GetComponent<Rigidbody>().isKinematic = false;
+        GameObject graineInstance = Instantiate(graine, new Vector3(0, 1.5f, 0), Quaternion.identity);
+        graineInstance.GetComponent<TutoGraineBehaviour>().tutoScript = this;
         yield return new WaitForSeconds(timeBeforeFirstMessage);
         TutorialNextStepEnableMessage();
     }
 
-    public void TutorialNextStepDisableMessage(bool enableNext)
+    public void TutorialNextStepDisableMessage(bool enableNext, bool enableFond)
     {
         tutoTexts[tutoStep][indexTextInArray].SetActive(false);
         if (indexTextInArray < tutoTexts[tutoStep].Length - 1)
@@ -170,10 +167,16 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
         {
             TutorialNextStepEnableMessage();
         }
+        if (!enableFond)
+        {
+            fondTexteTrans.gameObject.SetActive(false);
+        }
     }
 
     public void TutorialNextStepEnableMessage()
     {
+        if (!fondTexteTrans.gameObject.activeInHierarchy)
+        { fondTexteTrans.gameObject.SetActive(true); }
         fondTexteTrans.position = new Vector3(tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().position.x, tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().position.y);
         fondTexteTrans.sizeDelta = new Vector2(tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().sizeDelta.x + textFondMargin, tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().sizeDelta.y + textFondMargin);
         tutoTexts[tutoStep][indexTextInArray].SetActive(true);
