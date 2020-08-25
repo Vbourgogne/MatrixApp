@@ -18,7 +18,7 @@ public class WordInputPanelScript : MonoBehaviour
     public Vector3 compassMarkPos;
 
     public Canvas canvas;
-    public GameObject[] marksParents;
+    public GameObject marksParent;
 
     private MarkBehaviour instanceMarkBehaviour;
     public CompassBehavior compassScript;
@@ -63,7 +63,7 @@ public class WordInputPanelScript : MonoBehaviour
 
                 instanceMark = Instantiate(compassMarkPrefab, compassMarkPos, Quaternion.identity); // On crée le marqueur à l'endroit où l'user a cliqué
                 instanceMark.transform.SetParent(canvas.transform, false);                          //Il est affecté au bon parent
-                instanceMark.transform.SetParent(marksParents[nbCadran].transform, true);
+                instanceMark.transform.SetParent(marksParent.transform, true);
                 instanceMarkBehaviour = instanceMark.GetComponentInChildren<MarkBehaviour>();
                 WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Modifier";
 
@@ -81,8 +81,17 @@ public class WordInputPanelScript : MonoBehaviour
                 ResetInputFields(); //vide les inputfields du wordinputpanel originel
                 WordInput_btn.GetComponentInChildren<TextMeshProUGUI>().text = "Ajouter";
                 paletteScript.currentMark = instanceMark.GetComponentInChildren<Image>();
-                compassScript.AddMarkerAchievement(nbCadran);
-                compassScript.AddMarkerAchievement(4);
+                if (nbCadran < 4)
+                {
+                    //ajouter 1 au nb marqueur tuto si c'est le cas
+                    compassScript.AddMarkerAchievement(nbCadran);
+                    compassScript.AddMarkerAchievement(4);
+                }
+                else
+                {
+                    compassScript.nbMarksMatriceTuto[nbCadran - 4]++;
+                    CheckMarksTuto();
+                }
             }
             else
             {
@@ -100,6 +109,28 @@ public class WordInputPanelScript : MonoBehaviour
         foreach (TMP_InputField anInputField in inputFields)
         {
             anInputField.text = null;
+        }
+    }
+
+    private void CheckMarksTuto()
+    {
+        if(nbCadran == 4 || nbCadran == 5)
+        {
+            if(compassScript.nbMarksMatriceTuto[0] >= 3 && compassScript.nbMarksMatriceTuto[1] >= 3)
+            {
+                compassScript.tutoScript.tutoHitbox.enabled = true;
+                compassScript.tutoScript.gameObjectsTestTuto[compassScript.tutoScript.tutoStep].SetActive(false);
+                compassScript.tutoScript.TutorialNextStepEnableMessage(); 
+            }
+        }
+        else if (nbCadran == 6 || nbCadran == 7)
+        {
+            if (compassScript.nbMarksMatriceTuto[2] >= 3 && compassScript.nbMarksMatriceTuto[3] >= 3)
+            {
+                compassScript.tutoScript.tutoHitbox.enabled = true;
+                compassScript.tutoScript.gameObjectsTestTuto[compassScript.tutoScript.tutoStep].SetActive(false);
+                compassScript.tutoScript.TutorialNextStepEnableMessage(); 
+            }
         }
     }
 }

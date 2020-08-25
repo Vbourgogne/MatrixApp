@@ -63,11 +63,11 @@ public class MarkBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
                         if (transform.parent.GetComponent<RectTransform>().position.y < poubelleUpRight.y)
                         {
                             Destroy(transform.parent.gameObject);
-                            obj_poubelle.SetActive(false);
                         } //si l'user déplace le marqueur dans la poubelle, supprime le marqueur
                     }
                 }
             }
+            obj_poubelle.SetActive(false);
             longHold = false; 
         }
         isPointerDown = false;

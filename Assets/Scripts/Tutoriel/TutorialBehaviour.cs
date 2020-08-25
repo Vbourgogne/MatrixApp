@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
 {
@@ -59,6 +60,7 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     private Transform camTrans;
     private UIManager uiScript;
     private AchievementBehaviour achievementScript;
+    public Image tutoHitbox;
 
     private void Start()
     {
@@ -66,6 +68,7 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
         uiScript = Camera.main.GetComponent<UIManager>();
         achievementScript = Camera.main.GetComponent<AchievementBehaviour>();
         fondTexteTrans = transform.GetChild(0).GetComponent<RectTransform>();
+        tutoHitbox = GetComponent<Image>();
         fadingImage.GetComponent<Animation>().Play();
 
         tutoTexts = new GameObject[10][];
@@ -111,6 +114,7 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
                 if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][0])
                 {
                     TutorialNextStepDisableMessage(false, false);
+                    tutoHitbox.enabled = false;
                     gameObjectsTestTuto[tutoStep].SetActive(true);
                 }
                 else if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][1])
@@ -129,16 +133,16 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
                     TutorialNextStepDisableMessage(true, true);
         }
 
-        if(tutoStep == 0 && indexTextInArray == 3)
+        if(tutoStep == 0 && indexTextInArray == 4)
         { 
             graine.GetComponent<TutoGraineBehaviour>().canBeNudged = true;
             canTextAdvance = false;
         }
-        else if (tutoStep == 1 && indexTextInArray == 13) // A SUPPRIMER
+        /*else if (tutoStep == 1 && indexTextInArray == 13) // A SUPPRIMER
         { 
             uiScript.ActivateUI(uiScript.uIObjects[2]);
             TutorialNextStepDisableMessage(false, false);
-        }
+        }*/
     }
 
     public IEnumerator GraineDrop()
@@ -153,15 +157,6 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     public void TutorialNextStepDisableMessage(bool enableNext, bool enableFond)
     {
         tutoTexts[tutoStep][indexTextInArray].SetActive(false);
-        if (indexTextInArray < tutoTexts[tutoStep].Length - 1)
-        {
-            indexTextInArray++;
-        }
-        else
-        {
-            tutoStep++;
-            indexTextInArray = 0;
-        }
         canTextAdvance = false;
         if(enableNext)
         {
@@ -175,8 +170,19 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
 
     public void TutorialNextStepEnableMessage()
     {
+        if (indexTextInArray < tutoTexts[tutoStep].Length - 1)
+        {
+            indexTextInArray++;
+        }
+        else
+        {
+            tutoStep++;
+            indexTextInArray = 0;
+        }
         if (!fondTexteTrans.gameObject.activeInHierarchy)
         { fondTexteTrans.gameObject.SetActive(true); }
+        if (!tutoHitbox.enabled)
+        { tutoHitbox.enabled = true; }
         fondTexteTrans.position = new Vector3(tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().position.x, tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().position.y);
         fondTexteTrans.sizeDelta = new Vector2(tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().sizeDelta.x + textFondMargin, tutoTexts[tutoStep][indexTextInArray].GetComponent<RectTransform>().sizeDelta.y + textFondMargin);
         tutoTexts[tutoStep][indexTextInArray].SetActive(true);

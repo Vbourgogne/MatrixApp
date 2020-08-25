@@ -12,6 +12,9 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
 
     public GameObject[] obj_NewInputWord;
     public GameObject obj_palette;
+    public GameObject[] MatriceSteps;
+    public int[] nbMarksMatriceTuto;
+    public TutorialBehaviour tutoScript;
 
     private int screenWidthMid;
     private int screenHeightMid;
@@ -53,21 +56,46 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
     {
         if (!isInputPanelActive)
         {
-            if (Input.mousePosition.y >= screenHeightMid && Input.mousePosition.x < screenWidthMid)
+            if (tutoScript.tutoStep == 1)
             {
-                obj_NewInputWord[0].SetActive(true);
+                if (Input.mousePosition.x < screenWidthMid)
+                {
+                    obj_NewInputWord[4].SetActive(true);
+                }
+                else if (Input.mousePosition.x >= screenWidthMid)
+                {
+                    obj_NewInputWord[5].SetActive(true);
+                }
             }
-            else if (Input.mousePosition.y >= screenHeightMid && Input.mousePosition.x >= screenWidthMid)
+            else if (tutoScript.tutoStep == 2)
             {
-                obj_NewInputWord[1].SetActive(true);
+                if (Input.mousePosition.y < screenHeightMid)
+                {
+                    obj_NewInputWord[6].SetActive(true);
+                }
+                else if (Input.mousePosition.y > screenHeightMid)
+                {
+                    obj_NewInputWord[7].SetActive(true);
+                }
             }
-            else if (Input.mousePosition.y < screenHeightMid && Input.mousePosition.x >= screenWidthMid)
+            else if (tutoScript.tutoStep > 2)
             {
-                obj_NewInputWord[2].SetActive(true);
-            }
-            else if (Input.mousePosition.y < screenHeightMid && Input.mousePosition.x < screenWidthMid)
-            {
-                obj_NewInputWord[3].SetActive(true);
+                if (Input.mousePosition.y >= screenHeightMid && Input.mousePosition.x < screenWidthMid)
+                {
+                    obj_NewInputWord[0].SetActive(true);
+                }
+                else if (Input.mousePosition.y >= screenHeightMid && Input.mousePosition.x >= screenWidthMid)
+                {
+                    obj_NewInputWord[1].SetActive(true);
+                }
+                else if (Input.mousePosition.y < screenHeightMid && Input.mousePosition.x >= screenWidthMid)
+                {
+                    obj_NewInputWord[2].SetActive(true);
+                }
+                else if (Input.mousePosition.y < screenHeightMid && Input.mousePosition.x < screenWidthMid)
+                {
+                    obj_NewInputWord[3].SetActive(true);
+                }
             }
             obj_palette.SetActive(true);
             mousePosMarker = new Vector3(Input.mousePosition.x - screenWidthMid, Input.mousePosition.y - screenHeightMid, 0);
@@ -118,6 +146,8 @@ public class CompassBehavior : MonoBehaviour, IPointerDownHandler
                     achievementScript.AchievementCheck(nbMarkerGlobal, conditionsAchievementGlobal[indexConditionsGlobal], 0 + indexConditionsGlobal);
                     indexConditionsGlobal++;
                 }
+                break;
+            default:
                 break;
         }
 
