@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2543314114887777092}
   m_Layer: 5
-  m_Name: CompassMark
+  m_Name: CompassMarkTuto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 4041084296059902388}
   - component: {fileID: 8520191635878505322}
   - component: {fileID: 4343358084522482159}
-  - component: {fileID: 598528546295933787}
+  - component: {fileID: 1455526848396236472}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &598528546295933787
+--- !u!114 &1455526848396236472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,17 +277,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 9167051355670125328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0424a0943d6528e4dad5efbb51549794, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ed4133073ceb0c43ab2221f739364aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markName: 
-  markDescription: 
-  obj_description: {fileID: 0}
-  txt_MarkName: {fileID: 0}
-  txt_MarkDescription: {fileID: 0}
+  obj_palette: {fileID: 0}
+  index: 0
   isPointerDown: 0
   timePointerHeldDown: 0
   timePointerHeldDownforLongTouch: 0.5
   longHold: 0
-  poubelleUpRight: {x: 475, y: -674}
-  poubelleLowLeft: {x: -475, y: -919}
+  poubelleUpRight: {x: 0, y: 0}
+  poubelleLowLeft: {x: 0, y: 0}
+  compassScript: {fileID: 0}

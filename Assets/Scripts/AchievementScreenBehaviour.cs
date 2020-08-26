@@ -10,14 +10,13 @@ public class AchievementScreenBehaviour : MonoBehaviour
 
     public GameObject[] obj_Achievements;
 
-    public string lockedSuccessTitle;
-    public Sprite lockedSuccessImage;
-    public Color clr_FondSuccedActive;
-    public Color clr_ImageSuccesActive;
-    public Color clr_FondSuccesDesactive;
-    public Color clr_ImageSuccesDesactive;
-    public Image[] img_achievements;
     public TextMeshProUGUI[] tmp_Titres;
+    public string lockedSuccessTitle;
+    public Color clr_FondSuccedActive;
+    public Color clr_FondSuccesDesactive;
+    public Image[] img_achievements;
+    public Color clr_ImageSuccesActive;
+    public Color clr_ImageSuccesDesactive;
     public TextMeshProUGUI[] tmp_Descriptions;
 
     private int index;
@@ -46,7 +45,6 @@ public class AchievementScreenBehaviour : MonoBehaviour
             tmp_Descriptions[index] = obj_Achievements[index].transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             img_achievements[index] = obj_Achievements[index].transform.GetChild(2).GetComponent<Image>();
             img_achievements[index].color = clr_ImageSuccesDesactive;
-            img_achievements[index].sprite = lockedSuccessImage;
             tmp_Titres[index].text = achievementScript.achievementTitles[index];
             tmp_Titres[index].text = lockedSuccessTitle;
             obj_Achievements[index].GetComponent<Image>().color = clr_FondSuccesDesactive;
