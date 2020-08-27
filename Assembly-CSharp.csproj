@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\MarkBehaviour.cs" />
     <Compile Include="Assets\Scripts\PaletteBehavior.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
+    <Compile Include="Assets\Scripts\TimeAndNotifsBehaviour.cs" />
     <Compile Include="Assets\Scripts\Tutoriel\TutoGraineBehaviour.cs" />
     <Compile Include="Assets\Scripts\Tutoriel\TutorialBehaviour.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
@@ -700,6 +701,12 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/VIKTOR/Documents/Valentin/MatrixApp/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Notifications.iOS">
+      <HintPath>C:/Users/VIKTOR/Documents/Valentin/MatrixApp/Library/ScriptAssemblies/Unity.Notifications.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Notifications.Android">
+      <HintPath>C:/Users/VIKTOR/Documents/Valentin/MatrixApp/Library/ScriptAssemblies/Unity.Notifications.Android.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

@@ -8,6 +8,12 @@ public class TutoGraineBehaviour : MonoBehaviour
     public int nbNudgesToTrigger;
     public TutorialBehaviour tutoScript;
     public bool canBeNudged;
+    public ScoreManager scoreScript;
+
+    private void OnEnable()
+    {
+        scoreScript = Camera.main.GetComponent<ScoreManager>();
+    }
 
     private void OnMouseDown()
     {
@@ -30,7 +36,7 @@ public class TutoGraineBehaviour : MonoBehaviour
         tutoScript.TutorialNextStepDisableMessage(false, false);
         Camera.main.GetComponent<Animation>().Play();
         yield return new WaitForSeconds(Camera.main.GetComponent<Animation>().clip.length);
-        tutoScript.sakuraTree.SetActive(true);
+        scoreScript.TreeGrowth();
         tutoScript.canTextAdvance = true;
         tutoScript.TutorialNextStepEnableMessage();
     }

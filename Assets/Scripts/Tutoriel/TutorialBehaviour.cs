@@ -60,6 +60,7 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     private Transform camTrans;
     private UIManager uiScript;
     private AchievementBehaviour achievementScript;
+    private ScoreManager scoreScript;
     public Image tutoHitbox;
 
     private void Start()
@@ -68,6 +69,7 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
         uiScript = Camera.main.GetComponent<UIManager>();
         achievementScript = Camera.main.GetComponent<AchievementBehaviour>();
         fondTexteTrans = transform.GetChild(0).GetComponent<RectTransform>();
+        scoreScript = Camera.main.GetComponent<ScoreManager>();
         tutoHitbox = GetComponent<Image>();
         fadingImage.GetComponent<Animation>().Play();
 
@@ -149,7 +151,9 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     {
         yield return new WaitForSeconds(fadingImage.GetComponent<Animation>().clip.length);
         GameObject graineInstance = Instantiate(graine, new Vector3(0, 1.5f, 0), Quaternion.identity);
+        graine = graineInstance;
         graineInstance.GetComponent<TutoGraineBehaviour>().tutoScript = this;
+        scoreScript.treeStates[0] = graineInstance;
         yield return new WaitForSeconds(timeBeforeFirstMessage);
         TutorialNextStepEnableMessage();
     }

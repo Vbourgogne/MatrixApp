@@ -285,7 +285,7 @@ MonoBehaviour:
   index: 0
   isPointerDown: 0
   timePointerHeldDown: 0
-  timePointerHeldDownforLongTouch: 0.5
+  timePointerHeldDownforLongTouch: 0.3
   longHold: 0
   poubelleUpRight: {x: 475, y: -674}
   poubelleLowLeft: {x: -475, y: -919}

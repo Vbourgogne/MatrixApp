@@ -21,6 +21,9 @@ public class ScoreManager : MonoBehaviour
     public GameObject obj_Arrosoire;
     public Renderer[] renderer_ArrosoireArray;
     public GameObject obj_ArrosezTexte;
+    public GameObject[] treeStates;
+    public int treeStateIndex;
+    public GameObject sakura_particle;
 
     public int[] conditionsAchievement;
     public int indexConditions;
@@ -87,5 +90,17 @@ public class ScoreManager : MonoBehaviour
     public void ArrosageReset()
     {
         increases = 0;
+    }
+
+    public void TreeGrowth()
+    {
+        treeStates[treeStateIndex].SetActive(false);
+        treeStateIndex++;
+        treeStates[treeStateIndex].SetActive(true);
+        obj_arbre = treeStates[treeStateIndex];
+        if( treeStateIndex == 4)
+        {
+            sakura_particle.SetActive(true);
+        }
     }
 }
