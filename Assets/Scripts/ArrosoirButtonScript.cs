@@ -5,13 +5,20 @@ using UnityEngine;
 public class ArrosoirButtonScript : MonoBehaviour
 {
     public ScoreManager scoreScript;
+    public TutorialBehaviour tutoScript;
+    public bool canTutoAdvance;
 
-    void Start()
+    void OnEnable()
     {
         scoreScript = Camera.main.GetComponent<ScoreManager>();
     }
     void OnMouseDown()
     {
+        if(canTutoAdvance)
+        { 
+            tutoScript.TutorialNextStepEnableMessage();
+            canTutoAdvance = false;
+        }
         scoreScript.arrosageLoop = true;
         StartCoroutine(scoreScript.Arrosage());
     }

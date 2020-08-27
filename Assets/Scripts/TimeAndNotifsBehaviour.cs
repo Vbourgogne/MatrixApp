@@ -17,7 +17,7 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
     private DateTime today;
 
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         today = System.DateTime.Today;
         var mainNotificationChannel = new AndroidNotificationChannel()
@@ -28,7 +28,7 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
             Description = "Main Channel for Notifications"
         };
         AndroidNotificationCenter.RegisterNotificationChannel(mainNotificationChannel);
-        for (int i = 0; i < notifications.Length; i++)
+        /*for (int i = 0; i < notifications.Length; i++)
         {
             notifications[i] = new AndroidNotification()
             {
@@ -95,5 +95,5 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
             notifications[i].FireTime = timeNotifications[i];
             AndroidNotificationCenter.SendNotification(notifications[i], "mainChannel_id");
         }
-    }
+    }*/
 }

@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\CompassBehavior.cs" />
     <Compile Include="Assets\Scripts\DebugScript.cs" />
     <Compile Include="Assets\Scripts\MarkBehaviour.cs" />
+    <Compile Include="Assets\Scripts\NotifsSetupPanelBehaviour.cs" />
     <Compile Include="Assets\Scripts\PaletteBehavior.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\TimeAndNotifsBehaviour.cs" />

@@ -20,6 +20,7 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     public GameObject particles;
     public GameObject sakuraTree;
     public GameObject flowers;
+    public GameObject obj_SetupPanel;
     public float timeBeforeFirstMessage;
 
     private GameObject[][] tutoTexts;
@@ -125,12 +126,13 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
                     TutorialNextStepDisableMessage(false, false);
 
                 }
-                else if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][2])
+                /*else if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][2])
                 {
                     //disable text et laisser le joueur libre en lui donnant la nouvelle option qu'il vient d'acquérir
                     TutorialNextStepDisableMessage(false, false);
                     achievementScript.AchievementCheck(1, 0, 34 + tutoStep);
-                }
+                    scoreScript.obj_arbre.GetComponent<ArrosoirButtonScript>().canTutoAdvance = true;
+                }*/
                 else
                     TutorialNextStepDisableMessage(true, true);
         }
