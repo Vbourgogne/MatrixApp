@@ -13,32 +13,33 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
     public string[] notificationTitles;
     public string[] notificationDescriptions;
     public DateTime[] timeNotifications;
-    public AndroidNotification[] notifications;
+    public DateTime eveningNotificationTime;
+    private AndroidNotification[] randomNotifications;
+    private AndroidNotification eveningNotification;
     private DateTime today;
 
     // Start is called before the first frame update
-    /*void Start()
+    void Start()
     {
         today = System.DateTime.Today;
-        var mainNotificationChannel = new AndroidNotificationChannel()
+
+        var randomNotifsNotificationChannel = new AndroidNotificationChannel()
         {
-            Id = "mainChannel_id",
-            Name = "Main Channel",
+            Id = "randomNotifsChannel_id",
+            Name = "Random Notifications Channel",
             Importance = Importance.Default,
-            Description = "Main Channel for Notifications"
+            Description = "Channel for random notifications"
         };
-        AndroidNotificationCenter.RegisterNotificationChannel(mainNotificationChannel);
-        /*for (int i = 0; i < notifications.Length; i++)
+        AndroidNotificationCenter.RegisterNotificationChannel(randomNotifsNotificationChannel);
+        var eveningNotifsNotificationChannel = new AndroidNotificationChannel()
         {
-            notifications[i] = new AndroidNotification()
-            {
-                Title = notificationTitles[tutoScript.tutoStep],
-                Text = notificationDescriptions[tutoScript.tutoStep],
-                FireTime = new DateTime(1973, 3, 1, 0, 0, 0),
-                SmallIcon = "icon_small",
-                LargeIcon = "icon_large",
-            };
-        }
+            Id = "eveningNotifsChannel_id",
+            Name = "Evening Notifications Channel",
+            Importance = Importance.Default,
+            Description = "Channel for evening notifications"
+        };
+        AndroidNotificationCenter.RegisterNotificationChannel(eveningNotifsNotificationChannel);
+
             if (System.DateTime.UtcNow.Hour > 5 && System.DateTime.UtcNow.Hour < 6)
             {
                 RenderSettings.skybox = skyboxes[6];
@@ -85,15 +86,30 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
                 lucioles_particles.SetActive(true);
             }
     }
-    public void NotificationsUpdate(int nbNotifications)
+    public void NotificationsUpdate(int nbNotifications, bool sendRandomNotifs, bool sendEveningNotifs)
     {
-        for (int i = 0; i < nbNotifications; i++)
+        if (sendRandomNotifs)
         {
-            timeNotifications[i] = new DateTime(today.Year, today.Month, today.Day, heuresNotifs[i, 0], heuresNotifs[i, 1], 0);
-            notifications[i].Title = notificationTitles[tutoScript.tutoStep-1];
-            notifications[i].Text = notificationDescriptions[tutoScript.tutoStep-1];
-            notifications[i].FireTime = timeNotifications[i];
-            AndroidNotificationCenter.SendNotification(notifications[i], "mainChannel_id");
+            randomNotifications = new AndroidNotification[nbNotifications];
+            for (int i = 0; i < nbNotifications; i++)
+            {
+                timeNotifications[i] = new DateTime(today.Year, today.Month, today.Day, heuresNotifs[i, 0], heuresNotifs[i, 1], 0);
+                randomNotifications[i].Title = notificationTitles[tutoScript.tutoStep - 1];
+                randomNotifications[i].Text = notificationDescriptions[tutoScript.tutoStep - 1];
+                randomNotifications[i].SmallIcon = "icon_small";
+                randomNotifications[i].LargeIcon = "icon_large";
+                randomNotifications[i].FireTime = timeNotifications[i];
+                AndroidNotificationCenter.SendNotification(randomNotifications[i], "randomNotifsChannel_id");
+            }
         }
-    }*/
+        if (sendEveningNotifs)
+        {
+            eveningNotification.Title = "Notification du soir";
+            eveningNotification.Title = notificationTitles[tutoScript.tutoStep - 1];
+            eveningNotification.SmallIcon = "icon_small";
+            eveningNotification.LargeIcon = "icon_large";
+            eveningNotification.FireTime = eveningNotificationTime;
+            AndroidNotificationCenter.SendNotification(eveningNotification, "eveningNotifsChannel_id");
+        }
+    }
 }
