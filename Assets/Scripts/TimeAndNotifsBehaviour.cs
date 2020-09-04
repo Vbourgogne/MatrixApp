@@ -9,7 +9,8 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
     public TutorialBehaviour tutoScript;
     public Material[] skyboxes;
     public GameObject lucioles_particles;
-    public int[,] heuresNotifs;
+    public int[] heureNotifSoir;
+    public int[,] heuresNotifsRandom;
     public string[] notificationTitles;
     public string[] notificationDescriptions;
     public DateTime[] timeNotifications;
@@ -22,6 +23,7 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
     void Start()
     {
         today = System.DateTime.Today;
+        heureNotifSoir = new int[2];
 
         var randomNotifsNotificationChannel = new AndroidNotificationChannel()
         {
@@ -93,7 +95,7 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
             randomNotifications = new AndroidNotification[nbNotifications];
             for (int i = 0; i < nbNotifications; i++)
             {
-                timeNotifications[i] = new DateTime(today.Year, today.Month, today.Day, heuresNotifs[i, 0], heuresNotifs[i, 1], 0);
+                timeNotifications[i] = new DateTime(today.Year, today.Month, today.Day, heuresNotifsRandom[i, 0], heuresNotifsRandom[i, 1], 0);
                 randomNotifications[i].Title = notificationTitles[tutoScript.tutoStep - 1];
                 randomNotifications[i].Text = notificationDescriptions[tutoScript.tutoStep - 1];
                 randomNotifications[i].SmallIcon = "icon_small";
@@ -104,6 +106,7 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
         }
         if (sendEveningNotifs)
         {
+            eveningNotificationTime = new DateTime(today.Year, today.Month, today.Day, heureNotifSoir[0], heureNotifSoir[1], 0);
             eveningNotification.Title = "Notification du soir";
             eveningNotification.Title = notificationTitles[tutoScript.tutoStep - 1];
             eveningNotification.SmallIcon = "icon_small";
