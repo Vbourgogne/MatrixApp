@@ -39,7 +39,7 @@ public class NotifsSetupPanelBehaviour : MonoBehaviour
     {
         if (toggleRandom.isOn)
         {
-            nbNotifications = int.Parse(randomNotifsInputFields[0].text);
+            nbNotifications = int.Parse(randomNotifsInputFields[0].text); //converting strings in inputfields into int
             hourBegin = int.Parse(randomNotifsInputFields[1].text);
             minuteBegin = int.Parse(randomNotifsInputFields[2].text);
             hourEnd = int.Parse(randomNotifsInputFields[3].text);
@@ -92,10 +92,13 @@ public class NotifsSetupPanelBehaviour : MonoBehaviour
             notifsScript.heureNotifSoir[1] = int.Parse(eveningNotifsInputFields[1].text);
             notifsScript.NotificationsUpdate(1, false, true);
         }
-        achievementScript.AchievementCheck(1, 0, 33 + tutoScript.tutoStep);
-        scoreScript.obj_arbre.GetComponent<ArrosoirButtonScript>().canTutoAdvance = true;
-        //notifsScript.NotificationsUpdate(nbNotifications, 0, 0);
-        gameObject.SetActive(false);
+        if (toggleRandom.isOn || toggleSoir.isOn)
+        {
+            achievementScript.AchievementCheck(1, 0, 33 + tutoScript.tutoStep);
+            scoreScript.obj_arbre.GetComponent<ArrosoirButtonScript>().canTutoAdvance = true;
+            //notifsScript.NotificationsUpdate(nbNotifications, 0, 0);
+            gameObject.SetActive(false);
+        }
     }
 
 }

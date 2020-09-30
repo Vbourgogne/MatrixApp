@@ -114,18 +114,18 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
     {
         if (canTextAdvance)
         {
-                if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][0])
-                {
-                    TutorialNextStepDisableMessage(false, false);
-                    tutoHitbox.enabled = false;
-                    gameObjectsTestTuto[tutoStep].SetActive(true);
-                }
-                else if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][1])
-                {
+            if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][0])
+            {
+                TutorialNextStepDisableMessage(false, false);
+                tutoHitbox.enabled = false;
+                gameObjectsTestTuto[tutoStep].SetActive(true);
+            }
+            else if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][1])
+            {
                     //disable text et afficher le choix de quand seront les notifications
-                    TutorialNextStepDisableMessage(false, false);
-
-                }
+            TutorialNextStepDisableMessage(false, false);
+            obj_SetupPanel.SetActive(true);
+            }
                 /*else if (tutoStep != 0 && indexTextInArray == indexEtapes[tutoStep][2])
                 {
                     //disable text et laisser le joueur libre en lui donnant la nouvelle option qu'il vient d'acquérir
@@ -133,8 +133,8 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
                     achievementScript.AchievementCheck(1, 0, 34 + tutoStep);
                     scoreScript.obj_arbre.GetComponent<ArrosoirButtonScript>().canTutoAdvance = true;
                 }*/
-                else
-                    TutorialNextStepDisableMessage(true, true);
+             else
+             TutorialNextStepDisableMessage(true, true);
         }
 
         if(tutoStep == 0 && indexTextInArray == 4)
@@ -149,7 +149,7 @@ public class TutorialBehaviour : MonoBehaviour, IPointerDownHandler
         }*/
     }
 
-    public IEnumerator GraineDrop()
+    public IEnumerator GraineDrop()         // Après que l'image ait fade in, spawn une graine, attends, et active le message
     {
         yield return new WaitForSeconds(fadingImage.GetComponent<Animation>().clip.length);
         GameObject graineInstance = Instantiate(graine, new Vector3(0, 1.5f, 0), Quaternion.identity);

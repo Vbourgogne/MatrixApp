@@ -2317,7 +2317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreScript: {fileID: 0}
-  tutoScript: {fileID: 0}
+  tutoScript: {fileID: 424622078}
   canTutoAdvance: 0
 --- !u!64 &79368366
 MeshCollider:
@@ -9735,7 +9735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreScript: {fileID: 0}
-  tutoScript: {fileID: 0}
+  tutoScript: {fileID: 424622078}
   canTutoAdvance: 0
 --- !u!1 &315075812
 GameObject:
@@ -14106,7 +14106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreScript: {fileID: 0}
-  tutoScript: {fileID: 0}
+  tutoScript: {fileID: 424622078}
   canTutoAdvance: 0
 --- !u!64 &411852290
 MeshCollider:
@@ -14859,7 +14859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a65e62376f3494cb21ce0cba7b46e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutoStep: 10
+  tutoStep: 0
   camPosTuto: {x: -0.13, y: 1.22, z: -1.58}
   camRotTuto: {x: 35.56, y: 4.49, z: 0.261}
   camPosMain: {x: 0, y: 1.527, z: -4.66}
@@ -24728,7 +24728,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -24761,7 +24761,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -37811,7 +37811,7 @@ PrefabInstance:
     - target: {fileID: 7432898070263950071, guid: cf51b758184b40945ad191b9ef583d25,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf51b758184b40945ad191b9ef583d25, type: 3}
@@ -41104,12 +41104,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1168299537}
-    characterCount: 128
+    characterCount: 90
     spriteCount: 0
-    spaceCount: 16
-    wordCount: 17
+    spaceCount: 14
+    wordCount: 16
     linkCount: 0
-    lineCount: 5
+    lineCount: 4
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -51525,7 +51525,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -250, y: -400}
-  m_SizeDelta: {x: 500, y: 250}
+  m_SizeDelta: {x: 500, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1502138093
 MonoBehaviour:
@@ -51616,12 +51616,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1502138093}
-    characterCount: 71
+    characterCount: 119
     spriteCount: 0
-    spaceCount: 12
-    wordCount: 13
+    spaceCount: 19
+    wordCount: 20
     linkCount: 0
-    lineCount: 4
+    lineCount: 7
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -52797,7 +52797,7 @@ PrefabInstance:
     - target: {fileID: 6810641708710446965, guid: fb8c1304b3d4f4d46931272594229c0d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb8c1304b3d4f4d46931272594229c0d, type: 3}
@@ -53264,7 +53264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1541363703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53300,8 +53300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1009b1b338d4fa740a1599cc2dbf8c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleRandom: {fileID: 0}
-  toggleSoir: {fileID: 0}
+  toggleRandom: {fileID: 483741745}
+  toggleSoir: {fileID: 595061096}
   btn_NotifsSetup: {fileID: 402347671}
   randomNotifsInputFields:
   - {fileID: 1549036429}
@@ -64780,12 +64780,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1926452051}
-    characterCount: 90
+    characterCount: 77
     spriteCount: 0
     spaceCount: 14
-    wordCount: 16
+    wordCount: 15
     linkCount: 0
-    lineCount: 5
+    lineCount: 4
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -65466,7 +65466,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -250, y: -400}
-  m_SizeDelta: {x: 500, y: 250}
+  m_SizeDelta: {x: 500, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1938005979
 MonoBehaviour:
@@ -65554,15 +65554,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -36.781616}
   m_textInfo:
     textComponent: {fileID: 1938005979}
-    characterCount: 71
+    characterCount: 127
     spriteCount: 0
-    spaceCount: 12
-    wordCount: 13
+    spaceCount: 14
+    wordCount: 15
     linkCount: 0
-    lineCount: 4
+    lineCount: 7
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -68225,7 +68225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreScript: {fileID: 0}
-  tutoScript: {fileID: 0}
+  tutoScript: {fileID: 424622078}
   canTutoAdvance: 0
 --- !u!64 &2011493585
 MeshCollider:
@@ -73606,7 +73606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreScript: {fileID: 0}
-  tutoScript: {fileID: 0}
+  tutoScript: {fileID: 424622078}
   canTutoAdvance: 0
 --- !u!64 &2144056919
 MeshCollider:
@@ -73883,7 +73883,7 @@ PrefabInstance:
     - target: {fileID: 1178470988025992376, guid: 0be3990fdc8c07643bde8764180cf18a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1178470988025992383, guid: 0be3990fdc8c07643bde8764180cf18a,
         type: 3}

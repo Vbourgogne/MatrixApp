@@ -22,7 +22,7 @@ public class AchievementBehaviour : MonoBehaviour
         achievementScreenScript = GetComponent<AchievementScreenBehaviour>();
     }
 
-    public bool AchievementCheck(float variable, float condition, int indexAchievement)
+    public bool AchievementCheck(float variable, float condition, int indexAchievement) 
     {
         if (variable >= condition && !achievementsUnlocked.Contains(indexAchievement))
         {

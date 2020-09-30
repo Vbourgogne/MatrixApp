@@ -116,7 +116,7 @@ public class WordInputPanelScript : MonoBehaviour
     {
         if(nbCadran == 4 || nbCadran == 5)
         {
-            if(compassScript.nbMarksMatriceTuto[0] >= 3 && compassScript.nbMarksMatriceTuto[1] >= 3)
+            if(compassScript.nbMarksMatriceTuto[0] >= 2 && compassScript.nbMarksMatriceTuto[1] >= 2)
             {
                 compassScript.tutoScript.tutoHitbox.enabled = true;
                 compassScript.tutoScript.gameObjectsTestTuto[compassScript.tutoScript.tutoStep].SetActive(false);
@@ -125,7 +125,7 @@ public class WordInputPanelScript : MonoBehaviour
         }
         else if (nbCadran == 6 || nbCadran == 7)
         {
-            if (compassScript.nbMarksMatriceTuto[2] >= 3 && compassScript.nbMarksMatriceTuto[3] >= 3)
+            if (compassScript.nbMarksMatriceTuto[2] >= 2 && compassScript.nbMarksMatriceTuto[3] >= 2)
             {
                 compassScript.tutoScript.tutoHitbox.enabled = true;
                 compassScript.tutoScript.gameObjectsTestTuto[compassScript.tutoScript.tutoStep].SetActive(false);
