@@ -42,7 +42,7 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
         };
         AndroidNotificationCenter.RegisterNotificationChannel(eveningNotifsNotificationChannel);
 
-            if (System.DateTime.UtcNow.Hour > 5 && System.DateTime.UtcNow.Hour < 6)
+            /*if (System.DateTime.UtcNow.Hour > 5 && System.DateTime.UtcNow.Hour < 6)
             {
                 RenderSettings.skybox = skyboxes[6];
                 lucioles_particles.SetActive(true);
@@ -86,7 +86,7 @@ public class TimeAndNotifsBehaviour : MonoBehaviour
             {
                 RenderSettings.skybox = skyboxes[5];
                 lucioles_particles.SetActive(true);
-            }
+            }*/
     }
     public void NotificationsUpdate(int nbNotifications, bool sendRandomNotifs, bool sendEveningNotifs)
     {

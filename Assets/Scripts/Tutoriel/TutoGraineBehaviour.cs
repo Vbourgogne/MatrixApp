@@ -15,7 +15,7 @@ public class TutoGraineBehaviour : MonoBehaviour
         scoreScript = Camera.main.GetComponent<ScoreManager>();
     }
 
-    private void OnMouseDown()
+    private void OnMouseDown() //quand elle est cliquée nbNudgesToTrigger fois, lance GrainePop
     {
         if (canBeNudged)
         {
@@ -31,7 +31,7 @@ public class TutoGraineBehaviour : MonoBehaviour
         }
     }
 
-    public IEnumerator GrainePop()
+    public IEnumerator GrainePop() // désactive l'affichage du message, lance l'animation de la caméra, fais pousser l'arbre d'un cran
     {
         tutoScript.TutorialNextStepDisableMessage(false, false);
         Camera.main.GetComponent<Animation>().Play();
